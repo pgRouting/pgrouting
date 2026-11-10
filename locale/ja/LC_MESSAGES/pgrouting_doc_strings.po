@@ -19,7 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-11-07 14:13+0000\nPO-Revision-Date: 2026-11-10 02:39+0000\nLast-Translator: DeepL <noreply-mt-deepl@weblate.org>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 2026.10.1\nGenerated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-11-07 14:13+0000\nPO-Revision-Date: 2026-11-10 02:39+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 2026.10.1\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -328,7 +328,7 @@ msgid ":doc:`pgr_withPointsKSP` - Yen's algorithm based on pgr_withPoints"
 msgstr ":doc:`pgr_withPointsKSP` - pgr_withPointsに基づくYenのアルゴリズム"
 
 msgid "TRSP - Family of functions"
-msgstr "TRSP - 関数ファミリー"
+msgstr "TRSP - 関数群"
 
 #, fuzzy
 msgid "When points are also given as input:"
@@ -463,7 +463,7 @@ msgid "Cost of taking the forbidden path."
 msgstr "通行禁止の道を選択した時のコスト。"
 
 msgid "Traveling Sales Person - Family of functions"
-msgstr "巡回セールスマン問題の関連機能"
+msgstr "巡回セールスマン - 関数群"
 
 msgid ":doc:`pgr_TSP` - When input is given as matrix cell information."
 msgstr ":doc:`pgr_TSP` - 引数に行列のマトリクスが与えられたとき。"
@@ -2403,46 +2403,46 @@ msgid ":doc:`pgr_johnson`"
 msgstr ":doc:`pgr_johnson`"
 
 msgid ":doc:`pgr_floydWarshall`"
-msgstr ""
+msgstr ":doc:`pgr_floydWarshall`"
 
 msgid ":bgl:`Boost: Floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
-msgstr ""
+msgstr ":bgl:`Boost: ワーシャル–フロイド法 <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 
 msgid "Bidirectional A* - Family of functions"
-msgstr ""
+msgstr "双方向A* - 関数群"
 
 msgid "The bidirectional A* (pronounced \"A Star\") algorithm is based on the A* algorithm."
-msgstr ""
+msgstr "両方向 A* (「エースター」と言います) アルゴリズムは A* アルゴリズムを基にしています。"
 
 msgid ":doc:`pgr_bdAstar` - Bidirectional A* algorithm for obtaining paths."
-msgstr ""
+msgstr ":doc:`pgr_bdAstar` - 経路を得るための双方向の A* アルゴリズムです。"
 
 msgid ":doc:`pgr_bdAstarCost` - Bidirectional A* algorithm to calculate the cost of the paths."
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCost` - 経路のコストを計算する双方向のA*アルゴリズム。"
 
 msgid ":doc:`pgr_bdAstarCostMatrix` - Bidirectional A* algorithm to calculate a cost matrix of paths."
-msgstr ""
+msgstr ":doc:`pgr_bdAstarCostMatrix` - 経路のコスト行列を計算する双方向 A* アルゴリズムです。"
 
 msgid "Based on A* algorithm, the bidirectional search finds a shortest path from a starting vertex (``start_vid``) to an ending vertex (``end_vid``). It runs two simultaneous searches: one forward from the ``start_vid``, and one backward from the ``end_vid``, stopping when the two meet in the middle. This implementation can be used with a directed graph and an undirected graph."
-msgstr ""
+msgstr "双方向探索は、A*アルゴリズムに基づき、開始頂点(``start_vid``)から終了頂点(``end_vid``)への最短経路を求めます。``start_vid``から前方に一つ、``end_vid``から後方に一つ、計二つの探索を同時に行い、二つが中間で出会った時点で停止する。この実装は、有向グラフと無向グラフで使用することができる。"
 
 msgid "For large graphs where there is a path between the starting vertex and ending vertex:"
-msgstr "始点と終点の間にパスがある大きなグラフの場合："
+msgstr "始点と終点の間に経路がある大きなグラフの場合："
 
 msgid "It is expected to terminate faster than :doc:`pgr_aStar`"
-msgstr "doc:`pgr_aStar`よりも早く終了することが期待される。"
+msgstr "doc:`pgr_aStar` より速く処理することが期待されます"
 
 msgid ":doc:`aStar-family`"
-msgstr ""
+msgstr ":doc:`aStar-family`"
 
 msgid "Bidirectional Dijkstra - Family of functions"
-msgstr ""
+msgstr "双方向ダイクストラ法 - 関数群"
 
 msgid ":doc:`pgr_bdDijkstra` - Bidirectional Dijkstra algorithm for the shortest paths."
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstra` - 最短経路のための双方向ダイクストラアルゴリズム。"
 
 msgid ":doc:`pgr_bdDijkstraCost` - Bidirectional Dijkstra to calculate the cost of the shortest paths"
-msgstr ""
+msgstr ":doc:`pgr_bdDijkstraCost` -最短経路のコスト計算を行うための双方向ダイクストラ"
 
 #, fuzzy
 msgid ":doc:`pgr_bdDijkstraCostMatrix` - Bidirectional Dijkstra algorithm to create a matrix of costs of the shortest paths."
@@ -2452,22 +2452,22 @@ msgid "Synopsis"
 msgstr "概要"
 
 msgid "Based on Dijkstra's algorithm, the bidirectional search finds a shortest path a starting vertex to an ending vertex."
-msgstr ""
+msgstr "ダイクストラ法を基にしたもので、双方向探索によって始点から終点までの最短経路を得ます。"
 
 msgid "It runs two simultaneous searches: one forward from the source, and one backward from the target, stopping when the two meet in the middle."
-msgstr ""
+msgstr "始点からの順方向探索と終点からの逆方向探索の二つの探索を同時に実行し、二つが中間で出会ったときに停止します。"
 
 msgid "This implementation can be used with a directed graph and an undirected graph."
-msgstr ""
+msgstr "この実装は有向グラフと無向グラフで使用可能です。"
 
 msgid "A negative value on a cost column is interpreted as the edge does not exist."
-msgstr ""
+msgstr "コスト列の値が負の場合、エッジは存在しないと解釈されます。"
 
 msgid "When there is no path:"
-msgstr ""
+msgstr "経路がない時:"
 
 msgid "When the starting vertex and ending vertex are the same."
-msgstr ""
+msgstr "始点と終点が同じ時。"
 
 msgid "The **aggregate cost** of the non included values :math:`(v, v)` is :math:`0`"
 msgstr ""
@@ -2494,9 +2494,8 @@ msgstr ""
 msgid ":bgl:`Boost: Shortest Path Overview <algorithms/shortest_paths/shortest_paths_overview.html>`"
 msgstr ":bgl:`Boost: A* 探索 <algorithms/shortest_paths/astar_search.html>`"
 
-#, fuzzy
 msgid "Chinese Postman Problem - Family of functions"
-msgstr "ダイクストラ関連機能"
+msgstr "中国郵便配達問題 - 関数群"
 
 msgid ":doc:`pgr_chinesePostman`"
 msgstr ""
@@ -2514,24 +2513,24 @@ msgid "Running time: :math:`O(E * (E + V * logV))`"
 msgstr ""
 
 msgid "Graph must be connected."
-msgstr ""
+msgstr "グラフは連結でなければなりません。"
 
 msgid "An Edges SQL that represents a **directed** graph with the following columns"
-msgstr ""
+msgstr "次のカラムを持つ**有向**グラフを表現するエッジ SQL です"
 
-#, fuzzy
 msgid "Circuits - Family of Functions"
-msgstr "ダイクストラ関連機能"
+msgstr ""
 
 #, fuzzy
 msgid "The following functions work on circuits of directed graphs."
 msgstr "導かれないグラフ。"
 
+#, fuzzy
 msgid ":doc:`pgr_hawickCircuits` - Hawick's circuits algorithm."
-msgstr ""
+msgstr ":doc:`pgr_hawickCircuits` - ホーウィックの閉路列挙アルゴリズム。"
 
 msgid ":doc:`pgr_hawickUniqueCircuits` - Hawick's unique circuits algorithm."
-msgstr ""
+msgstr ":doc:`pgr_hawickUniqueCircuits` - ホーウィックの一意閉路列挙アルゴリズム。"
 
 #, fuzzy
 msgid "``start vid``"
@@ -2638,8 +2637,9 @@ msgstr "現在の ``ノード`` から次の ``ノード`` まで移動する際
 msgid ":bgl:`Boost: Hawick Circuit Algorithm <algorithms/cycle_detection/cycle_detection_overview.html>`"
 msgstr "`Boost: プリム法 (英語) <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
 
+#, fuzzy
 msgid "Coloring - Family of functions"
-msgstr ""
+msgstr "塗分け - 関数群"
 
 msgid ":doc:`pgr_sequentialVertexColoring` - Vertex coloring algorithm using greedy approach."
 msgstr ""
@@ -2677,8 +2677,9 @@ msgstr ""
 msgid ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
 msgstr ""
 
+#, fuzzy
 msgid "Components - Family of functions"
-msgstr ""
+msgstr "連結成分 - 関数群"
 
 msgid ":doc:`pgr_connectedComponents` - Connected components of an undirected graph."
 msgstr ""
@@ -2699,7 +2700,7 @@ msgid ":doc:`pgr_makeConnected` - Details of edges to make graph connected."
 msgstr ""
 
 msgid "Contraction - Family of functions"
-msgstr ""
+msgstr "縮約 - 関数群"
 
 msgid ":doc:`pgr_contraction`"
 msgstr ""
@@ -2707,9 +2708,8 @@ msgstr ""
 msgid ":doc:`pgr_contractionDeadEnd`"
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`pgr_contractionLinear`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_contractionLinear`"
 
 msgid ":doc:`pgr_contractionHierarchies`"
 msgstr ""
@@ -2945,7 +2945,7 @@ msgid ":doc:`TSP-family`"
 msgstr ":doc:`TSP-family`"
 
 msgid "Dijkstra - Family of functions"
-msgstr "ダイクストラ関連機能"
+msgstr "ダイクストラ - 関数群"
 
 msgid ":doc:`pgr_dijkstra` - Dijkstra's algorithm for the shortest paths."
 msgstr ":doc:`pgr_dijkstra` - 最短経路を求めるためのダイクストラ・アルゴリズム。"
@@ -3285,9 +3285,8 @@ msgstr ""
 msgid ":doc:`TRSP-family`"
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`planar-family`"
-msgstr ":doc:`TSP-family`"
+msgstr ":doc:`planar-family`"
 
 msgid ":doc:`pgr_isPlanar` - Returns a boolean depending upon the planarity of the graph."
 msgstr ""
@@ -3333,7 +3332,7 @@ msgid ":doc:`pgr_transitiveClosure`"
 msgstr ""
 
 msgid "Flow - Family of functions"
-msgstr ""
+msgstr "フロー - 関数群"
 
 msgid ":doc:`pgr_maxFlow` - Only the Max flow calculation using Push and Relabel algorithm."
 msgstr ""
@@ -3686,7 +3685,7 @@ msgid ":doc:`KSP-category`"
 msgstr ""
 
 msgid ":doc:`spanningTree-category`"
-msgstr "doc:`spanningTree-category`。"
+msgstr "doc:`spanningTree-category`"
 
 msgid ":doc:`BFS-category`"
 msgstr ""
@@ -3882,7 +3881,7 @@ msgid "All releases"
 msgstr ""
 
 msgid "Kruskal - Family of functions"
-msgstr ""
+msgstr "クラスカル法 - 関数群"
 
 msgid "Kruskal's algorithm is a greedy minimum spanning tree algorithm that in each cycle finds and adds the edge of the least possible weight that connects any two trees in the forest."
 msgstr ""
@@ -3896,9 +3895,8 @@ msgstr ""
 msgid "Kruskal's running time: :math:`O(E * log E)`"
 msgstr ""
 
-#, fuzzy
 msgid "Metrics - Family of functions"
-msgstr "ダイクストラ関連機能"
+msgstr "計量 - 関数群"
 
 msgid "Migration guide"
 msgstr ""
@@ -3940,13 +3938,12 @@ msgstr ""
 msgid "Function"
 msgstr "序章"
 
-#, fuzzy
 msgid ":doc:`pgr_dijkstra`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_dijkstra`"
 
 #, fuzzy
 msgid "`Migration of single path functions`_"
-msgstr "ダイクストラ関連機能"
+msgstr "`単一経路関数の移行`_"
 
 msgid ":doc:`pgr_aStar`"
 msgstr ":doc:`pgr_aStar`"
@@ -3957,9 +3954,8 @@ msgstr ":doc:`pgr_bdAstar`"
 msgid ":doc:`pgr_drivingDistance`"
 msgstr ""
 
-#, fuzzy
 msgid "`Migration of spanning tree functions`_"
-msgstr "ダイクストラ関連機能"
+msgstr "`最小全域ツリー関数の移行`_"
 
 #, fuzzy
 msgid ":doc:`pgr_withPointsDD`"
@@ -3971,13 +3967,11 @@ msgstr ":doc:`pgr_bdDijkstra`"
 msgid ":doc:`pgr_binaryBreadthFirstSearch`"
 msgstr ":doc:`pgr_binaryBreadthFirstSearch`。"
 
-#, fuzzy
 msgid ":doc:`pgr_bipartite`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_bipartite`"
 
-#, fuzzy
 msgid "`Migration of output column name change`_"
-msgstr "ダイクストラ関連機能"
+msgstr ""
 
 msgid ":doc:`pgr_breadthFirstSearch`"
 msgstr ":doc:`pgr_breadthFirstSearch`。"
@@ -3988,9 +3982,8 @@ msgstr ":doc:`pgr_depthFirstSearch`。"
 msgid ":doc:`pgr_edgeColoring`"
 msgstr "doc:`pgr_edgeColoring`。"
 
-#, fuzzy
 msgid "`Migration of multiple paths functions`_"
-msgstr "ダイクストラ関連機能"
+msgstr "`複数経路探索関数の移行`_"
 
 msgid ":doc:`pgr_sequentialVertexColoring`"
 msgstr ""
@@ -4001,9 +3994,8 @@ msgstr "doc:`pgr_topologicalSort`。"
 msgid ":doc:`pgr_withPoints`"
 msgstr ""
 
-#, fuzzy
 msgid "`Migration of cost functions`_"
-msgstr "ダイクストラ関連機能"
+msgstr "`コスト関数の移行`_"
 
 msgid "Migration of cost functions"
 msgstr "コスト関数の移行"
@@ -4036,9 +4028,8 @@ msgstr "``pgr_withPointsCostMatrix``"
 msgid "**to** |matrix-result|"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of |matrix-pid|"
-msgstr "ダイクストラ関連機能"
+msgstr "|matrix-pid| の移行"
 
 msgid "Signatures to be migrated:"
 msgstr ""
@@ -4076,9 +4067,8 @@ msgstr "例"
 msgid "Examples for One to One for cost functions"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_withPointsCost``"
-msgstr "ダイクストラ関連機能"
+msgstr "``pgr_withPointsCost`` を使う"
 
 msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#one-to-one>`__ example."
 msgstr ""
@@ -4113,9 +4103,8 @@ msgstr "コスト関数の組み合わせの例"
 msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPointsCost.html#combinations>`__ example."
 msgstr ""
 
-#, fuzzy
 msgid "Migration of multiple paths functions"
-msgstr "ダイクストラ関連機能"
+msgstr "複数経路探索関数の移行"
 
 msgid "The standardized :ref:`pgRouting-concepts:Result columns for single path functions` are |nksp-result|"
 msgstr ""
@@ -4136,11 +4125,10 @@ msgid ":ref:`from_result_disjoint`"
 msgstr ":ref:`from_result_disjoint`"
 
 msgid "Migration of |ksp-result|"
-msgstr "ksp-result|の移行"
+msgstr "|ksp-result|の移行"
 
-#, fuzzy
 msgid "|nksp-result|"
-msgstr "ダイクストラ関連機能"
+msgstr "|nksp-result|"
 
 msgid "Before updating pgRouting, enumerate the |ksp-result|"
 msgstr ""
@@ -4151,9 +4139,8 @@ msgstr ""
 msgid "Using `this <https://docs.pgrouting.org/3.5/en/pgr_KSP.html#signatures>`__ example."
 msgstr ""
 
-#, fuzzy
 msgid "Migration of |result-disjoint|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result-disjoint| の移行"
 
 msgid "Before updating pgRouting, enumerate the |result-disjoint|"
 msgstr ""
@@ -4173,9 +4160,8 @@ msgstr ""
 msgid "Before updating pgRouting enumerate the columns: |ksp-result|"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of single path functions"
-msgstr "ダイクストラ関連機能"
+msgstr "単一経路関数の移行"
 
 msgid "The standardized :ref:`pgRouting-concepts:Result columns for single path functions` are |short-generic-result|"
 msgstr ""
@@ -4201,9 +4187,8 @@ msgstr "``pgr_bellmanFord``"
 msgid "``pgr_dagShortestPath``"
 msgstr "``pgr_dagShortestPath``"
 
-#, fuzzy
 msgid "|result-1-1|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result-1-1|"
 
 msgid "``pgr_edwardMoore``"
 msgstr "``pgr_edwardMoore``"
@@ -4214,9 +4199,8 @@ msgstr "``pgr_withPoints``"
 msgid "|old-pid-result|"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of |old-generic-result|"
-msgstr "ダイクストラ関連機能"
+msgstr "|old-generic-result| の移行"
 
 msgid "Before updating pgRouting, enumerate the corresponding columns of the signature"
 msgstr ""
@@ -4244,9 +4228,8 @@ msgstr ""
 msgid "If using ``pgr_withPoints``: column names must be changed after updating pgRouting"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of |result-1-1|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result-1-1| の移行"
 
 msgid "To get the old version column names:"
 msgstr ""
@@ -4258,9 +4241,8 @@ msgstr "start_vid から end_vid まで行くのにかかるコスト"
 msgid "Examples with One to One with one route result"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_aStar``"
-msgstr "pgr_TSP"
+msgstr "``pgr_aStar`` を使う"
 
 msgid "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_aStar.html#one-to-one>`__ example."
 msgstr ""
@@ -4268,16 +4250,14 @@ msgstr ""
 msgid "Before updating pgRouting enumerate the columns: |result-1-1|"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_bdDijkstra``"
-msgstr "ダイクストラ関連機能"
+msgstr "``pgr_bdDijkstra`` を使う"
 
 msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_bdDijkstra.html#one-to-one>`__ example."
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_DAGshortestPath``"
-msgstr "ダイクストラ関連機能"
+msgstr "``pgr_DAGshortestPath`` を使う"
 
 msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_dagShortestPath.html#one-to-one>`__ example."
 msgstr ""
@@ -4288,9 +4268,8 @@ msgstr ""
 msgid "Examples for One to Many with one route result"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_bdAstar``"
-msgstr "ダイクストラ関連機能"
+msgstr "``pgr_bdAstar`` を使う"
 
 msgid "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_bdAstar.html#one-to-many>`__ example."
 msgstr ""
@@ -4298,9 +4277,8 @@ msgstr ""
 msgid "Before updating pgRouting enumerate the columns: |result-1-m|"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_withPoints``"
-msgstr "pgr_TSP"
+msgstr "``pgr_withPoints`` を使う"
 
 msgid "Migrating `this v3.8 <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#one-to-many>`__ example."
 msgstr ""
@@ -4321,9 +4299,8 @@ msgstr ""
 msgid "Before updating pgRouting enumerate the columns: |result-m-1|"
 msgstr ""
 
-#, fuzzy
 msgid "Using ``pgr_dijkstra``"
-msgstr "ダイクストラ関連機能"
+msgstr "``pgr_dijkstra`` を使う"
 
 msgid "Migrating `this v3.4 <https://docs.pgrouting.org/3.4/en/pgr_dijkstra.html#many-to-one>`__ example."
 msgstr ""
@@ -4343,9 +4320,8 @@ msgstr ""
 msgid "Migrating `this v3.8 `this <https://docs.pgrouting.org/3.8/en/pgr_withPoints.html#combinations>`__ example."
 msgstr ""
 
-#, fuzzy
 msgid "Migration of spanning tree functions"
-msgstr "ダイクストラ関連機能"
+msgstr "全域木関数の移行"
 
 msgid "The standardized :ref:`pgRouting-concepts:Result columns for spanning tree functions` are |result-spantree|"
 msgstr ""
@@ -4398,9 +4374,8 @@ msgstr "``pgr_depthFisrtSearch``"
 msgid "to |result-spantree|"
 msgstr ""
 
-#, fuzzy
 msgid "Migration from |result-bfs|."
-msgstr "ダイクストラ関連機能"
+msgstr "|result-bfs| からの移行。"
 
 msgid "Single vertex"
 msgstr ""
@@ -4428,9 +4403,8 @@ msgstr ":doc:`pgr_kruskalBFS`"
 msgid "Migrating `this v3.6 <https://docs.pgrouting.org/3.6/en/pgr_kruskalDFS.html#multiple-vertices>`__ example."
 msgstr ""
 
-#, fuzzy
 msgid "Migration from |result-dij-dd|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result-dij-dd| からの移行"
 
 msgid "Migration depends on the signature."
 msgstr ""
@@ -4475,9 +4449,8 @@ msgstr ""
 msgid "To get the old version column names |result-dij-dd-m|: filter out the column ``pred`` and ``depth`` and rename ``start_vid`` to ``from_v``."
 msgstr ""
 
-#, fuzzy
 msgid "Migration of |result-generic-no-seq|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result-generic-no-seq| の移行"
 
 msgid "After updating pgRouting:"
 msgstr ""
@@ -4523,9 +4496,8 @@ msgstr "pgr_TSP"
 msgid "Migrating `this v3.5 <https://docs.pgrouting.org/3.5/en/pgr_withPointsDD.html#multiple-vertex>`__ example."
 msgstr ""
 
-#, fuzzy
 msgid "Migration of output column name change"
-msgstr "ダイクストラ関連機能"
+msgstr ""
 
 #, fuzzy
 msgid "The standardized result columns:"
@@ -4537,9 +4509,8 @@ msgstr ""
 msgid "|result_node_color|"
 msgstr ""
 
-#, fuzzy
 msgid "|result_node_order|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result_node_order|"
 
 msgid "Changes on column names must be done after updating pgRouting."
 msgstr ""
@@ -4571,13 +4542,11 @@ msgstr "``pgr_transitiveClosure``"
 msgid ":ref:`from_old_closure`"
 msgstr ":ref:`from_old_closure`"
 
-#, fuzzy
 msgid "Migration from |result-old-closure|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result-old-closure| からの移行"
 
-#, fuzzy
 msgid "Migration to: |result-old-closure|"
-msgstr "ダイクストラ関連機能"
+msgstr ""
 
 msgid "After update:"
 msgstr ""
@@ -4589,49 +4558,41 @@ msgstr "結果として返却されるカラム"
 msgid "Rename ``vid`` to ``node`` and ``target_array`` to ``targets``"
 msgstr ""
 
-#, fuzzy
 msgid "Migration from |result-toposort|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result-toposort| からの移行"
 
-#, fuzzy
 msgid "Migration to: |result_node_order|"
-msgstr "ダイクストラ関連機能"
+msgstr ""
 
 msgid "Rename ``sorted_v`` to ``node``"
 msgstr ""
 
-#, fuzzy
 msgid "Migration from |old-edge-color|"
-msgstr "ダイクストラ関連機能"
+msgstr "|old-edge-color| からの移行"
 
-#, fuzzy
 msgid "Migration to: |result_edge_color|"
-msgstr "ダイクストラ関連機能"
+msgstr ""
 
 msgid "Rename ``edge_id`` to ``edge`` and ``color_id`` to ``color``."
 msgstr ""
 
-#, fuzzy
 msgid "Migration from |old-node-color|"
-msgstr "ダイクストラ関連機能"
+msgstr "|old-node-color| からの移行"
 
-#, fuzzy
 msgid "Migration to: |result_node_color|"
-msgstr "ダイクストラ関連機能"
+msgstr ""
 
 msgid "Rename ``vertex_id`` to ``node`` and ``color_id`` to ``color``."
 msgstr ""
 
-#, fuzzy
 msgid "Migration of deleted functions"
-msgstr "ダイクストラ関連機能"
+msgstr "削除された関数の移行"
 
 msgid "Functions no longer on pgRouting"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of ``pgr_alphaShape``"
-msgstr "ダイクストラ関連機能"
+msgstr "``pgr_alphaShape`` の移行"
 
 msgid "Deprecated"
 msgstr ""
@@ -4676,9 +4637,8 @@ msgstr ""
 msgid "`ST_ConcaveHull <https://postgis.net/docs/ST_ConcaveHull.html>`__"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of ``pgr_nodeNetwork``"
-msgstr "ダイクストラ関連機能"
+msgstr "``pgr_nodeNetwork`` の移行"
 
 msgid "**Before Deprecation:** A table with `<edges>_nodded` was created. with split edges."
 msgstr ""
@@ -4690,9 +4650,8 @@ msgstr "もっと詳しく知る"
 msgid "Use :doc:`pgr_separateTouching` and/or use :doc:`pgr_separateCrossing`"
 msgstr ""
 
-#, fuzzy
 msgid "Migration of ``pgr_createTopology``"
-msgstr "ダイクストラ関連機能"
+msgstr "``pgr_createTopology`` の移行"
 
 msgid "A table with `<edges>_vertices_pgr` was created."
 msgstr ""
@@ -4724,9 +4683,8 @@ msgstr ""
 msgid "Finally using the data stored on the vertices tables the ``source`` and ``target`` are filled up."
 msgstr ""
 
-#, fuzzy
 msgid "Migration of ``pgr_createVerticesTable``"
-msgstr "ダイクストラ関連機能"
+msgstr "``pgr_createVerticesTable`` の移行"
 
 msgid "**After Deprecation:** The user is responsible to create the vertices table, indexes, etc. They may use :doc:`pgr_extractVertices` for that purpose."
 msgstr ""
@@ -4827,9 +4785,8 @@ msgstr ""
 msgid ":doc:`pgr_connectedComponents`"
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`pgr_strongComponents`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_strongComponents`"
 
 msgid ":doc:`pgr_biconnectedComponents`"
 msgstr ""
@@ -4869,9 +4826,8 @@ msgstr ""
 msgid ":doc:`pgr_trsp`"
 msgstr ""
 
-#, fuzzy
 msgid "`Migration of restrictions`_"
-msgstr "ダイクストラ関連機能"
+msgstr "`制限の移行`_"
 
 msgid "Use ``pgr_dijkstra`` when there are no restrictions."
 msgstr ""
@@ -5211,13 +5167,11 @@ msgstr ""
 msgid "The migrated table contents:"
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`pgRouting-concepts`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgRouting-concepts`"
 
-#, fuzzy
 msgid "Ordering - Family of functions"
-msgstr "ダイクストラ関連機能"
+msgstr "順序付け - 関数群"
 
 msgid "pgRouting Concepts"
 msgstr ""
@@ -11990,9 +11944,8 @@ msgstr ""
 msgid "Adding the edges to the graph"
 msgstr ""
 
-#, fuzzy
 msgid ":bgl:`Boost: make_biconnected_planar <algorithms/planar/make_biconnected_planar.html>`"
-msgstr ":bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`"
+msgstr ":bgl:`Boost: make_biconnected_planar <algorithms/planar/make_biconnected_planar.html>`"
 
 msgid "``pgr_makeConnected`` - Experimental"
 msgstr ""
@@ -12597,13 +12550,11 @@ msgstr ""
 msgid ":doc:`pgr_isPlanar`"
 msgstr ""
 
-#, fuzzy
 msgid "Boost Graph Library: :bgl:`Planar Face Traversal <algorithms/planar/planar_face_traversal.html>`"
-msgstr "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgstr ""
 
-#, fuzzy
 msgid "Boost Graph Library: :bgl:`Boost: Boyer Myrvold planarity <algorithms/planar/boyer_myrvold.html>`"
-msgstr "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgstr ""
 
 #, fuzzy
 msgid "Wikipedia: `Planar graph <https://en.wikipedia.org/wiki/Planar_graph>`__"
@@ -12939,9 +12890,8 @@ msgstr ""
 msgid "``pgr_topologicalSort`` — Linear ordering of the vertices for directed acyclic graphs (DAG)."
 msgstr ""
 
-#, fuzzy
 msgid "Standardize output to |result_node_order|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result_node_order| に標準化された出力"
 
 msgid "The topological sort algorithm creates a linear ordering of the vertices such that if edge :math:`(u,v)` appears in the graph, then :math:`v` comes before :math:`u` in the ordering."
 msgstr ""
@@ -12988,9 +12938,8 @@ msgstr ""
 msgid "``pgr_transitiveClosure`` — Transitive closure graph of a directed graph."
 msgstr ""
 
-#, fuzzy
 msgid "Standardized output to |result-closure|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result-closure| に標準化された出力"
 
 msgid "Transforms the input directed graph into the transitive closure of the graph."
 msgstr ""
@@ -13946,12 +13895,11 @@ msgstr ""
 msgid "All this examples are about the route that visits the vertices :math:`\\{-1, 7, -3, 16, 15\\}` in that order on a **directed** graph."
 msgstr ""
 
-#, fuzzy
 msgid "Planar - Family of functions"
-msgstr "TRSP - 関数ファミリー"
+msgstr "平面的 - 関数群"
 
 msgid "Prim - Family of functions"
-msgstr ""
+msgstr "プリム法 - 関数群"
 
 msgid "The prim algorithm was developed in 1930 by Czech mathematician Vojtěch Jarník. It is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph. This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized. The algorithm operates by building this tree one vertex at a time, from an arbitrary starting vertex, at each step adding the cheapest possible connection from the tree to another vertex."
 msgstr ""
@@ -14422,9 +14370,8 @@ msgstr ""
 msgid "columns within overloads"
 msgstr ""
 
-#, fuzzy
 msgid "Standardized to |short-generic-result|"
-msgstr "ダイクストラ関連機能"
+msgstr "|short-generic-result| への標準化"
 
 #, fuzzy
 msgid ":issue:`2905`: pgr_withPoints"
@@ -14460,9 +14407,8 @@ msgstr "``pgr_withPointsCost``"
 msgid ":issue:`2905`: pgr_withPointsCostMatrix"
 msgstr "``pgr_withPointsCostMatrix``"
 
-#, fuzzy
 msgid "Standardized to |generic-result|"
-msgstr "ダイクストラ関連機能"
+msgstr "|generic-result| への標準化"
 
 #, fuzzy
 msgid ":issue:`2909`: pgr_edgeDisjointPaths"
@@ -14498,17 +14444,15 @@ msgstr ":issue:`2931`: pgr_breadthFirstSearch"
 msgid ":issue:`2931`: pgr_depthFirstSearch"
 msgstr ":issue:`2931`: pgr_depthFirstSearch"
 
-#, fuzzy
 msgid "Standardized to |result_node_order|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result_node_order| への標準化"
 
 #, fuzzy
 msgid ":issue:`2934`: pgr_topologicalSort"
 msgstr "``pgr_topologicalSort``"
 
-#, fuzzy
 msgid "Standardized to |result-closure|"
-msgstr "ダイクストラ関連機能"
+msgstr "|result-closure| への標準化"
 
 #, fuzzy
 msgid ":issue:`2934`: pgr_transitiveClosure"
@@ -15575,9 +15519,8 @@ msgstr ""
 msgid ":issue:`2087`: pgr_extractVertices to proposed"
 msgstr "``pgr_extractVertices``"
 
-#, fuzzy
 msgid ":issue:`2201`: pgr_depthFirstSearch to proposed"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":issue:`2201`: pgr_depthFirstSearch to proposed"
 
 #, fuzzy
 msgid ":issue:`2202`: pgr_sequentialVertexColoring to proposed"
@@ -17266,19 +17209,17 @@ msgstr ""
 msgid "https://www.osgeo.org/service-providers/netlab/"
 msgstr ""
 
-#, fuzzy
 msgid "Transformation - Family of functions"
-msgstr "ダイクストラ関連機能"
+msgstr "変換 - 関数群"
 
 msgid "This family of functions is used for transforming a given input graph :math:`G(V,E)` into a new graph :math:`G'(V',E')`."
 msgstr ""
 
 msgid "Traversal - Family of functions"
-msgstr ""
+msgstr "走査 - 関数群"
 
-#, fuzzy
 msgid "Utility functions"
-msgstr "ダイクストラ関連機能"
+msgstr "ユーティリティ関数"
 
 msgid "Via - Category"
 msgstr ""
@@ -17312,7 +17253,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Used in all Via functions"
-msgstr "ダイクストラ関連機能"
+msgstr "全ての Via 関数での利用"
 
 msgid "Depending on the function one or more inner queries are needed."
 msgstr ""
@@ -17588,8 +17529,9 @@ msgstr ""
 msgid "Edge ``(-2, 17)`` becomes ``(17, -2)`` with cost ``0.6`` and is added to the graph."
 msgstr ""
 
+#, fuzzy
 msgid "withPoints - Family of functions"
-msgstr ""
+msgstr "withPoints - 関数群"
 
 msgid "This family of functions belongs to the :doc:`withPoints-category` and the functions that compose them are based one way or another on dijkstra algorithm."
 msgstr ""
