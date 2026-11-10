@@ -2427,7 +2427,7 @@ msgid "Based on A* algorithm, the bidirectional search finds a shortest path fro
 msgstr ""
 
 msgid "For large graphs where there is a path between the starting vertex and ending vertex:"
-msgstr ""
+msgstr "始点と終点の間にパスがある大きなグラフの場合："
 
 msgid "It is expected to terminate faster than :doc:`pgr_aStar`"
 msgstr ""
@@ -3724,9 +3724,8 @@ msgstr ""
 msgid "4.1.0 Build"
 msgstr ""
 
-#, fuzzy
 msgid "PostgreSQL:"
-msgstr "``postgreSQL``"
+msgstr "PostgreSQL："
 
 msgid "Minimum requirement: 14"
 msgstr ""
@@ -3949,13 +3948,11 @@ msgstr ":doc:`pgr_kruskalBFS`"
 msgid "`Migration of single path functions`_"
 msgstr "ダイクストラ関連機能"
 
-#, fuzzy
 msgid ":doc:`pgr_aStar`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_aStar`"
 
-#, fuzzy
 msgid ":doc:`pgr_bdAstar`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_bdAstar`"
 
 msgid ":doc:`pgr_drivingDistance`"
 msgstr ""
@@ -3968,13 +3965,11 @@ msgstr "ダイクストラ関連機能"
 msgid ":doc:`pgr_withPointsDD`"
 msgstr "pgr_TSP"
 
-#, fuzzy
 msgid ":doc:`pgr_bdDijkstra`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_bdDijkstra`"
 
-#, fuzzy
 msgid ":doc:`pgr_binaryBreadthFirstSearch`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_binaryBreadthFirstSearch`。"
 
 #, fuzzy
 msgid ":doc:`pgr_bipartite`"
@@ -3984,17 +3979,14 @@ msgstr ":doc:`pgr_kruskalBFS`"
 msgid "`Migration of output column name change`_"
 msgstr "ダイクストラ関連機能"
 
-#, fuzzy
 msgid ":doc:`pgr_breadthFirstSearch`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_breadthFirstSearch`。"
 
-#, fuzzy
 msgid ":doc:`pgr_depthFirstSearch`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":doc:`pgr_depthFirstSearch`。"
 
-#, fuzzy
 msgid ":doc:`pgr_edgeColoring`"
-msgstr "pgr_TSP"
+msgstr "doc:`pgr_edgeColoring`。"
 
 #, fuzzy
 msgid "`Migration of multiple paths functions`_"
@@ -4003,9 +3995,8 @@ msgstr "ダイクストラ関連機能"
 msgid ":doc:`pgr_sequentialVertexColoring`"
 msgstr ""
 
-#, fuzzy
 msgid ":doc:`pgr_topologicalSort`"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr "doc:`pgr_topologicalSort`。"
 
 msgid ":doc:`pgr_withPoints`"
 msgstr ""
@@ -11947,9 +11938,8 @@ msgstr ""
 msgid "When the graph is not planar it will emit an ``ERROR``"
 msgstr ""
 
-#, fuzzy
 msgid "Run :doc:`pgr_isPlanar` first."
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr "まず :doc:`pgr_isPlanar` を実行してください。"
 
 msgid "All vertices are kept."
 msgstr ""
@@ -12499,9 +12489,8 @@ msgstr ""
 msgid "They are used to determine the existence of an edge"
 msgstr ""
 
-#, fuzzy
 msgid "Run :doc:`pgr_isPlanar` first"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr "まず :doc:`pgr_isPlanar` を実行してください"
 
 msgid "The result has one row per edge-side pair"
 msgstr ""
@@ -14449,9 +14438,8 @@ msgstr "``pgr_bdDijkstra``"
 msgid ":issue:`2907`: pgr_bellmanFord"
 msgstr "``pgr_bellmanFord``"
 
-#, fuzzy
 msgid ":issue:`2908`: pgr_binaryBreadthFirstSearch"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":issue:`2908`: pgr_binaryBreadthFirstSearch"
 
 #, fuzzy
 msgid ":issue:`2910`: pgr_edwardMoore"
@@ -14494,9 +14482,8 @@ msgstr "``pgr_edgeColoring``"
 msgid "Standardized to |result_node_color|"
 msgstr ""
 
-#, fuzzy
 msgid ":issue:`2924`: pgr_bipartite"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":issue:`2924`: pgr_bipartite"
 
 #, fuzzy
 msgid ":issue:`2927`: pgr_sequentialVertexColoring"
@@ -14505,13 +14492,11 @@ msgstr "``pgr_sequentialVertexColoring``"
 msgid "Standardized to |result-spantree|"
 msgstr ""
 
-#, fuzzy
 msgid ":issue:`2931`: pgr_breadthFirstSearch"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":issue:`2931`: pgr_breadthFirstSearch"
 
-#, fuzzy
 msgid ":issue:`2931`: pgr_depthFirstSearch"
-msgstr ":doc:`pgr_kruskalBFS`"
+msgstr ":issue:`2931`: pgr_depthFirstSearch"
 
 #, fuzzy
 msgid "Standardized to |result_node_order|"
