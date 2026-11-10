@@ -2430,7 +2430,7 @@ msgid "For large graphs where there is a path between the starting vertex and en
 msgstr "始点と終点の間にパスがある大きなグラフの場合："
 
 msgid "It is expected to terminate faster than :doc:`pgr_aStar`"
-msgstr ""
+msgstr "doc:`pgr_aStar`よりも早く終了することが期待される。"
 
 msgid ":doc:`aStar-family`"
 msgstr ""
