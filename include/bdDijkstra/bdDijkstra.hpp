@@ -58,6 +58,8 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
     using Pgr_bidirectional<G>::m_log;
     using Pgr_bidirectional<G>::v_source;
     using Pgr_bidirectional<G>::v_target;
+    using Pgr_bidirectional<G>::best_cost;
+    using Pgr_bidirectional<G>::INF;
 
     using Pgr_bidirectional<G>::backward_predecessor;
     using Pgr_bidirectional<G>::backward_queue;
@@ -73,6 +75,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
 
 
     using Pgr_bidirectional<G>::bidirectional;
+    using Pgr_bidirectional<G>::record_meeting;
 
  public:
      explicit Pgr_bdDijkstra(G &pgraph):
@@ -96,6 +99,30 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
 
 
  private:
+     /*
+      * Decides only when to stop. best_cost and v_min_node are kept up to
+      * date by record_meeting as the costs are written, so there is
+      * nothing to record here.
+      *
+      * A cheaper route than the one already recorded would have to leave
+      * the forward side through a node still waiting in the forward queue
+      * and reach the backward side through a node still waiting in the
+      * backward queue. Such a route costs at least the cheapest cost
+      * waiting on each side added together. Once that sum reaches
+      * best_cost, nothing cheaper is left to find.
+      */
+     bool found(const V &) override {
+         if (forward_queue.empty() || backward_queue.empty()) return false;
+         if (best_cost >= INF) return false;
+
+         auto forward_top = forward_queue.top().first;
+         auto backward_top = backward_queue.top().first;
+
+         if (forward_top >= INF || backward_top >= INF) return false;
+
+         return forward_top + backward_top >= best_cost;
+     }
+
      void explore_forward(const Cost_Vertex_pair &node) override {
          typename G::EO_i out, out_end;
 
@@ -114,6 +141,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
                  forward_predecessor[next_node] = current_node;
                  forward_edge[next_node] = graph[*out].id;
                  forward_queue.push({forward_cost[next_node], next_node});
+                 record_meeting(next_node);
              }
          }
          forward_finished[current_node] = true;
@@ -137,6 +165,7 @@ class Pgr_bdDijkstra : public Pgr_bidirectional<G> {
                  backward_predecessor[next_node] = current_node;
                  backward_edge[next_node] = graph[*in].id;
                  backward_queue.push({backward_cost[next_node], next_node});
+                 record_meeting(next_node);
              }
          }
          backward_finished[current_node] = true;
