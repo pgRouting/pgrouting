@@ -173,9 +173,7 @@ Functions by categories
     contraction-family
     dijkstra-family
     flow-family
-    kruskal-family
     metrics-family
-    prim-family
     reference
     TRSP-family
     TSP-family

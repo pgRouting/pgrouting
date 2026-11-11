@@ -93,8 +93,7 @@ See Also
 
 * :doc:`pgr_floydWarshall`
 * :doc:`sampledata`
-* Boost `Johnson
-  <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_
+* :bgl:`Boost: Johnson <algorithms/shortest_paths/johnson_all_pairs_shortest.html>`
 
 .. rubric:: Indices and tables
 

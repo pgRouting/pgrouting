@@ -6,17 +6,10 @@
 BEGIN;
 
 UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
-SELECT CASE WHEN NOT min_version('3.4.0') THEN plan(1) ELSE plan(7) END;
+SELECT CASE WHEN min_version('4.1.0') THEN plan(32) ELSE plan(1) END;
 
 PREPARE edges_q AS
-SELECT id, source, target, cost, reverse_cost  FROM edges;
-
-PREPARE null_ret AS
-SELECT id FROM vertices WHERE id IN (-1);
-
-PREPARE null_ret_arr AS
-SELECT array_agg(id) FROM vertices WHERE id IN (-1);
-
+SELECT id, source, target, cost, reverse_cost FROM edges;
 
 CREATE OR REPLACE FUNCTION no_crash()
 RETURNS SETOF TEXT AS
@@ -25,27 +18,44 @@ DECLARE
 params TEXT[];
 subs TEXT[];
 BEGIN
-  IF NOT min_version('3.4.0') THEN
+
+  IF NOT min_version('4.1.0') THEN
     RETURN QUERY
-    SELECT skip(1, 'Function is new on 3.4.0');
+    SELECT skip(1, 'pgr_hawickcircuits was rewritten on 4.1.0');
     RETURN;
   END IF;
 
-  RETURN QUERY
-  SELECT isnt_empty('edges_q', 'Should be not empty to tests be meaningful');
-  RETURN QUERY
-  SELECT is_empty('null_ret', 'Should be empty to tests be meaningful');
-  RETURN QUERY
-  SELECT set_eq('null_ret_arr', 'SELECT NULL::BIGINT[]', 'Should be empty to tests be meaningful');
+  params = ARRAY[
+  '$$SELECT id, source, target, cost, reverse_cost FROM edges$$'
+  ]::TEXT[];
 
-    params = ARRAY[
-    '$$SELECT id, source, target, cost, reverse_cost  FROM edges$$'
-    ]::TEXT[];
-    subs = ARRAY[
-    'NULL'
-    ]::TEXT[];
+  subs = ARRAY[ 'NULL' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
 
-    RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+  params = ARRAY[ '$$edges_q$$' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+  params = ARRAY[
+  '$$SELECT id, source, target, cost, reverse_cost FROM edges$$',
+  '1'
+  ]::TEXT[];
+
+  subs = ARRAY[ 'NULL::TEXT', 'NULL::INTEGER' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+  params = ARRAY[ '$$edges_q$$', '1' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+  params = ARRAY[
+  '$$SELECT id, source, target, cost, reverse_cost FROM edges$$',
+  'ARRAY[1,2]::INTEGER[]'
+  ]::TEXT[];
+
+  subs = ARRAY[ 'NULL::TEXT', 'NULL::INTEGER[]' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
+
+  params = ARRAY[ '$$edges_q$$', 'ARRAY[1,2]::INTEGER[]' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickcircuits', params, subs);
 
 END
 $BODY$

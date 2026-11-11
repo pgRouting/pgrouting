@@ -1,0 +1,46 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('4.1.0') THEN plan(8) ELSE plan(1) END;
+
+PREPARE edges_q AS
+SELECT id, source, target, cost, reverse_cost FROM edges;
+
+CREATE OR REPLACE FUNCTION no_crash()
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+params TEXT[];
+subs TEXT[];
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_hawickUniquecircuits is new on 4.1.0');
+    RETURN;
+  END IF;
+
+  params = ARRAY[
+  '$$SELECT id, source, target, cost, reverse_cost FROM edges$$'
+  ]::TEXT[];
+
+  subs = ARRAY[ 'NULL' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickUniquecircuits', params, subs);
+
+  params = ARRAY[ '$$edges_q$$' ]::TEXT[];
+  RETURN query SELECT * FROM no_crash_test('pgr_hawickUniquecircuits', params, subs);
+
+END
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+
+SELECT * FROM no_crash();
+
+SELECT finish();
+ROLLBACK;

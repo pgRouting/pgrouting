@@ -1,0 +1,261 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+UPDATE edges SET cost = sign(cost), reverse_cost = sign(reverse_cost);
+SELECT CASE WHEN min_version('4.1.0') THEN plan(14) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION edge_cases()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_hawickcircuits was rewritten on 4.1.0');
+    RETURN;
+  END IF;
+
+  -- 0 edge, 0 vertex test
+
+  PREPARE q1 AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id > 18;
+
+  PREPARE hawickCircuits1 AS
+  SELECT * FROM pgr_hawickcircuits('q1');
+
+  RETURN QUERY
+  SELECT is_empty('hawickCircuits1', 'Graph with 0 edge and 0 vertex -> Empty row is returned');
+
+
+  -- 1 edge test
+
+  PREPARE q2 AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id = 2;
+
+  PREPARE hawickCircuits2 AS
+  SELECT * FROM pgr_hawickcircuits('q2');
+
+  RETURN QUERY
+  SELECT is_empty('hawickCircuits2', 'One edge graph can not have circuits -> Empty row is returned');
+
+  -- 2 vertices test (connected)
+
+  PREPARE q3 AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id = 7;
+
+  PREPARE hawickCircuits3 AS
+  SELECT seq, path_id, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickcircuits('q3');
+
+  RETURN QUERY
+  SELECT set_eq('hawickCircuits3',
+      $$VALUES
+          (1, 1, 3, 3, 3, 3, -1, 0, 0),
+          (2, 1, 3, 3, 3, 7, 7, 1, 1),
+          (3, 1, 3, 3, 7, 3, 7, 1, 2)
+      $$,
+      'Circuit between the vertex 3 and 7');
+
+  -- depth numbering test
+
+  PREPARE hawickCircuitsSeq AS
+  SELECT depth FROM pgr_hawickcircuits('q3');
+
+  RETURN QUERY
+  SELECT collect_tap(set_eq('hawickCircuitsSeq', $$VALUES (0), (1), (2)$$,
+      'depth starts at 0 on 4.1.0'));
+
+  -- 3 vertices test
+
+  PREPARE q4 AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id <= 2;
+
+  PREPARE hawickCircuits4 AS
+  SELECT seq, path_id, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickcircuits('q4');
+
+  RETURN QUERY
+  SELECT set_eq('hawickCircuits4',
+      $$VALUES
+          (1, 1, 5, 5, 5, 5, -1, 0, 0),
+          (2, 1, 5, 5, 5, 6, 1, 1, 1),
+          (3, 1, 5, 5, 6, 5, 1, 1, 2)
+      $$,
+      'Circuit between the vertex 5 and 6');
+
+  -- 4 vertices test
+
+  PREPARE q5 AS
+  SELECT id, source, target, cost, reverse_cost
+  FROM edges
+  WHERE id IN (3, 5, 9, 16);
+
+  PREPARE hawickCircuits5 AS
+  SELECT start_vid, end_vid, pred, node, edge, cost, agg_cost FROM pgr_hawickCircuits('q5');
+
+  RETURN QUERY
+  SELECT set_eq('hawickCircuits5',
+      $$VALUES
+      (10, 10, 10, 10, -1, 0, 0),
+      (10, 10, 10, 11, 5, 1, 1),
+      (10, 10, 11, 16, 9, 1, 2),
+      (10, 10, 16, 15, 16, 1, 3),
+      (10, 10, 15, 10, 3, 1, 4),
+      (15, 15, 15, 15, -1, 0, 0),
+      (15, 15, 15, 16, 16, 1, 1),
+      (15, 15, 16, 15, 16, 1, 2),
+      (11, 11, 11, 11, -1, 0, 0),
+      (11, 11, 11, 16, 9, 1, 1),
+      (11, 11, 16, 11, 9, 1, 2)
+      $$,
+      'Circuits 10->11->16->15->10, 15->16->15 & 11>16>11 expected');
+
+  -- parallel edges test (different costs, min cost edge is not the first id)
+
+  PREPARE q6 AS
+  SELECT depth, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickcircuits($$
+      SELECT id, source, target, cost, reverse_cost
+      FROM (VALUES
+          (1, 1, 2, 5, -1),
+          (2, 1, 2, 1, -1),
+          (3, 2, 1, 4, -1)
+      ) AS t(id, source, target, cost, reverse_cost)
+  $$);
+
+  RETURN QUERY
+  SELECT collect_tap(set_eq('q6',
+        $$VALUES
+            (0, 1, 1, 1, 1, -1, 0, 0),
+            (1, 1, 1, 1, 2, 1, 5, 5),
+            (2, 1, 1, 2, 1, 3, 4, 9),
+            (0, 1, 1, 1, 1, -1, 0, 0),
+            (1, 1, 1, 1, 2, 2, 1, 1),
+            (2, 1, 1, 2, 1, 3, 4, 5)
+        $$,
+        'Parallel edges 1->2 give one circuit per arc (edge 1 and edge 2)'));
+
+  -- self loop test
+
+  PREPARE q7 AS
+  SELECT start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickcircuits($$
+      SELECT id, source, target, cost, reverse_cost
+      FROM (VALUES (1, 1, 1, 1, -1)) AS t(id, source, target, cost, reverse_cost)
+  $$);
+
+  RETURN QUERY
+  SELECT set_eq('q7',
+      $$VALUES
+          (1, 1, 1, 1, -1, 0, 0),
+          (1, 1, 1, 1, 1, 1, 1)
+      $$,
+      'A self loop is a one-vertex circuit');
+
+  -- non-unit cost test
+
+  PREPARE q8 AS
+  SELECT start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickcircuits($$
+      SELECT id, source, target, cost, reverse_cost
+      FROM (VALUES (1, 1, 2, 2, -1), (2, 2, 1, 3, -1))
+      AS t(id, source, target, cost, reverse_cost)
+  $$);
+
+  RETURN QUERY
+  SELECT set_eq('q8',
+      $$VALUES
+          (1, 1, 1, 1, -1, 0, 0),
+          (1, 1, 1, 2, 1, 2, 2),
+          (1, 1, 2, 1, 2, 3, 5)
+      $$,
+      'agg_cost accumulates real edge costs');
+
+  -- multiple parallel arcs test
+
+  PREPARE q9 AS
+  SELECT id, source, target, cost, reverse_cost FROM (VALUES
+      ( 1, 0, 1, 1, -1),
+      ( 2, 0, 1, 1, -1),
+      ( 3, 0, 1, 1, -1),
+      ( 4, 0, 1, 1, -1),
+      ( 5, 1, 2, 1, -1),
+      ( 6, 1, 2, 1, -1),
+      ( 7, 1, 2, 1, -1),
+      ( 8, 1, 2, 1, -1),
+      ( 9, 2, 0, 1, -1),
+      (10, 2, 3, 1, -1),
+      (11, 3, 0, 1, -1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT ok((
+      SELECT count(*) FILTER (WHERE md = 3) = 16
+         AND count(*) FILTER (WHERE md = 4) = 16
+      FROM (
+          SELECT path_id, max(depth) AS md
+          FROM pgr_hawickcircuits('q9')
+          GROUP BY path_id) s),
+      '4 arcs on 0->1 and 4 arcs on 1->2: 16 three-circuits plus 16 four-circuits');
+
+  -- 1-arg overload on parallel arcs:
+  -- must emit the duplicated node sequences (one circuit per parallel arc),
+
+  PREPARE q10 AS
+  SELECT id, source, target, cost, reverse_cost FROM (VALUES
+      (1, 1, 2, 5, -1),
+      (2, 1, 2, 1, -1),
+      (3, 2, 1, 4, -1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  PREPARE hawickCircuits10 AS
+  SELECT depth, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickCircuits('q10');
+
+  PREPARE hawickCircuits10New AS
+  SELECT depth, start_vid, end_vid, pred, node, edge, cost, agg_cost
+  FROM pgr_hawickCircuits('q10', ARRAY[]::BIGINT[], 0, 9223372036854775807, true, true);
+
+  RETURN QUERY
+  SELECT collect_tap(
+      is((
+          SELECT count(DISTINCT path_id)::INTEGER
+          FROM pgr_hawickCircuits('q10')),
+          2,
+          '1-arg wrapper emits one circuit per parallel arc'),
+
+      is((
+          SELECT array_agg(node ORDER BY seq)
+          FROM pgr_hawickCircuits('q10')),
+          ARRAY[1, 2, 1, 1, 2, 1]::BIGINT[],
+          '1-arg wrapper repeats the node sequence 1, 2, 1'),
+
+      is((
+          SELECT array_agg(edge ORDER BY seq)
+          FROM pgr_hawickCircuits('q10')),
+          ARRAY[-1, 1, 3, -1, 2, 3]::BIGINT[],
+          '1-arg overload uses each parallel arc'),
+
+      set_eq('hawickCircuits10', 'hawickCircuits10New',
+          '1-arg overload is the new signature on all vertices'));
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT edge_cases();
+
+SELECT * FROM finish();
+ROLLBACK;

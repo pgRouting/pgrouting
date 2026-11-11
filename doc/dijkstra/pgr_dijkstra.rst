@@ -593,8 +593,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Dijkstra shortest paths
-  <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__
+* :bgl:`Boost: Dijkstra shortest paths <algorithms/shortest_paths/dijkstra_shortest_paths.html>`
 * https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 
 .. rubric:: Indices and tables

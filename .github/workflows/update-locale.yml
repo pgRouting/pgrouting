@@ -13,6 +13,7 @@ on:
   push:
     paths:
       - '.github/workflows/update-locale.yml'
+      - '.github/scripts/update_locale.sh'
       - 'doc/**'
 
     branches-ignore:
@@ -52,27 +53,20 @@ jobs:
       - name: Add PostgreSQL APT repository
         run: |
           sudo apt-get install curl ca-certificates gnupg
-          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
           sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
             $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-
-      - name: Install python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.x'
 
       - name: Install dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
             libboost-graph-dev \
-            python3-sphinx \
-            python3-sphinx-bootstrap-theme \
-            sphinx-intl \
             gettext \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
-            graphviz
+            graphviz $(apt-cache pkgnames libgvplugin-neato-layout | grep -v -- -dev)
+          python3 -m pip install --break-system-packages sphinx sphinx-bootstrap-theme
 
       - name: Initialize mandatory git config
         run: |

@@ -72,7 +72,6 @@ See Also
 -------------------------------------------------------------------------------
 
 * https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf
-* https://ae.iti.kit.edu/download/diploma_thesis_geisberger.pdf
 * https://jlazarsfeld.github.io/ch.150.project/contents/
 
 .. rubric:: Indices and tables

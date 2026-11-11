@@ -202,6 +202,10 @@ sub get_substitutions {
         $skipping = 0;
         next if $line =~ /$mstart/;
         last if $line =~ /$mend/;
+        # Only text substitutions (... replace:: ...) are inlined into NEWS.
+        # Image substitutions such as |Boost| must not be applied to prose.
+        next unless $line =~ /^\.\.\s*\|/;
+        next unless $line =~ /replace::/;
         my ($key) = substr($line, 4, index(substr($line, 4), "|"));
         my ($value) = substr($line, index($line,"`"));
         $value =~ s/\R//g;

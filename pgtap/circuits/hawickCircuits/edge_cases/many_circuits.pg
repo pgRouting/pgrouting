@@ -1,0 +1,95 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+BEGIN;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(6) ELSE plan(1) END;
+
+CREATE OR REPLACE FUNCTION many_circuits()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY
+    SELECT skip(1, 'pgr_hawickcircuits was rewritten on 4.1.0');
+    RETURN;
+  END IF;
+
+  -- complete digraph K4: 6 bidirected edges -> 12 arcs
+  -- elementary circuits: C(4,2)*1! + C(4,3)*2! + C(4,4)*3! = 6 + 8 + 6 = 20
+
+  PREPARE q1 AS
+  SELECT id, source, target, cost, reverse_cost FROM (VALUES
+      (1, 1, 2, 1, 1),
+      (2, 1, 3, 1, 1),
+      (3, 1, 4, 1, 1),
+      (4, 2, 3, 1, 1),
+      (5, 2, 4, 1, 1),
+      (6, 3, 4, 1, 1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER FROM pgr_hawickcircuits('q1') WHERE edge = -1), 20,
+      'K4: 20 elementary circuits are expected');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER FROM pgr_hawickcircuits('q1')), 80,
+      'K4: 80 output rows (sum of circuit lengths + terminators)');
+
+  RETURN QUERY
+  SELECT ok((
+      SELECT bool_and(valid) FROM (
+          SELECT
+              count(*) FILTER (WHERE edge = -1) = 1
+              AND count(DISTINCT node) FILTER (WHERE edge <> -1)
+                  = count(*) FILTER (WHERE edge <> -1)
+              AND bool_and(node = start_vid) FILTER (WHERE edge = -1)
+              AND sum(cost) = max(agg_cost) AS valid
+          FROM pgr_hawickcircuits('q1')
+          GROUP BY path_id
+      ) s), 'K4: every circuit is elementary, closed and agg_cost is consistent');
+
+  RETURN QUERY
+  SELECT ok((
+      SELECT bool_and(pred_ok) FROM (
+          SELECT pred = COALESCE(lag(node) OVER (PARTITION BY path_id ORDER BY seq), start_vid)
+              AS pred_ok
+          FROM pgr_hawickcircuits('q1')) s),
+      'K4: pred is the start vertex at depth 0 and the previous vertex afterwards');
+
+  -- complete digraph K5: 10 bidirected edges -> 20 arcs
+  -- elementary circuits: C(5,2)*1! + C(5,3)*2! + C(5,4)*3! + C(5,5)*4! = 10 + 20 + 30 + 24 = 84
+
+  PREPARE q2 AS
+  SELECT id, source, target, cost, reverse_cost FROM (VALUES
+      ( 1, 1, 2, 1, 1),
+      ( 2, 1, 3, 1, 1),
+      ( 3, 1, 4, 1, 1),
+      ( 4, 1, 5, 1, 1),
+      ( 5, 2, 3, 1, 1),
+      ( 6, 2, 4, 1, 1),
+      ( 7, 2, 5, 1, 1),
+      ( 8, 3, 4, 1, 1),
+      ( 9, 3, 5, 1, 1),
+      (10, 4, 5, 1, 1)
+  ) AS t(id, source, target, cost, reverse_cost);
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER FROM pgr_hawickcircuits('q2') WHERE edge = -1), 84,
+      'K5: 84 elementary circuits are expected');
+
+  RETURN QUERY
+  SELECT is((SELECT count(*)::INTEGER FROM pgr_hawickcircuits('q2')), 404,
+      'K5: 404 output rows');
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT many_circuits();
+
+SELECT * FROM finish();
+ROLLBACK;

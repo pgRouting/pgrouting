@@ -63,8 +63,11 @@ jobs:
       - name: check modified files
         id: check_files
         run: |
+          # manual trigger: test all languages (and run linkcheck)
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; echo "CHK_LINK=true" >> $GITHUB_ENV; exit 0; fi
+
           # always processing english, no matter what the change was
-          if [[ "${{ matrix.language }}" == "en" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
+          if [[ "${{ matrix.language }}" == "en" ]]; then echo "PROCESS=true" >> $GITHUB_ENV; echo "CHK_LINK=true" >> $GITHUB_ENV; exit 0; fi
 
           # when this file changes  all languages are tested
           if git diff --name-only HEAD^ HEAD | grep -q '.github/workflows/doc-check.yml' ; then  echo "PROCESS=true" >> $GITHUB_ENV; exit 0; fi
@@ -88,7 +91,7 @@ jobs:
         if: env.PROCESS == 'true'
         run: |
           sudo apt-get install curl ca-certificates gnupg
-          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
           sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
             $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 
@@ -106,9 +109,14 @@ jobs:
             libboost-graph-dev \
             python3-sphinx \
             python3-sphinx-bootstrap-theme \
+            python3-sphinxcontrib.applehelp \
+            python3-sphinxcontrib.devhelp \
+            python3-sphinxcontrib.htmlhelp \
+            python3-sphinxcontrib.qthelp \
+            python3-sphinxcontrib.serializinghtml \
             postgresql-${PGVER} \
             postgresql-server-dev-${PGVER} \
-            graphviz
+            graphviz $(apt-cache pkgnames libgvplugin-neato-layout | grep -v -- -dev)
 
       - name: Configure
         if: env.PROCESS == 'true'

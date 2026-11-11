@@ -1,13 +1,11 @@
 /*PGR-GNU*****************************************************************
 File: _hawickCircuits.sql
 
-Generated with Template by:
-Copyright (c) 2007-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2022 Nitish Chauhan
-Mail: nitishchauhan0022 at gmail.com
+Copyright (c) 2026 Vicky Vergara
+Mail: vicky at erosion.dev
 
 ------
 
@@ -26,19 +24,22 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
----------------
--- _pgr_hawickCircuits
----------------
 
---v3.4.0
-CREATE FUNCTION _pgr_hawickCircuits(
+--v4.1.0
+CREATE FUNCTION _pgr_hawickCircuits_v4(
     TEXT,
+    BIGINT[],
+    BIGINT,
+    BIGINT,
+    BOOLEAN,
+    BOOLEAN,
 
     OUT seq INTEGER,
     OUT path_id  INTEGER,
-    OUT path_seq INTEGER,
+    OUT depth INTEGER,
     OUT start_vid BIGINT,
     OUT end_vid BIGINT,
+    OUT pred BIGINT,
     OUT node BIGINT,
     OUT edge BIGINT,
     OUT cost FLOAT,
@@ -48,5 +49,5 @@ RETURNS SETOF RECORD AS
 'MODULE_PATHNAME'
 LANGUAGE C IMMUTABLE STRICT;
 
-COMMENT ON FUNCTION _pgr_hawickCircuits(TEXT)
+COMMENT ON FUNCTION _pgr_hawickCircuits_v4(TEXT,BIGINT[],BIGINT,BIGINT,BOOLEAN,BOOLEAN)
 IS 'pgRouting internal function';

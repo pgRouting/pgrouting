@@ -57,7 +57,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`aStar-family`
-* `Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__
+* :bgl:`Boost: A* search <algorithms/shortest_paths/astar_search.html>`
 * https://en.wikipedia.org/wiki/A*_search_algorithm
 
 .. rubric:: Indices and tables
