@@ -92,6 +92,11 @@ To see all issues & pull requests closed by this release see the
 4.1.0 Bug Fixes
 
 * [#3101](https://github.com/pgRouting/pgrouting/issues/3101): pgr_edgeColoring not building graph correctly
+* [#3180](https://github.com/pgRouting/pgrouting/issues/3180): On undirected graphs where cost and reverse_cost differ,
+  pgr_aStar, pgr_aStarCost, pgr_aStarCostMatrix, pgr_bdAstar,
+  pgr_bdAstarCost, pgr_bdAstarCostMatrix, pgr_bdDijkstra,
+  pgr_bdDijkstraCost and pgr_bdDijkstraCostMatrix returned every node and
+  edge twice, with both costs added up
 
 4.1.0 Requirements
 

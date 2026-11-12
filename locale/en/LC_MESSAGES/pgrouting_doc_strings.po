@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 14:13+0000\n"
+"POT-Creation-Date: 2026-11-12 04:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3793,6 +3793,9 @@ msgid "4.1.0 Bug Fixes"
 msgstr ""
 
 msgid ":issue:`3101`: pgr_edgeColoring not building graph correctly"
+msgstr ""
+
+msgid ":issue:`3180`: On undirected graphs where cost and reverse_cost differ, pgr_aStar, pgr_aStarCost, pgr_aStarCostMatrix, pgr_bdAstar, pgr_bdAstarCost, pgr_bdAstarCostMatrix, pgr_bdDijkstra, pgr_bdDijkstraCost and pgr_bdDijkstraCostMatrix returned every node and edge twice, with both costs added up"
 msgstr ""
 
 msgid "4.1.0 Requirements"
