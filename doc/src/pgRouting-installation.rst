@@ -73,7 +73,7 @@ To download the repository
 
 .. code-block:: shell
 
-    git clone git://github.com/pgRouting/pgrouting.git
+    git clone https://github.com/pgRouting/pgrouting.git
     cd pgrouting
     git checkout v${PROJECT_VERSION}
 
