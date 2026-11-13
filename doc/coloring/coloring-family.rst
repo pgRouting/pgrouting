@@ -79,7 +79,7 @@ Column           Type        Description
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__
+* :bgl:`Boost: <algorithms/coloring/coloring_overview.html>`
 
 .. rubric:: Indices and tables
 

@@ -99,14 +99,20 @@ Experimental Functions
    :start-after: experimental-start
    :end-before: experimental-end
 
+:doc:`circuits-family`
+
+.. include:: circuits-family.rst
+   :start-after: experimental-start
+   :end-before: experimental-end
+
 .. toctree::
    :hidden:
 
    chinesePostmanProblem-family
    transformation-family
-   components-family
    ordering-family
    planar-family
+   circuits-family
 
 .. rubric:: categories
 
@@ -115,11 +121,6 @@ Experimental Functions
 .. include:: VRP-category.rst
    :start-after: experimental-start
    :end-before: experimental-end
-
-.. toctree::
-  :hidden:
-
-  VRP-category
 
 .. rubric:: Shortest Path Category
 
@@ -139,7 +140,6 @@ Experimental Functions
 - :doc:`pgr_lengauerTarjanDominatorTree`
 - :doc:`pgr_stoerWagner`
 - :doc:`pgr_transitiveClosure`
-- :doc:`pgr_hawickCircuits`
 
 .. toctree::
   :hidden:
@@ -147,7 +147,6 @@ Experimental Functions
   pgr_lengauerTarjanDominatorTree
   pgr_stoerWagner
   pgr_transitiveClosure
-  pgr_hawickCircuits
 
 
 See Also

@@ -207,14 +207,18 @@ void remove_details(const G &graph,
     }
 }
 
-/** @brief gets results in form of a container of paths with depth
+/** @brief gets the depth of the nodes reached from the root
+ *
+ * The depth of a node is the number of edges from the root on the predecessors tree.
+ * Runs in O(V): the children lists are built in one pass over the predecessors,
+ * then the tree is traversed breadth first from the root.
  *
  * @param [in] graph The graph that is being worked
  * @param [in] root The starting node
- * @param [in] distances An array of vertices @b id
- * @param [in] predecessors an array of predecessors
+ * @param [in] distances aggregate cost from the root to each vertex
+ * @param [in,out] predecessors an array of predecessors (modified when @b details is false)
  * @param [in] distance the max distance
- * @param [in] details the max distance
+ * @param [in] details when false, points are removed from the predecessors before getting the depth
  */
 template <typename G, typename V>
 std::map<int64_t, int64_t> get_depth(
@@ -229,48 +233,45 @@ std::map<int64_t, int64_t> get_depth(
     if (predecessors.size() != distances.size()) return depth;
     depth[graph[root].id] = 0;
 
-    std::set<V> vertices;
-    vertices.insert(root);
-
     if (!details) {
         remove_details(graph, distances, predecessors);
     }
 
-    /* cycle depth max depth can be number of nodes*/
-    for (int64_t d = 1; static_cast<size_t>(d) < graph.num_vertices() ; ++d) {
-        /*
-         * there is no more to search for
-         */
-        if (vertices.empty()) break;
+    /*
+     * A node belongs to the tree when it has a predecessor and it is within the distance.
+     * Children of u are stored in children[first_child[u] .. first_child[u + 1])
+     */
+    const auto n = predecessors.size();
+    auto in_tree = [&](V v) {return predecessors[v] != v && distances[v] <= distance;};
 
-        /*
-         * One next cycle these vertices have the next depth
-         */
-        std::set<V> vertices_next;
-        std::set<V> point_vertices;
+    std::vector<size_t> first_child(n + 1, 0);
+    for (V v = 0; v < n; ++v) {
+        if (in_tree(v)) ++first_child[predecessors[v] + 1];
+    }
+    std::partial_sum(first_child.begin(), first_child.end(), first_child.begin());
 
+    std::vector<V> children(first_child[n]);
+    std::vector<size_t> position(first_child.begin(), first_child.end() - 1);
+    for (V v = 0; v < n; ++v) {
+        if (in_tree(v)) children[position[predecessors[v]]++] = v;
+    }
 
-        for (const auto v : vertices) {
-            /*
-             * Cycle predecessors looking for vertices on the depth d
-             * v -> p
-             */
-            for (V p = 0; p < graph.num_vertices() ; ++p) {
-                /*
-                 * Sikiping unassigned predecessors
-                 * Sikiping distances greater than the one asked for
-                 */
-                if (predecessors[p] == p) continue;
-                if (!(distances[p] <= distance)) continue;
-                if (!(predecessors[p] == v)) continue;
-
-
-                /* found */
-                depth[graph[p].id] = d;
-                vertices_next.insert(p);
+    /*
+     * Breadth first traversal from the root: nodes on the next level have depth d
+     */
+    CHECK_FOR_INTERRUPTS();
+    std::vector<V> level{root};
+    std::vector<V> next_level;
+    for (int64_t d = 1; !level.empty(); ++d) {
+        next_level.clear();
+        for (const auto u : level) {
+            for (auto i = first_child[u]; i < first_child[u + 1]; ++i) {
+                const auto v = children[i];
+                depth[graph[v].id] = d;
+                next_level.push_back(v);
             }
         }
-        vertices = vertices_next;
+        level.swap(next_level);
     }
     return depth;
 }

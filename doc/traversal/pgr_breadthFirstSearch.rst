@@ -171,8 +171,7 @@ See Also
 
 * :doc:`BFS-category`
 * :doc:`sampledata`
-* `Boost: Breadth First Search
-  <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__
+* :bgl:`Boost: Breadth First Search <algorithms/traversal/breadth_first_search.html>`
 * `Wikipedia: Breadth First Search algorithm
   <https://en.wikipedia.org/wiki/Breadth-first_search>`__
 

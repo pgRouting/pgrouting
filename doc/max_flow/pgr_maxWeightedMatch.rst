@@ -130,8 +130,7 @@ See Also
 
 * :doc:`flow-family`
 * :doc:`sampledata`
-* `Boost: maximum_weighted_matching
-  <https://www.boost.org/doc/libs/latest/libs/graph/doc/maximum_weighted_matching.html>`__
+* :bgl:`Boost: maximum_weighted_matching <algorithms/network_flow/maximum_weighted_matching.html>`
 
 .. rubric:: Indices and tables
 

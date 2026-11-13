@@ -83,8 +83,8 @@ void pgr_process_shortestPath(
             only_cost, normal,
             n_goals, global,
 
-            /* Use kPath_process to define these */
             0, false, nullptr, nullptr,
+            0, 0, true, true,
 
             which,
             is_matrix,

@@ -1,5 +1,5 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) %Y pgRouting developers
+# Copyright (C) 2026 pgRouting developers
 # This file is distributed under the same license as the pgRouting package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-08 15:38+0000\n"
+"POT-Creation-Date: 2026-11-07 14:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -247,10 +247,10 @@ msgstr ""
 msgid "See Also"
 msgstr ""
 
-msgid "`Boost: Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid ":bgl:`Boost: Prim's algorithm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
 msgstr ""
 
-msgid "`Boost: Kruskal's algorithm <https://www.boost.org/libs/graph/doc/kruskal_min_spanning_tree.html>`__"
+msgid ":bgl:`Boost: Kruskal's algorithm <algorithms/spanning_trees/kruskal_min_spanning_tree.html>`"
 msgstr ""
 
 msgid "`Wikipedia: Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
@@ -571,7 +571,7 @@ msgstr ""
 msgid "References"
 msgstr ""
 
-msgid "`Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgid ":bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`"
 msgstr ""
 
 msgid "`University of Waterloo TSP <https://www.math.uwaterloo.ca/tsp/>`__"
@@ -1612,7 +1612,7 @@ msgstr ""
 msgid ":doc:`bdAstar-family`"
 msgstr ""
 
-msgid "`Boost: A* search <https://www.boost.org/libs/graph/doc/astar_search.html>`__"
+msgid ":bgl:`Boost: A* search <algorithms/shortest_paths/astar_search.html>`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/A*_search_algorithm"
@@ -2362,7 +2362,7 @@ msgstr ""
 msgid ":doc:`pgr_floydWarshall`"
 msgstr ""
 
-msgid "Boost `floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`__"
+msgid ":bgl:`Boost: Floyd-Warshall <algorithms/shortest_paths/floyd_warshall_shortest.html>`"
 msgstr ""
 
 msgid "Bidirectional A* - Family of functions"
@@ -2446,7 +2446,7 @@ msgstr ""
 msgid "It is expected to terminate faster than :doc:`pgr_dijkstra`"
 msgstr ""
 
-msgid "`Boost  <https://www.boost.org/libs/graph/doc>`__"
+msgid ":bgl:`Boost: Shortest Path Overview <algorithms/shortest_paths/shortest_paths_overview.html>`"
 msgstr ""
 
 msgid "Chinese Postman Problem - Family of functions"
@@ -2471,6 +2471,111 @@ msgid "Graph must be connected."
 msgstr ""
 
 msgid "An Edges SQL that represents a **directed** graph with the following columns"
+msgstr ""
+
+msgid "Circuits - Family of Functions"
+msgstr ""
+
+msgid "The following functions work on circuits of directed graphs."
+msgstr ""
+
+msgid ":doc:`pgr_hawickCircuits` - Hawick's circuits algorithm."
+msgstr ""
+
+msgid ":doc:`pgr_hawickUniqueCircuits` - Hawick's unique circuits algorithm."
+msgstr ""
+
+msgid "``start vid``"
+msgstr ""
+
+msgid "A vertex of the circuits: - All the circuits that contain the vertex are returned. - When ``0`` all the circuits are returned in canonical order."
+msgstr ""
+
+msgid "``start vids``"
+msgstr ""
+
+msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
+msgstr ""
+
+msgid "Vertices of the circuits: for each requested vertex: - All the circuits that contain the vertex are returned: - When empty all the circuits are returned in canonical order."
+msgstr ""
+
+msgid "``min_depth``"
+msgstr ""
+
+msgid "Minimum number of vertices in a circuit. * Exclude 2 edge circuits by increasing this number."
+msgstr ""
+
+msgid "``9223372036854775807``"
+msgstr ""
+
+msgid "Maximum number of vertices in a circuit."
+msgstr ""
+
+msgid "``self_loops``"
+msgstr ""
+
+msgid "When ``true`` self loops are included in the results."
+msgstr ""
+
+msgid "When ``false`` self loops are excluded from the results."
+msgstr ""
+
+msgid "Self loops are included or excluded regardless of ``min_depth`` and ``max_depth``."
+msgstr ""
+
+msgid "``u_turn_on_edge``"
+msgstr ""
+
+msgid "A U-turn on the same edge is a 2 edge circuit that uses the same ``id`` on both directions of the edge."
+msgstr ""
+
+msgid "When ``true``: U-turns on the same edge are not avoided."
+msgstr ""
+
+msgid "When ``false``: U-turns are avided when the circuit can be formed with two different edges; a U-turn is kept when it is the only option, that is, when the two vertices are connected by a single edge."
+msgstr ""
+
+msgid "Self loops are not affected."
+msgstr ""
+
+msgid "Sequential value starting from ``1``"
+msgstr ""
+
+msgid "``path_id``"
+msgstr ""
+
+msgid "Id of the circuit starting from ``1``"
+msgstr ""
+
+msgid "Relative position in the circuit. Has value **0** for the beginning of a circuit"
+msgstr ""
+
+msgid "Identifier of the starting vertex of the circuit."
+msgstr ""
+
+msgid "Identifier of the ending vertex of the circuit."
+msgstr ""
+
+msgid "``pred``"
+msgstr ""
+
+msgid "Identifier of the node that precedes ``node`` in the circuit."
+msgstr ""
+
+msgid "When ``node`` is the first node of the circuit, it has the same value as ``node``."
+msgstr ""
+
+msgid "Identifier of the node in the path from a vid to next vid."
+msgstr ""
+
+msgid "Identifier of the edge used to arrive from ``pred`` to ``node``. - ``-1`` when :math:`depth = 0`."
+msgstr ""
+
+msgid "Cost to traverse from ``pred`` to ``node`` using ``edge``. - ``0`` when :math:`depth = 0`."
+msgstr ""
+
+msgid ":bgl:`Boost: Hawick Circuit Algorithm <algorithms/cycle_detection/cycle_detection_overview.html>`"
 msgstr ""
 
 msgid "Coloring - Family of functions"
@@ -2506,7 +2611,7 @@ msgstr ""
 msgid "Color of the node."
 msgstr ""
 
-msgid "`Boost: <https://www.boost.org/libs/graph/doc/table_of_contents.html>`__"
+msgid ":bgl:`Boost: <algorithms/coloring/coloring_overview.html>`"
 msgstr ""
 
 msgid "Components - Family of functions"
@@ -2567,9 +2672,6 @@ msgid "All functions allow the user to forbid contraction on a set of nodes."
 msgstr ""
 
 msgid "https://www.cs.cmu.edu/afs/cs/academic/class/15210-f12/www/lectures/lecture16.pdf"
-msgstr ""
-
-msgid "https://ae.iti.kit.edu/download/diploma_thesis_geisberger.pdf"
 msgstr ""
 
 msgid "https://jlazarsfeld.github.io/ch.150.project/contents/"
@@ -2884,7 +2986,7 @@ msgstr ""
 msgid "the set of edges :math:`E`"
 msgstr ""
 
-msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ }  & \\quad \\text{ } \\\\ \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\quad \\text{if } reverse\\_cost = \\varnothing \\ \\text{ } \\text{ }  & \\quad \\text{ } \\ \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} &  \\quad \\text{ } \\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i>=0 \\} & \\quad \\text{if } reverse\\_cost \\neq \\varnothing \\ \\end{cases}`"
 msgstr ""
 
 msgid "Undirected graph"
@@ -2896,7 +2998,7 @@ msgstr ""
 msgid ":math:`V = source \\cup target \\cup {start_v{vid}} \\cup  {end_{vid}}`"
 msgstr ""
 
-msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ } \\\\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } reverse\\_cost = \\varnothing \\\\ \\text{ } \\text{ }  & \\text{ } \\\\ \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\\\ \\cup \\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\\\ \\end{cases}`"
+msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ } \\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\}  & \\quad \\text{ if } reverse\\_cost = \\varnothing \\ \\text{ } \\text{ }  & \\text{ } \\ \\text{ } \\{(source_i, target_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\ \\cup \\{(target_i, source_i, cost_i) \\text{ when } cost >=0 \\} & \\text{ } \\ \\cup \\{(target_i, source_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\text{ } \\ \\cup \\{(source_i, target_i, reverse\\_cost_i) \\text{ when } reverse\\_cost_i >=0)\\} & \\quad \\text{ if } reverse\\_cost \\neq \\varnothing \\ \\end{cases}`"
 msgstr ""
 
 msgid "The problem"
@@ -2911,7 +3013,7 @@ msgstr ""
 msgid ":math:`end_{vid} \\in V` an ending vertex"
 msgstr ""
 
-msgid ":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = true \\\\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\\\ \\end{cases}`"
+msgid ":math:`G(V,E) = \\begin{cases} G_d(V,E) & \\quad \\text{ if6 } directed = true \\ G_u(V,E) & \\quad \\text{ if5 } directed = false \\ \\end{cases}`"
 msgstr ""
 
 msgid "Then:"
@@ -3025,9 +3127,6 @@ msgstr ""
 msgid ":math:`depth-1` is the depth of ``pred``"
 msgstr ""
 
-msgid "``pred``"
-msgstr ""
-
 msgid "Predecessor of ``node``."
 msgstr ""
 
@@ -3124,6 +3223,9 @@ msgstr ""
 msgid ":doc:`pgr_planarFaces` - Identifies the faces of a planar embedding and lists every edge-face incidence for an undirected graph."
 msgstr ""
 
+msgid ":doc:`circuits-family`"
+msgstr ""
+
 msgid "categories"
 msgstr ""
 
@@ -3152,9 +3254,6 @@ msgid ":doc:`pgr_stoerWagner`"
 msgstr ""
 
 msgid ":doc:`pgr_transitiveClosure`"
-msgstr ""
-
-msgid ":doc:`pgr_hawickCircuits`"
 msgstr ""
 
 msgid "Flow - Family of functions"
@@ -3358,7 +3457,7 @@ msgstr ""
 msgid ":math:`source\\_vertex  \\cup  sink\\_vertex  \\bigcup  source_i  \\bigcup  target_i`"
 msgstr ""
 
-msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\quad  \\text{ if } reverse\\_capacity = \\varnothing \\\\ \\text{ } & \\quad \\text{ } \\\\ \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\text{ } \\\\ \\cup \\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity \\neq \\varnothing \\\\ \\end{cases}`"
+msgid ":math:`E = \\begin{cases} \\text{ } \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\quad  \\text{ if } reverse\\_capacity = \\varnothing \\ \\text{ } & \\quad \\text{ } \\ \\{(source_i, target_i, capacity_i) \\text{ when } capacity > 0 \\} & \\text{ } \\ \\cup \\{(target_i, source_i, reverse\\_capacity_i) \\text{ when } reverse\\_capacity_i > 0)\\} & \\quad \\text{ if } reverse\\_capacity \\neq \\varnothing \\\\ \\end{cases}`"
 msgstr ""
 
 msgid "Maximum flow problem"
@@ -3541,7 +3640,7 @@ msgstr ""
 msgid "pgRouting 4.1.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.1.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`4.1.0`"
 msgstr ""
 
 msgid "4.1.0 Build"
@@ -3580,6 +3679,21 @@ msgstr ""
 msgid "Fix the way it builds the graph"
 msgstr ""
 
+msgid "pgr_hawickCircuits"
+msgstr ""
+
+msgid "New optional parameters: ``min_depth``, ``max_depth``, ``self_loops`` and ``u_turn_on_edge``."
+msgstr ""
+
+msgid "New signatures to select starting vertices."
+msgstr ""
+
+msgid "Deprecated signature: ``pgr_hawickCircuits(text)``."
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits"
+msgstr ""
+
 msgid "pgr_makeBiconnectedPlanar"
 msgstr ""
 
@@ -3592,76 +3706,85 @@ msgstr ""
 msgid "4.1.0 New experimental functions."
 msgstr ""
 
-msgid "`#3136 <https://github.com/pgRouting/pgrouting/issues/3136>`__: pgr_maxWeightedMatch"
+msgid ":issue:`3136`: pgr_maxWeightedMatch"
 msgstr ""
 
-msgid "`#3140 <https://github.com/pgRouting/pgrouting/issues/3140>`__: pgr_makeBiconnectedPlanar"
+msgid ":issue:`3140`: pgr_makeBiconnectedPlanar"
 msgstr ""
 
-msgid "`#3142 <https://github.com/pgRouting/pgrouting/issues/3142>`__: pgr_coreNumbers"
+msgid ":issue:`3142`: pgr_coreNumbers"
 msgstr ""
 
-msgid "`#3143 <https://github.com/pgRouting/pgrouting/issues/3143>`__: pgr_planarFaces"
+msgid ":issue:`3143`: pgr_planarFaces"
+msgstr ""
+
+msgid ":issue:`3171`: pgr_hawickUniqueCircuits: new functionality"
 msgstr ""
 
 msgid "4.1.0 Code enhancements"
 msgstr ""
 
-msgid "`#3049 <https://github.com/pgRouting/pgrouting/issues/3049>`__: Use enumeration on drivers and process."
+msgid ":issue:`3049`: Use enumeration on drivers and process."
 msgstr ""
 
-msgid "`#3054 <https://github.com/pgRouting/pgrouting/issues/3054>`__: Change error message when edges_sql is empty"
+msgid ":issue:`3054`: Change error message when edges_sql is empty"
 msgstr ""
 
-msgid "`#3055 <https://github.com/pgRouting/pgrouting/issues/3055>`__: bdDijkstra: use the shortest_path process and driver"
+msgid ":issue:`3055`: bdDijkstra: use the shortest_path process and driver"
 msgstr ""
 
-msgid "`#3056 <https://github.com/pgRouting/pgrouting/issues/3056>`__: edwardMoore: use the shortest_path process and driver"
+msgid ":issue:`3056`: edwardMoore: use the shortest_path process and driver"
 msgstr ""
 
-msgid "`#3060 <https://github.com/pgRouting/pgrouting/issues/3060>`__: dagShortestPath: use the shortest_path process and driver"
+msgid ":issue:`3060`: dagShortestPath: use the shortest_path process and driver"
 msgstr ""
 
-msgid "`#3064 <https://github.com/pgRouting/pgrouting/issues/3064>`__: Astar: create and use a process and driver for Astar"
+msgid ":issue:`3064`: Astar: create and use a process and driver for Astar"
 msgstr ""
 
-msgid "`#3075 <https://github.com/pgRouting/pgrouting/issues/3075>`__: Spanning tree: create and use a process and driver"
+msgid ":issue:`3075`: Spanning tree: create and use a process and driver"
 msgstr ""
 
-msgid "`#3086 <https://github.com/pgRouting/pgrouting/issues/3086>`__: MaxFlow: create and use a process and driver"
+msgid ":issue:`3086`: MaxFlow: create and use a process and driver"
 msgstr ""
 
-msgid "`#3089 <https://github.com/pgRouting/pgrouting/issues/3089>`__: edgeDisjoint and bellmanFord use shortestPath driver and process"
+msgid ":issue:`3089`: edgeDisjoint and bellmanFord use shortestPath driver and process"
 msgstr ""
 
-msgid "`#3100 <https://github.com/pgRouting/pgrouting/issues/3100>`__: Coloring: create and use a process & driver"
+msgid ":issue:`3100`: Coloring: create and use a process & driver"
 msgstr ""
 
-msgid "`#3113 <https://github.com/pgRouting/pgrouting/issues/3113>`__: Components: Integrate into existing process/driver pair"
+msgid ":issue:`3113`: Components: Integrate into existing process/driver pair"
 msgstr ""
 
-msgid "`#3129 <https://github.com/pgRouting/pgrouting/issues/3129>`__: breadthFirstSearch: Reorganize into traversal"
+msgid ":issue:`3129`: breadthFirstSearch: Reorganize into traversal"
 msgstr ""
 
-msgid "`#3131 <https://github.com/pgRouting/pgrouting/issues/3131>`__: binaryBreadthFirstSearch: Integrate into existing process/driver pair"
+msgid ":issue:`3131`: binaryBreadthFirstSearch: Integrate into existing process/driver pair"
 msgstr ""
 
-msgid "`#3154 <https://github.com/pgRouting/pgrouting/issues/3154>`__: betweennessCentrality: use allpairs/process and driver"
+msgid ":issue:`3154`: betweennessCentrality: use allpairs/process and driver"
 msgstr ""
 
-msgid "`#3163 <https://github.com/pgRouting/pgrouting/issues/3163>`__: KSP & KSP WithPoints Use ShortestPath driver files"
+msgid ":issue:`3163`: KSP & KSP WithPoints Use ShortestPath driver files"
+msgstr ""
+
+msgid ":issue:`3170`: pgr_hawickCircuits: wrong Boost function referenced"
+msgstr ""
+
+msgid ":issue:`3176`: Boost broken links"
 msgstr ""
 
 msgid "4.1.0 Bug Fixes"
 msgstr ""
 
-msgid "`#3101 <https://github.com/pgRouting/pgrouting/issues/3101>`__: pgr_edgeColoring not building graph correctly"
+msgid ":issue:`3101`: pgr_edgeColoring not building graph correctly"
 msgstr ""
 
 msgid "4.1.0 Requirements"
 msgstr ""
 
-msgid "`#3120 <https://github.com/pgRouting/pgrouting/issues/3120>`__: Up min requirements: Boost to 1.74 Postgres to 14 cmake to 3.22."
+msgid ":issue:`3120`: Up min requirements: Boost to 1.74 Postgres to 14 cmake to 3.22."
 msgstr ""
 
 msgid "All releases"
@@ -5074,7 +5197,7 @@ msgstr ""
 msgid "The set of edges :math:`E`:"
 msgstr ""
 
-msgid ":math:`E = \\begin{split} \\begin{align} & {\\{(source_{id}, target_{id}, cost_{id}) \\text{ when } cost_{id} >=0 \\}} \\\\ & \\cup \\\\ & {\\{(target_{id}, source_{id}, reverse\\_cost_{id}) \\text{ when } reverse\\_cost_{id} >=0 \\}} \\end{align} \\end{split}`"
+msgid ":math:`E = \\begin{split} \\begin{align} & {\\{(source_{id}, target_{id}, cost_{id}) \\text{ when } cost_{id} >=0 \\}} \\ & \\cup \\ & {\\{(target_{id}, source_{id}, reverse\\_cost_{id}) \\text{ when } reverse\\_cost_{id} >=0 \\}} \\end{align} \\end{split}`"
 msgstr ""
 
 msgid "Edges :math:`(source \\rightarrow target)` where ``cost`` is non negative are part of the graph."
@@ -5158,7 +5281,7 @@ msgstr ""
 msgid "Has 9 edges:"
 msgstr ""
 
-msgid ":math:`\\begin{split} \\begin{align} E = & \\{(1,2,7), (1,3,9), (1,6,14), \\\\ & (2,3,10), (2,4,13), \\\\ & (3,4,11), (3,6,2), \\\\ & (4,5,6), \\\\ & (5,6,9) \\} \\end{align} \\end{split}`"
+msgid ":math:`\\begin{split} \\begin{align} E = & \\{(1,2,7), (1,3,9), (1,6,14), \\ & (2,3,10), (2,4,13), \\ & (3,4,11), (3,6,2), \\ & (4,5,6), \\ & (5,6,9) \\} \\end{align} \\end{split}`"
 msgstr ""
 
 msgid "The graph can be represented in many ways for example:"
@@ -5638,7 +5761,7 @@ msgstr ""
 msgid "The general form of a pgRouting function call is:"
 msgstr ""
 
-msgid "\\ \\"
+msgid "\\"
 msgstr ""
 
 msgid "pgr_<name>(`Inner queries`_, **parameters**, [ ``Optional parameters``)"
@@ -5927,9 +6050,6 @@ msgid ":doc:`pgr_withPointsKSP`"
 msgstr ""
 
 msgid "Returns set of |generic-result|"
-msgstr ""
-
-msgid "``path_id``"
 msgstr ""
 
 msgid "Path identifier."
@@ -6253,10 +6373,22 @@ msgstr ""
 msgid "Currently there is no :code:`make test` and testing is done as follows"
 msgstr ""
 
-msgid "pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL <https://www.postgresql.org>`__ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche from `Camptocamp <https://camptocamp.com>`__, was later extended by Orkney and renamed to pgRouting. The project is now supported and maintained by `Georepublic <https://georepublic.info>`__, `Paragon Corporation <https://www.paragoncorporation.com/>`__ and a broad user community."
+msgid "pgRouting is an extension of `PostGIS <https://postgis.net>`__ and `PostgreSQL <https://www.postgresql.org>`__ geospatial database and adds routing and other network analysis functionality. A predecessor of pgRouting – pgDijkstra, written by Sylvain Pasche, was later extended by Orkney and renamed to pgRouting."
 msgstr ""
 
-msgid "pgRouting is part of `OSGeo Community Projects <https://wiki.osgeo.org/wiki/OSGeo_Community_Projects>`__ from the `OSGeo Foundation <https://www.osgeo.org>`__ and included on `OSGeoLive <http://live.osgeo.org/>`__."
+msgid "Currently maintained by:"
+msgstr ""
+
+msgid "`Erosion <https://www.erosion.dev>`__"
+msgstr ""
+
+msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
+msgstr ""
+
+msgid "and a broad user community."
+msgstr ""
+
+msgid "pgRouting is part of `OSGeo Projects <https://www.osgeo.org/projects/pgrouting>`__ from the `OSGeo Foundation <https://www.osgeo.org>`__ and included on `OSGeoLive <https://live.osgeo.org/>`__."
 msgstr ""
 
 msgid "Licensing"
@@ -6301,7 +6433,7 @@ msgstr ""
 msgid "Individuals in this release |release| (in alphabetical order)"
 msgstr ""
 
-msgid "Mohit Rawat, Regina Obe, Vicky Vergara"
+msgid "Ashish Kumar, Ko Nagase, Mayur Galhate, Mohit Rawat, Regina Obe, Sakir Ahmed, Vicky Vergara"
 msgstr ""
 
 msgid "And all the people that give us a little of their time making comments, finding issues, making pull requests etc. in any of our products: osm2pgrouting, pgRouting, pgRoutingLayer, workshop."
@@ -6346,16 +6478,13 @@ msgstr ""
 msgid "`HighGo Software <https://www.highgo.com/>`__"
 msgstr ""
 
-msgid "`Paragon Corporation <https://www.paragoncorporation.com/>`__"
-msgstr ""
-
 msgid "Contributors Past & Present:"
 msgstr ""
 
 msgid "Individuals (in alphabetical order)"
 msgstr ""
 
-msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mayur Galhate, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
+msgid "Aasheesh Tiwari, Abhinav Jain, Aditya Pratap Singh, Adrien Berchet, Akio Takubo, Andrea Nardelli, Anthony Tasca, Anton Patrushev, Aryan Gupta, Ashraf Hossain, Ashish Kumar, Aurélie Bousquet, Bipasha Gayary, Cayetano Benavent, Christian Gonzalez, Daniel Kastl, Dapeng Wang, Dave Potts, David Techer, Denis Rykov, Ema Miyawaki, Esteban Zimanyi, Fan Wu, Florian Thurkow, Frederic Junod, Gerald Fenoy, Gudesa Venkata Sai Akhil, Hang Wu, Himanshu Raj, Imre Samu, Jay Mahadeokar, Jinfu Leng, Kai Behncke, Kishore Kumar, Ko Nagase, Mahmoud Sakr, Manikata Kondeti, Mario Basa, Martin Wiesenhaan, Maxim Dubinin, Maoguang Wang, Mayur Galhate, Mohamed Bakli, Mohamed Zia, Mohit Rawat, Mukul Priya, Nitish Chauhan, Rajat Shinde, Razequl Islam, Regina Obe, Rohith Reddy, Saloni Kumari, Sakir Ahmed, Sarthak Agarwal, Shobhit Chaurasia, Sourabh Garg, Stephen Woodbridge, Swapnil Joshi, Sylvain Housseman, Sylvain Pasche, Veenit Kumar, Vidhan Jain, Virginia Vergara, Yige Huang"
 msgstr ""
 
 msgid "Corporate Sponsors (in alphabetical order)"
@@ -6598,7 +6727,7 @@ msgstr ""
 msgid "Version 3.2.1"
 msgstr ""
 
-msgid "Metric Algorithm from `Boost library <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgid "Metric Algorithm from :bgl:`Boost library <algorithms/utility/metric_tsp_approx.html>`"
 msgstr ""
 
 msgid "Simulated Annealing Algorithm no longer supported"
@@ -6790,7 +6919,7 @@ msgstr ""
 msgid "pgr_tspeuclidean(text,bigint,bigint,double precision,integer,integer, integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
-msgid "Using `Boost: metric TSP approx <https://www.boost.org/libs/graph/doc/metric_tsp_approx.html>`__"
+msgid "Using :bgl:`Boost: metric TSP approx <algorithms/utility/metric_tsp_approx.html>`"
 msgstr ""
 
 msgid "Version 3.0.0"
@@ -7105,7 +7234,7 @@ msgstr ""
 msgid "Identifier of the vertex."
 msgstr ""
 
-msgid "`Boost: Biconnected components & articulation points <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__"
+msgid ":bgl:`Boost: Biconnected components & articulation points <algorithms/connected_components/biconnected_components.html>`"
 msgstr ""
 
 msgid "wikipedia: `Biconnected component <https://en.wikipedia.org/wiki/Biconnected_component>`__"
@@ -7156,7 +7285,7 @@ msgstr ""
 msgid "Undirected graph with edges after optimization."
 msgstr ""
 
-msgid "`Boost: bandwidth <https://www.boost.org/libs/graph/doc/bandwidth.html>`_"
+msgid ":bgl:`Boost: bandwidth <algorithms/metrics/bandwidth.html>`"
 msgstr ""
 
 msgid "``pgr_bdAstar``"
@@ -7411,7 +7540,7 @@ msgstr ""
 msgid "Using a combinations table on an undirected graph"
 msgstr ""
 
-msgid "`Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__"
+msgid ":bgl:`Boost: Bellman Ford <algorithms/shortest_paths/bellman_ford_shortest.html>`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm"
@@ -7483,7 +7612,7 @@ msgstr ""
 msgid "Relative betweenness centrality score of the vertex (will be in range [0,1])"
 msgstr ""
 
-msgid "`Boost: betweenness centrality <https://www.boost.org/libs/graph/doc/betweenness_centrality.html>`_"
+msgid ":bgl:`Boost: betweenness centrality <algorithms/metrics/betweenness_centrality.html>`"
 msgstr ""
 
 msgid "``pgr_biconnectedComponents``"
@@ -7576,7 +7705,7 @@ msgstr ""
 msgid "**Note:** Using the :doc:`sampledata` Network as all weights are same (i.e :math:`1``)"
 msgstr ""
 
-msgid "`Boost: Breadth First Search <https://www.boost.org/libs/graph/doc/breadth_first_search.html>`__"
+msgid ":bgl:`Boost: Breadth First Search <algorithms/traversal/breadth_first_search.html>`"
 msgstr ""
 
 msgid "https://cp-algorithms.com/graph/01_bfs.html"
@@ -7627,7 +7756,7 @@ msgstr ""
 msgid "Edges in blue represent odd length cycle subgraph."
 msgstr ""
 
-msgid "`Boost: is_bipartite <https://www.boost.org/libs/graph/doc/is_bipartite.html>`__"
+msgid ":bgl:`Boost: is_bipartite <algorithms/coloring/is_bipartite.html>`"
 msgstr ""
 
 msgid "`Wikipedia: bipartite graph <https://en.wikipedia.org/wiki/Bipartite_graph>`__"
@@ -7684,7 +7813,7 @@ msgstr ""
 msgid "Using a combinations table, equivalent to calculating result from vertices :math:`\\{5, 6\\}` to vertices :math:`\\{10, 15, 14\\}`."
 msgstr ""
 
-msgid "`Boost: Boykov Kolmogorov max flow <https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html>`__"
+msgid ":bgl:`Boost: Boykov Kolmogorov max flow <algorithms/network_flow/boykov_kolmogorov_max_flow.html>`"
 msgstr ""
 
 msgid "``pgr_breadthFirstSearch`` - Experimental"
@@ -7783,7 +7912,7 @@ msgstr ""
 msgid "https://en.wikipedia.org/wiki/Bridge_%28graph_theory%29"
 msgstr ""
 
-msgid "`Boost: Connected components <https://www.boost.org/libs/graph/doc/connected_components.html>`__"
+msgid ":bgl:`Boost: Connected components <algorithms/connected_components/connected_components.html>`"
 msgstr ""
 
 msgid "``pgr_chinesePostman`` - Experimental"
@@ -7802,9 +7931,6 @@ msgid "Returns set of |result-1-1-no-seq|"
 msgstr ""
 
 msgid "Returns set of ``(seq, node, edge, cost, agg_cost)``"
-msgstr ""
-
-msgid "Sequential value starting from ``1``"
 msgstr ""
 
 msgid "Identifier of the edge used to go from ``node`` to the next node in the path sequence. ``-1`` for the last node of the path."
@@ -8231,9 +8357,6 @@ msgid "The green nodes are dead end nodes."
 msgstr ""
 
 msgid "Node :math:`3` is a dead end node after node :math:`1` is contracted."
-msgstr ""
-
-msgid "``ARRAY[`` |ANY-INTEGER| ``]``"
 msgstr ""
 
 msgid "**Empty**"
@@ -9040,7 +9163,7 @@ msgstr ""
 msgid "New ordering in reverse order."
 msgstr ""
 
-msgid "`Boost: Cuthill-McKee Ordering <https://www.boost.org/libs/graph/doc/cuthill_mckee_ordering.html>`__"
+msgid ":bgl:`Boost: Cuthill-McKee Ordering <algorithms/ordering/cuthill_mckee_ordering.html>`"
 msgstr ""
 
 msgid "`Wikipedia: Cuthill-McKee Ordering <https://en.wikipedia.org/wiki/Cuthill%E2%80%93McKee_algorithm>`__"
@@ -9118,7 +9241,7 @@ msgstr ""
 msgid "Making **start_vids** the same as **end_vids**"
 msgstr ""
 
-msgid "`Boost: DAG shortest paths <https://www.boost.org/libs/graph/doc/dag_shortest_paths.html>`__"
+msgid ":bgl:`Boost: DAG shortest paths <algorithms/shortest_paths/dag_shortest_paths.html>`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Topological_sorting"
@@ -9361,10 +9484,10 @@ msgstr ""
 msgid "Same as `Single vertex`_ but with edges in descending order of ``id``."
 msgstr ""
 
-msgid "`Boost: Depth First Search <https://www.boost.org/libs/graph/doc/depth_first_search.html>`__"
+msgid ":bgl:`Boost: Depth First Search <algorithms/traversal/depth_first_search.html>`"
 msgstr ""
 
-msgid "`Boost: Undirected DFS <https://www.boost.org/libs/graph/doc/undirected_dfs.html>`__"
+msgid ":bgl:`Boost: Undirected DFS <algorithms/traversal/undirected_dfs.html>`"
 msgstr ""
 
 msgid "`Wikipedia: Depth First Search algorithm <https://en.wikipedia.org/wiki/Depth-first_search>`__"
@@ -9574,7 +9697,7 @@ msgstr ""
 msgid "37) Using `Combinations`_"
 msgstr ""
 
-msgid "`Boost: Dijkstra shortest paths <https://www.boost.org/libs/graph/doc/dijkstra_shortest_paths.html>`__"
+msgid ":bgl:`Boost: Dijkstra shortest paths <algorithms/shortest_paths/dijkstra_shortest_paths.html>`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
@@ -10039,9 +10162,6 @@ msgstr ""
 msgid "When ``false`` which resembles several calls using the single vertex signature."
 msgstr ""
 
-msgid "end-before"
-msgstr ""
-
 msgid "From vertices :math:`\\{11, 16\\}` for a distance of :math:`3.0` on an undirected graph"
 msgstr ""
 
@@ -10105,7 +10225,7 @@ msgstr ""
 msgid "Graph coloring of pgRouting :doc:`sampledata`"
 msgstr ""
 
-msgid "`Boost: Edge Coloring <https://www.boost.org/libs/graph/doc/edge_coloring.html>`__"
+msgid ":bgl:`Boost: Edge Coloring <algorithms/coloring/edge_coloring.html>`"
 msgstr ""
 
 msgid "`Wikipedia: Graph coloring <https://en.wikipedia.org/wiki/Graph_coloring>`__"
@@ -10189,7 +10309,7 @@ msgstr ""
 msgid "pgr_edmondsKarp(`Edges SQL`_, `Combinations SQL`_)"
 msgstr ""
 
-msgid "`Boost: Edmonds Karp max flow <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__"
+msgid ":bgl:`Boost: Edmonds Karp max flow <algorithms/network_flow/edmonds_karp_max_flow.html>`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm"
@@ -10621,9 +10741,6 @@ msgstr ""
 msgid "For a directed subgraph with edges :math:`\\{1, 2, 3, 4\\}`."
 msgstr ""
 
-msgid "Boost `Floyd-Warshall <https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html>`_"
-msgstr ""
-
 msgid "``pgr_full_version``"
 msgstr ""
 
@@ -10702,49 +10819,166 @@ msgstr ""
 msgid "``pgr_hawickCircuits`` — Returns the list of circuits using hawick circuits algorithm."
 msgstr ""
 
-msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Health A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs. It is capable of circuit enumeration in graphs with directed-arcs, multiple-arcs and self-arcs with a memory efficient and high-performance im-plementation. It is an extension of Johnson's Algorithm of finding all the elementary circuits of a directed graph."
+msgid "Hawick Circuit algorithm, is published in 2008 by Ken Hawick and Heath A. James. This algorithm solves the problem of detecting and enumerating circuits in graphs."
 msgstr ""
 
-msgid "There are 2 variations defined in the Boost Graph Library. Here, we have implemented only 2nd as it serves the most suitable and practical usecase. In this variation we get the circuits after filtering out the circuits caused by parallel edges. Parallel edge circuits have more use cases when you want to count the no. of circuits.Maybe in future, we will also implemenent this variation."
+msgid "Circuit enumeration in directed graphs, where circuits with parallel arcs are enumerated."
 msgstr ""
 
-msgid "The algorithm implementation works only for directed graph"
+msgid "Each combination of parallel arcs is returned as a different circuit."
 msgstr ""
 
-msgid "It is a variation of Johnson's algorithm for circuit enumeration."
+msgid "Works for directed graphs."
 msgstr ""
 
 msgid "The algorithm outputs the distinct circuits present in the graph."
 msgstr ""
 
+msgid "The circuits are elementary: a vertex is not repeated within a circuit, except the starting vertex that closes the circuit."
+msgstr ""
+
+msgid "When no initial vertices are given all circuits are in canonical order of the vertices insertion of the graph: A circuit with vertices ``u``, ``v``: ``u`` starting circuits containing ``v`` will not be listed on ``start_vid = v`` rows."
+msgstr ""
+
+msgid "Different edge ordering gives different canonical ordering."
+msgstr ""
+
+msgid "When start vertices are given, all circuits are returned for each requested vertex it contains, and the results are grouped by ``start_vid``."
+msgstr ""
+
 msgid "Time Complexity: :math:`O((V + E) (c + 1))`"
 msgstr ""
 
-msgid ":math:`|c|` is the number of circuits in the graph."
+msgid "where :math:`|V|` is the number of vertices in the graph."
+msgstr ""
+
+msgid "where :math:`|c|` is the number of circuits in the graph."
 msgstr ""
 
 msgid "pgr_hawickCircuits(`Edges SQL`_)"
 msgstr ""
 
-msgid "Circuits present in the pgRouting :doc:`sampledata`"
+msgid "pgr_hawickCircuits(`Edges SQL`_, **start vid** [, **options**])"
 msgstr ""
 
-msgid "Id of the circuit starting from ``1``"
+msgid "pgr_hawickCircuits(`Edges SQL`_, **start vids** [, **options**])"
 msgstr ""
 
-msgid "Relative position in the path. Has value ``0`` for beginning of the path"
+msgid "**options:** ``[min_depth, max_depth, self_loops, u_turn_on_edge]``"
 msgstr ""
 
-msgid "Identifier of the starting vertex of the circuit."
+msgid "Returns set of |circuits-result|"
 msgstr ""
 
-msgid "Identifier of the ending vertex of the circuit."
+msgid "All circuits"
 msgstr ""
 
-msgid "Identifier of the node in the path from a vid to next vid."
+msgid "pgr_hawickCircuits(`Edges SQL`_ [, **options**])"
 msgstr ""
 
-msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/1_78_0/libs/graph/doc/hawick_circuits.html>`__"
+msgid "All the circuits of the pgRouting :doc:`sampledata`"
+msgstr ""
+
+msgid "When no starting vertex is given, all the circuits of the graph are returned. The result has 94 rows, one ``path_id`` for each circuit:"
+msgstr ""
+
+msgid "Single start vertex"
+msgstr ""
+
+msgid "Circuits that contain vertex :math:`10`"
+msgstr ""
+
+msgid "Many start vertices"
+msgstr ""
+
+msgid "Circuits that contain vertices :math:`\\{10, 11\\}`"
+msgstr ""
+
+msgid "The examples use the following table ``c_example``, that represent a cul_de_sac where the exit is on vertex :math:`5` and the vehicle is on vertex :math:`1` but pointing at the wrong direction of the exit."
+msgstr ""
+
+msgid "All possible ways to return to vertex :math:`1`."
+msgstr ""
+
+msgid "Exclude self loops."
+msgstr ""
+
+msgid "Exclude self loops and avoid U-turns on the same edge when possible."
+msgstr ""
+
+msgid ":bgl:`Boost: Hawick Circuit Algorithm <algorithms/cycle_detection/hawick_circuits.html>`"
+msgstr ""
+
+msgid "``pgr_hawickUniqueCircuits`` - Experimental"
+msgstr ""
+
+msgid "``pgr_hawickUniqueCircuits`` — Returns the list of unique circuits using hawick circuits algorithm."
+msgstr ""
+
+msgid "Circuit enumeration in directed graphs, where circuits that traverse the same sequence of vertices are listed only once."
+msgstr ""
+
+msgid "When a circuit has parallel arcs, the expansion with the minimum cost is kept."
+msgstr ""
+
+msgid "When ``u_turn_on_edge`` is ``false`` and the circuit can be formed with two different edges, the U-turn on the same edge is discarded, and a parallel arc that is not the minimum cost is used."
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_ [, **options**])"
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_, **start vid** [, **options**])"
+msgstr ""
+
+msgid "pgr_hawickUniqueCircuits(`Edges SQL`_, **start vids** [, **options**])"
+msgstr ""
+
+msgid "Circuits present in the pgRouting :doc:`sampledata` in canonical order."
+msgstr ""
+
+msgid "All circuits that contain vertex :math:`10`"
+msgstr ""
+
+msgid "All circuits that contain vertices :math:`\\{10, 11\\}`"
+msgstr ""
+
+msgid "All possible unique ways to return to vertex :math:`1`."
+msgstr ""
+
+msgid "black is :math:`path\\_id = 1`"
+msgstr ""
+
+msgid "purple is :math:`path\\_id = 2`"
+msgstr ""
+
+msgid "red is :math:`path\\_id = 3`"
+msgstr ""
+
+msgid "green is :math:`path\\_id = 4`"
+msgstr ""
+
+msgid "blue is :math:`path\\_id = 5`"
+msgstr ""
+
+msgid "orange is :math:`path\\_id = 6`"
+msgstr ""
+
+msgid "purple is :math:`path\\_id = 1`"
+msgstr ""
+
+msgid "red is :math:`path\\_id = 2`"
+msgstr ""
+
+msgid "green is :math:`path\\_id = 3`"
+msgstr ""
+
+msgid "blue is :math:`path\\_id = 4`"
+msgstr ""
+
+msgid "orange is :math:`path\\_id = 5`"
+msgstr ""
+
+msgid "`Boost: Hawick Circuit Algorithm <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/cycle_detection/hawick_circuits.html>`__"
 msgstr ""
 
 msgid "``pgr_isPlanar`` - Experimental"
@@ -10795,7 +11029,7 @@ msgstr ""
 msgid "The new graph is not planar because it has a :math:`K_5` subgraph. Edges in blue represent :math:`K_5` subgraph."
 msgstr ""
 
-msgid "`Boost: Boyer Myrvold <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
+msgid ":bgl:`Boost: Boyer Myrvold <algorithms/planar/boyer_myrvold.html>`"
 msgstr ""
 
 msgid "``pgr_johnson``"
@@ -10810,7 +11044,7 @@ msgstr ""
 msgid "pgr johnson(`Edges SQL`_, [``directed``])"
 msgstr ""
 
-msgid "Boost `Johnson <https://www.boost.org/libs/graph/doc/johnson_all_pairs_shortest.html>`_"
+msgid ":bgl:`Boost: Johnson <algorithms/shortest_paths/johnson_all_pairs_shortest.html>`"
 msgstr ""
 
 msgid "``pgr_kingOrdering`` - Experimental"
@@ -10843,7 +11077,7 @@ msgstr ""
 msgid "pgr_kingOrdering(`Edges SQL`_)"
 msgstr ""
 
-msgid "`Boost: King Ordering <https://www.boost.org/libs/graph/doc/king_ordering.html>`__"
+msgid ":bgl:`Boost: King Ordering <algorithms/ordering/king_ordering.html>`"
 msgstr ""
 
 msgid "``pgr_kruskal``"
@@ -10987,7 +11221,7 @@ msgstr ""
 msgid "Dominator tree of another component."
 msgstr ""
 
-msgid "`Boost: Lengauer-Tarjan dominator <https://www.boost.org/libs/graph/doc/lengauer_tarjan_dominator.htm>`__"
+msgid ":bgl:`Boost: Lengauer-Tarjan dominator <algorithms/utility/lengauer_tarjan_dominator.html>`"
 msgstr ""
 
 msgid "`Wikipedia: dominator tree <https://en.wikipedia.org/wiki/Dominator_(graph_theory)>`__"
@@ -11374,7 +11608,7 @@ msgstr ""
 msgid "A graph is considered **biconnected** if it is connected and cannot be broken into disconnected pieces by deleting any single vertex (it has no articulation points). A planar graph is one that can be drawn in two-dimensional space with no two of its edges crossing."
 msgstr ""
 
-msgid "If the graph is not connected it will treat each component as an idividual graph."
+msgid "If the graph is not connected it will treat each component as an individual graph."
 msgstr ""
 
 msgid "Run :doc:`pgr_makeConnected` to connect all components."
@@ -11431,7 +11665,7 @@ msgstr ""
 msgid "Adding the edges to the graph"
 msgstr ""
 
-msgid "`Boost: make_biconnected_planar <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/planar/make_biconnected_planar.html>`__"
+msgid ":bgl:`Boost: make_biconnected_planar <algorithms/planar/make_biconnected_planar.html>`"
 msgstr ""
 
 msgid "``pgr_makeConnected`` - Experimental"
@@ -11455,7 +11689,7 @@ msgstr ""
 msgid "List of edges that are needed to connect the graph."
 msgstr ""
 
-msgid "`Boost: make connected <https://www.boost.org/libs/graph/doc/make_connected.html>`__"
+msgid ":bgl:`Boost: make connected <algorithms/planar/make_connected.html>`"
 msgstr ""
 
 msgid "``pgr_maxCardinalityMatch``"
@@ -11515,7 +11749,7 @@ msgstr ""
 msgid "Identifier of the edge in the original query."
 msgstr ""
 
-msgid "`Boost: maximum_matching <https://www.boost.org/libs/graph/doc/maximum_matching.html>`__"
+msgid ":bgl:`Boost: maximum_matching <algorithms/network_flow/maximum_matching.html>`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Matching_%28graph_theory%29"
@@ -11566,7 +11800,7 @@ msgstr ""
 msgid "Maximum flow possible from the source(s) to the target(s)"
 msgstr ""
 
-msgid "`Boost: push relabel max flow <https://www.boost.org/libs/graph/doc/push_relabel_max_flow.html>`__"
+msgid ":bgl:`Boost: push relabel max flow <algorithms/network_flow/push_relabel_max_flow.html>`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Push%E2%80%93relabel_maximum_flow_algorithm"
@@ -11695,7 +11929,7 @@ msgstr ""
 msgid "Maximum weighted matching on a custom 5-vertex graph."
 msgstr ""
 
-msgid "`Boost: maximum_weighted_matching <https://www.boost.org/doc/libs/latest/libs/graph/doc/maximum_weighted_matching.html>`__"
+msgid ":bgl:`Boost: maximum_weighted_matching <algorithms/network_flow/maximum_weighted_matching.html>`"
 msgstr ""
 
 msgid "``pgr_pickDeliver`` - Experimental"
@@ -11917,10 +12151,10 @@ msgstr ""
 msgid "The function first computes a planar embedding with the Boyer-Myrvold planarity test, then walks faces with Boost ``planar_face_traversal``.i"
 msgstr ""
 
-msgid "Loops and paralell edges are preserved."
+msgid "Loops and parallel edges are preserved."
 msgstr ""
 
-msgid "They are used to determine the existance of an edge"
+msgid "They are used to determine the existence of an edge"
 msgstr ""
 
 msgid "Run :doc:`pgr_isPlanar` first"
@@ -12025,10 +12259,10 @@ msgstr ""
 msgid ":doc:`pgr_isPlanar`"
 msgstr ""
 
-msgid "Boost Graph Library: `Planar Face Traversal <https://www.boost.org/libs/graph/doc/planar_face_traversal.html>`__"
+msgid "Boost Graph Library: :bgl:`Planar Face Traversal <algorithms/planar/planar_face_traversal.html>`"
 msgstr ""
 
-msgid "Boost Graph Library: `Boost: Boyer Myrvold planarity <https://www.boost.org/libs/graph/doc/boyer_myrvold.html>`__"
+msgid "Boost Graph Library: :bgl:`Boost: Boyer Myrvold planarity <algorithms/planar/boyer_myrvold.html>`"
 msgstr ""
 
 msgid "Wikipedia: `Planar graph <https://en.wikipedia.org/wiki/Planar_graph>`__"
@@ -12055,7 +12289,7 @@ msgstr ""
 msgid "Minimum spanning forest of a subgraph"
 msgstr ""
 
-msgid "`Boost: Prim's algorithm documentation <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid ":bgl:`Boost: Prim's algorithm documentation <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
 msgstr ""
 
 msgid "``pgr_primBFS`` — Prim's algorithm for Minimum Spanning Tree with Depth First Search ordering."
@@ -12208,7 +12442,7 @@ msgstr ""
 msgid "pgr_sequentialVertexColoring(`Edges SQL`_)"
 msgstr ""
 
-msgid "`Boost: Sequential Vertex Coloring <https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html>`__"
+msgid ":bgl:`Boost: Sequential Vertex Coloring <algorithms/coloring/sequential_vertex_coloring.html>`"
 msgstr ""
 
 msgid "``pgr_sloanOrdering`` - Experimental"
@@ -12247,7 +12481,7 @@ msgstr ""
 msgid "Sloan ordering of Original graph from Boost example (vertices 0-9)."
 msgstr ""
 
-msgid "`Boost: Sloan Ordering <https://www.boost.org/doc/libs/latest/libs/graph/doc/sloan_ordering.htm>`__"
+msgid ":bgl:`Boost: Sloan Ordering <algorithms/ordering/sloan_ordering.html>`"
 msgstr ""
 
 msgid "``pgr_stoerWagner`` - Experimental"
@@ -12319,7 +12553,7 @@ msgstr ""
 msgid "Using :doc:`pgr_connectedComponents`"
 msgstr ""
 
-msgid "`Boost: Stoer Wagner min cut <https://www.boost.org/libs/graph/doc/stoer_wagner_min_cut.html>`__"
+msgid ":bgl:`Boost: Stoer Wagner min cut <algorithms/network_flow/stoer_wagner_min_cut.html>`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Stoer%E2%80%93Wagner_algorithm"
@@ -12346,7 +12580,7 @@ msgstr ""
 msgid "The strong components of the graph"
 msgstr ""
 
-msgid "`Boost: Strong components <https://www.boost.org/libs/graph/doc/strong_components.html>`__"
+msgid ":bgl:`Boost: Strong components <algorithms/connected_components/strong_components.html>`"
 msgstr ""
 
 msgid "wikipedia: `Strongly connected component <https://en.wikipedia.org/wiki/Strongly_connected_component>`__"
@@ -12397,7 +12631,7 @@ msgstr ""
 msgid "Graph is not a DAG"
 msgstr ""
 
-msgid "`Boost: topological sort <https://www.boost.org/libs/graph/doc/topological_sort.html>`__"
+msgid ":bgl:`Boost: topological sort <algorithms/topological_sort/topological_sort.html>`"
 msgstr ""
 
 msgid "``pgr_transitiveClosure`` - Experimental"
@@ -12454,7 +12688,7 @@ msgstr ""
 msgid "Identifiers of the vertices that are reachable from vertex v."
 msgstr ""
 
-msgid "`Boost: transitive closure <https://www.boost.org/libs/graph/doc/transitive_closure.html>`__"
+msgid ":bgl:`Boost: transitive closure <algorithms/utility/transitive_closure.html>`"
 msgstr ""
 
 msgid "https://en.wikipedia.org/wiki/Transitive_closure"
@@ -13345,7 +13579,7 @@ msgstr ""
 msgid "From boost Graph: \"The algorithm as implemented in Boost.Graph does not produce correct results on graphs with parallel edges.\""
 msgstr ""
 
-msgid "Boost: `Prim's algorithm <https://www.boost.org/libs/graph/doc/prim_minimum_spanning_tree.html>`__"
+msgid "Boost: :bgl:`Prim's algorithm <algorithms/spanning_trees/prim_minimum_spanning_tree.html>`"
 msgstr ""
 
 msgid "Wikipedia: `Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`__"
@@ -13384,7 +13618,7 @@ msgstr ""
 msgid "pgRouting 4.0.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`4.0.2`"
 msgstr ""
 
 msgid "4.0.2 Summary of changes by function"
@@ -13405,61 +13639,61 @@ msgstr ""
 msgid "4.0.2 Bug Fixes"
 msgstr ""
 
-msgid "`#3110 <https://github.com/pgRouting/pgrouting/issues/3110>`__: pgr_dijkstraVia throws std::bad_alloc when a node does not exist"
+msgid ":issue:`3110`: pgr_dijkstraVia throws std::bad_alloc when a node does not exist"
 msgstr ""
 
-msgid "`#3091 <https://github.com/pgRouting/pgrouting/issues/3091>`__: Catchment functions when negative distance do not have a standardized behaviour"
+msgid ":issue:`3091`: Catchment functions when negative distance do not have a standardized behaviour"
 msgstr ""
 
 msgid "pgRouting 4.0.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`4.0.1`"
 msgstr ""
 
 msgid "Bug Fixes"
 msgstr ""
 
-msgid "`#2966 <https://github.com/pgRouting/pgrouting/issues/2966>`__: pgr_withPoints does not pick optimal route when fraction = 1"
+msgid ":issue:`2966`: pgr_withPoints does not pick optimal route when fraction = 1"
 msgstr ""
 
-msgid "`#3034 <https://github.com/pgRouting/pgrouting/issues/3034>`__: metrics driver should not be using new"
+msgid ":issue:`3034`: metrics driver should not be using new"
 msgstr ""
 
-msgid "`#3010 <https://github.com/pgRouting/pgrouting/issues/3010>`__: Performance issue with pgr_separateTouching()"
+msgid ":issue:`3010`: Performance issue with pgr_separateTouching()"
 msgstr ""
 
 msgid "Code enhancements"
 msgstr ""
 
-msgid "`#3044 <https://github.com/pgRouting/pgrouting/issues/3044>`__: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
+msgid ":issue:`3044`: Check and fix assert.hpp for cppcoreguidelines-explicit-virtual-functions"
 msgstr ""
 
-msgid "`#3040 <https://github.com/pgRouting/pgrouting/issues/3040>`__: Check and fix cppcoreguidelines-virtual-class-destructor"
+msgid ":issue:`3040`: Check and fix cppcoreguidelines-virtual-class-destructor"
 msgstr ""
 
-msgid "`#3039 <https://github.com/pgRouting/pgrouting/issues/3039>`__: Check and fix cppcoreguidelines-special-member-functions"
+msgid ":issue:`3039`: Check and fix cppcoreguidelines-special-member-functions"
 msgstr ""
 
-msgid "`#3038 <https://github.com/pgRouting/pgrouting/issues/3038>`__: Check and fix cppcoreguidelines-prefer-member-initializer"
+msgid ":issue:`3038`: Check and fix cppcoreguidelines-prefer-member-initializer"
 msgstr ""
 
-msgid "`#3037 <https://github.com/pgRouting/pgrouting/issues/3037>`__: Check and fix cppcoreguidelines-init-variables"
+msgid ":issue:`3037`: Check and fix cppcoreguidelines-init-variables"
 msgstr ""
 
-msgid "`#3035 <https://github.com/pgRouting/pgrouting/issues/3035>`__: Pass by reference on existing drivers"
+msgid ":issue:`3035`: Pass by reference on existing drivers"
 msgstr ""
 
 msgid "Administration"
 msgstr ""
 
-msgid "`#3031 <https://github.com/pgRouting/pgrouting/issues/3031>`__: pgtap license to Creative commons and License texts standardization"
+msgid ":issue:`3031`: pgtap license to Creative commons and License texts standardization"
 msgstr ""
 
 msgid "pgRouting 4.0.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 4.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`4.0.0`"
 msgstr ""
 
 msgid "4.0.0 Build"
@@ -13675,85 +13909,85 @@ msgstr ""
 msgid "Functions promoted to official"
 msgstr ""
 
-msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__: pgr_trsp"
+msgid ":issue:`2701`: pgr_trsp"
 msgstr ""
 
-msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__: pgr_trspVia"
+msgid ":issue:`2701`: pgr_trspVia"
 msgstr ""
 
-msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__: pgr_trspVia_withPoints"
+msgid ":issue:`2701`: pgr_trspVia_withPoints"
 msgstr ""
 
-msgid "`#2701 <https://github.com/pgRouting/pgrouting/issues/2701>`__: pgr_trsp_withPoints"
+msgid ":issue:`2701`: pgr_trsp_withPoints"
 msgstr ""
 
-msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: pgr_withPoints"
+msgid ":issue:`2700`: pgr_withPoints"
 msgstr ""
 
-msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: pgr_withPointsCost"
+msgid ":issue:`2700`: pgr_withPointsCost"
 msgstr ""
 
-msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: pgr_withPointsCostMatrix"
+msgid ":issue:`2700`: pgr_withPointsCostMatrix"
 msgstr ""
 
-msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: pgr_withPointsDD"
+msgid ":issue:`2700`: pgr_withPointsDD"
 msgstr ""
 
-msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: pgr_withPointsKSP"
+msgid ":issue:`2700`: pgr_withPointsKSP"
 msgstr ""
 
-msgid "`#2700 <https://github.com/pgRouting/pgrouting/issues/2700>`__: pgr_withPointsVia"
+msgid ":issue:`2700`: pgr_withPointsVia"
 msgstr ""
 
-msgid "`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: pgr_dijkstraNear"
+msgid ":issue:`2983`: pgr_dijkstraNear"
 msgstr ""
 
-msgid "`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: pgr_dijkstraNearCost"
+msgid ":issue:`2983`: pgr_dijkstraNearCost"
 msgstr ""
 
-msgid "`#2983 <https://github.com/pgRouting/pgrouting/issues/2983>`__: pgr_dijkstraVia"
+msgid ":issue:`2983`: pgr_dijkstraVia"
 msgstr ""
 
 msgid "Signatures promoted to official"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_aStar(Combinations)"
+msgid ":issue:`2718`: pgr_aStar(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_aStarCost(Combinations)"
+msgid ":issue:`2718`: pgr_aStarCost(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_bdAstar(Combinations)"
+msgid ":issue:`2718`: pgr_bdAstar(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_bdAstarCost(Combinations)"
+msgid ":issue:`2718`: pgr_bdAstarCost(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_bdDijkstra(Combinations)"
+msgid ":issue:`2718`: pgr_bdDijkstra(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_bdDijkstraCost(Combinations)"
+msgid ":issue:`2718`: pgr_bdDijkstraCost(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_dijkstra(Combinations)"
+msgid ":issue:`2718`: pgr_dijkstra(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_dijkstraCost(Combinations)"
+msgid ":issue:`2718`: pgr_dijkstraCost(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_KSP(All signatures)"
+msgid ":issue:`2718`: pgr_KSP(All signatures)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_boykovKolmogorov(Combinations)"
+msgid ":issue:`2718`: pgr_boykovKolmogorov(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_edmondsKarp(Combinations)"
+msgid ":issue:`2718`: pgr_edmondsKarp(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_maxFlow(Combinations)"
+msgid ":issue:`2718`: pgr_maxFlow(Combinations)"
 msgstr ""
 
-msgid "`#2718 <https://github.com/pgRouting/pgrouting/issues/2718>`__: pgr_pushRelabel(Combinations)"
+msgid ":issue:`2718`: pgr_pushRelabel(Combinations)"
 msgstr ""
 
 msgid "New experimental functions."
@@ -13762,22 +13996,22 @@ msgstr ""
 msgid "Metrics"
 msgstr ""
 
-msgid "`#2951 <https://github.com/pgRouting/pgrouting/issues/2951>`__: pgr_bandwidth"
+msgid ":issue:`2951`: pgr_bandwidth"
 msgstr ""
 
 msgid "Ordering"
 msgstr ""
 
-msgid "`#2954 <https://github.com/pgRouting/pgrouting/issues/2954>`__: pgr_kingOrdering"
+msgid ":issue:`2954`: pgr_kingOrdering"
 msgstr ""
 
-msgid "`#2955 <https://github.com/pgRouting/pgrouting/issues/2955>`__: pgr_sloanOrdering"
+msgid ":issue:`2955`: pgr_sloanOrdering"
 msgstr ""
 
 msgid "SQL signatures and output standardization"
 msgstr ""
 
-msgid "`#2904 <https://github.com/pgRouting/pgrouting/issues/2904>`__: Standardize output columns of functions with different output"
+msgid ":issue:`2904`: Standardize output columns of functions with different output"
 msgstr ""
 
 msgid "columns within overloads"
@@ -13786,91 +14020,91 @@ msgstr ""
 msgid "Standardized to |short-generic-result|"
 msgstr ""
 
-msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: pgr_withPoints"
+msgid ":issue:`2905`: pgr_withPoints"
 msgstr ""
 
-msgid "`#2906 <https://github.com/pgRouting/pgrouting/issues/2906>`__: pgr_bdDijkstra"
+msgid ":issue:`2906`: pgr_bdDijkstra"
 msgstr ""
 
-msgid "`#2907 <https://github.com/pgRouting/pgrouting/issues/2907>`__: pgr_bellmanFord"
+msgid ":issue:`2907`: pgr_bellmanFord"
 msgstr ""
 
-msgid "`#2908 <https://github.com/pgRouting/pgrouting/issues/2908>`__: pgr_binaryBreadthFirstSearch"
+msgid ":issue:`2908`: pgr_binaryBreadthFirstSearch"
 msgstr ""
 
-msgid "`#2910 <https://github.com/pgRouting/pgrouting/issues/2910>`__: pgr_edwardMoore"
+msgid ":issue:`2910`: pgr_edwardMoore"
 msgstr ""
 
-msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__: pgr_dagShortestPath"
+msgid ":issue:`2913`: pgr_dagShortestPath"
 msgstr ""
 
 msgid "Standardized to |matrix-result|"
 msgstr ""
 
-msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: pgr_withPointsCost"
+msgid ":issue:`2905`: pgr_withPointsCost"
 msgstr ""
 
-msgid "`#2905 <https://github.com/pgRouting/pgrouting/issues/2905>`__: pgr_withPointsCostMatrix"
+msgid ":issue:`2905`: pgr_withPointsCostMatrix"
 msgstr ""
 
 msgid "Standardized to |generic-result|"
 msgstr ""
 
-msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: pgr_edgeDisjointPaths"
+msgid ":issue:`2909`: pgr_edgeDisjointPaths"
 msgstr ""
 
-msgid "`#2909 <https://github.com/pgRouting/pgrouting/issues/2909>`__: pgr_turnRestrictedPath"
+msgid ":issue:`2909`: pgr_turnRestrictedPath"
 msgstr ""
 
 msgid "Standardized to |result_edge_color|"
 msgstr ""
 
-msgid "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: pgr_edgeColoring"
+msgid ":issue:`2924`: pgr_edgeColoring"
 msgstr ""
 
 msgid "Standardized to |result_node_color|"
 msgstr ""
 
-msgid "`#2924 <https://github.com/pgRouting/pgrouting/issues/2924>`__: pgr_bipartite"
+msgid ":issue:`2924`: pgr_bipartite"
 msgstr ""
 
-msgid "`#2927 <https://github.com/pgRouting/pgrouting/issues/2927>`__: pgr_sequentialVertexColoring"
+msgid ":issue:`2927`: pgr_sequentialVertexColoring"
 msgstr ""
 
 msgid "Standardized to |result-spantree|"
 msgstr ""
 
-msgid "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__: pgr_breadthFirstSearch"
+msgid ":issue:`2931`: pgr_breadthFirstSearch"
 msgstr ""
 
-msgid "`#2931 <https://github.com/pgRouting/pgrouting/issues/2931>`__: pgr_depthFirstSearch"
+msgid ":issue:`2931`: pgr_depthFirstSearch"
 msgstr ""
 
 msgid "Standardized to |result_node_order|"
 msgstr ""
 
-msgid "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: pgr_topologicalSort"
+msgid ":issue:`2934`: pgr_topologicalSort"
 msgstr ""
 
 msgid "Standardized to |result-closure|"
 msgstr ""
 
-msgid "`#2934 <https://github.com/pgRouting/pgrouting/issues/2934>`__: pgr_transitiveClosure"
+msgid ":issue:`2934`: pgr_transitiveClosure"
 msgstr ""
 
 msgid "Removal of SQL deprecated signatures"
 msgstr ""
 
-msgid "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__: pgr_contraction"
+msgid ":issue:`2798`: pgr_contraction"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
+msgid ":issue:`2683`: pgr_trsp"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trspVia"
+msgid ":issue:`2683`: pgr_trspVia"
 msgstr ""
 
-msgid "`#2888 <https://github.com/pgRouting/pgrouting/issues/2888>`__: pgr_findCloseEdges"
+msgid ":issue:`2888`: pgr_findCloseEdges"
 msgstr ""
 
 msgid "pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)"
@@ -13879,328 +14113,328 @@ msgstr ""
 msgid "pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)"
 msgstr ""
 
-msgid "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__: pgr_withPointsDD"
+msgid ":issue:`2890`: pgr_withPointsDD"
 msgstr ""
 
-msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__: pgr_withPointsKSP"
+msgid ":issue:`2895`: pgr_withPointsKSP"
 msgstr ""
 
-msgid "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__: pgr_maxCardinalityMatch"
+msgid ":issue:`2899`: pgr_maxCardinalityMatch"
 msgstr ""
 
-msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: pgr_TSP"
+msgid ":issue:`2901`: pgr_TSP"
 msgstr ""
 
-msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__: pgr_TSPeuclidean"
+msgid ":issue:`2901`: pgr_TSPeuclidean"
 msgstr ""
 
 msgid "Removal of SQL deprecated functions"
 msgstr ""
 
-msgid "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__: pgr_trspViaedges"
+msgid ":issue:`2681`: pgr_trspViaedges"
 msgstr ""
 
-msgid "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__: pgr_trspViaVertices"
+msgid ":issue:`2682`: pgr_trspViaVertices"
 msgstr ""
 
-msgid "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__: pgr_alphaShape"
+msgid ":issue:`2748`: pgr_alphaShape"
 msgstr ""
 
-msgid "`#2751 <https://github.com/pgRouting/pgrouting/issues/2751>`__: pgr_createTopology"
+msgid ":issue:`2751`: pgr_createTopology"
 msgstr ""
 
-msgid "`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__: pgr_analyzeGraph"
+msgid ":issue:`2752`: pgr_analyzeGraph"
 msgstr ""
 
-msgid "`#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__: pgr_analyzeOneWay"
+msgid ":issue:`2755`: pgr_analyzeOneWay"
 msgstr ""
 
-msgid "`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__: pgr_createVerticesTable"
+msgid ":issue:`2827`: pgr_createVerticesTable"
 msgstr ""
 
-msgid "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__: pgr_nodeNetwork"
+msgid ":issue:`2886`: pgr_nodeNetwork"
 msgstr ""
 
 msgid "Removal of SQL deprecated internal functions"
 msgstr ""
 
-msgid "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ _pgr_alphaShape(text,double precision)"
+msgid ":issue:`2748` _pgr_alphaShape(text,double precision)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_checkVertTab(text,text[],integer,text)"
+msgid ":issue:`2861` _pgr_checkVertTab(text,text[],integer,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_createIndex(text,text,text,integer,text)"
+msgid ":issue:`2861` _pgr_createIndex(text,text,text,integer,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_createIndex(text,text,text,text,integer,text)"
+msgid ":issue:`2861` _pgr_createIndex(text,text,text,text,integer,text)"
 msgstr ""
 
-msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagShortestPath(text,anyarray,anyarray,boolean,boolean)"
+msgid ":issue:`2913` _pgr_dagShortestPath(text,anyarray,anyarray,boolean,boolean)"
 msgstr ""
 
-msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagShortestPath(text,text,boolean,boolean)"
+msgid ":issue:`2913` _pgr_dagShortestPath(text,text,boolean,boolean)"
 msgstr ""
 
-msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)"
+msgid ":pr:`2730` _pgr_dijkstraNear(text,anyarray,anyarray,bigint,boolean)"
 msgstr ""
 
-msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)"
+msgid ":pr:`2730` _pgr_dijkstraNear(text,anyarray,bigint,bigint,boolean)"
 msgstr ""
 
-msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstraNear(text,bigint,anyarray,bigint,boolean)"
+msgid ":pr:`2730` _pgr_dijkstraNear(text,bigint,anyarray,bigint,boolean)"
 msgstr ""
 
-msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
+msgid ":pr:`2730` _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint)"
 msgstr ""
 
-msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)"
+msgid ":pr:`2730` _pgr_dijkstra(text,anyarray,anyarray,boolean,boolean,boolean,bigint,boolean)"
 msgstr ""
 
-msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)"
+msgid ":pr:`2730` _pgr_dijkstra(text,text,boolean,boolean,bigint,boolean)"
 msgstr ""
 
-msgid "`#2730 <https://github.com/pgRouting/pgrouting/issues/2730>`__ _pgr_dijkstra(text,text,boolean,boolean,boolean)"
+msgid ":pr:`2730` _pgr_dijkstra(text,text,boolean,boolean,boolean)"
 msgstr ""
 
-msgid "`#2735 <https://github.com/pgRouting/pgrouting/issues/2735>`__ _pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)"
+msgid ":pr:`2735` _pgr_drivingDistance(text,anyarray,double precision,boolean,boolean)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_endPoint(geometry)"
+msgid ":issue:`2861` _pgr_endPoint(geometry)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ __pgr_getColumnName(text,text,integer,text)"
+msgid ":issue:`2861` __pgr_getColumnName(text,text,integer,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ __pgr_getColumnName(text,text,text,integer,text)"
+msgid ":issue:`2861` __pgr_getColumnName(text,text,text,integer,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ __pgr_getColumnType(text,text,integer,text)"
+msgid ":issue:`2861` __pgr_getColumnType(text,text,integer,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ __pgr_getColumnType(text,text,text,integer,text)"
+msgid ":issue:`2861` __pgr_getColumnType(text,text,text,integer,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ __pgr_getTableName(text,integer,text)"
+msgid ":issue:`2861` __pgr_getTableName(text,integer,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_isColumnIndexed(text,text,integer,text)"
+msgid ":issue:`2861` _pgr_isColumnIndexed(text,text,integer,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_isColumnIndexed(text,text,text,integer,text)"
+msgid ":issue:`2861` _pgr_isColumnIndexed(text,text,text,integer,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_isColumnIntable(text,text)"
+msgid ":issue:`2861` _pgr_isColumnIntable(text,text)"
 msgstr ""
 
-msgid "`#2745 <https://github.com/pgRouting/pgrouting/issues/2745>`__ _pgr_kruskal(text,anyarray,text,bigint,double precision)"
+msgid ":issue:`2745` _pgr_kruskal(text,anyarray,text,bigint,double precision)"
 msgstr ""
 
-msgid "`#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__ _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)"
+msgid ":issue:`2897` _pgr_ksp(text,anyarray,anyarray,integer,boolean,boolean,boolean)"
 msgstr ""
 
-msgid "`#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__ _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)"
+msgid ":issue:`2897` _pgr_ksp(text,bigint,bigint,integer,boolean,boolean)"
 msgstr ""
 
-msgid "`#2897 <https://github.com/pgRouting/pgrouting/issues/2897>`__ _pgr_ksp(text,text,integer,boolean,boolean)"
+msgid ":issue:`2897` _pgr_ksp(text,text,integer,boolean,boolean)"
 msgstr ""
 
-msgid "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ _pgr_maxCardinalityMatch(text,boolean)"
+msgid ":issue:`2899` _pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_msg(integer,text,text)"
+msgid ":issue:`2861` _pgr_msg(integer,text,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_onerror(boolean,integer,text,text,text,text)"
+msgid ":issue:`2861` _pgr_onerror(boolean,integer,text,text,text,text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_pointtoid(geometry,double precision,text,integer)"
+msgid ":issue:`2861` _pgr_pointtoid(geometry,double precision,text,integer)"
 msgstr ""
 
-msgid "`#2743 <https://github.com/pgRouting/pgrouting/issues/2743>`__ _pgr_prim(text,anyarray,text,bigint,double precision)"
+msgid ":issue:`2743` _pgr_prim(text,anyarray,text,bigint,double precision)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_quote_ident(text)"
+msgid ":issue:`2861` _pgr_quote_ident(text)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_startPoint(geometry)"
+msgid ":issue:`2861` _pgr_startPoint(geometry)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
+msgid ":issue:`2683` _pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _pgr_trsp(text,text,anyarray,anyarray,boolean)"
+msgid ":issue:`2683` _pgr_trsp(text,text,anyarray,anyarray,boolean)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _pgr_trsp(text,text,anyarray,bigint,boolean)"
+msgid ":issue:`2683` _pgr_trsp(text,text,anyarray,bigint,boolean)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _pgr_trsp(text,text,bigint,anyarray,boolean)"
+msgid ":issue:`2683` _pgr_trsp(text,text,bigint,anyarray,boolean)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _pgr_trsp(text,text,bigint,bigint,boolean)"
+msgid ":issue:`2683` _pgr_trsp(text,text,bigint,bigint,boolean)"
 msgstr ""
 
-msgid "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ _pgr_trspViaVertices(text,integer[],boolean,boolean,text)"
+msgid ":issue:`2682` _pgr_trspViaVertices(text,integer[],boolean,boolean,text)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ _pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+msgid ":issue:`2919` _pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ _pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+msgid ":issue:`2919` _pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ _pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)"
+msgid ":issue:`2919` _pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ _pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgid ":issue:`2901` _pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
-msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgid ":issue:`2901` _pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
-msgid "`#2861 <https://github.com/pgRouting/pgrouting/issues/2861>`__ _pgr_versionLess(text,text)"
+msgid ":issue:`2861` _pgr_versionLess(text,text)"
 msgstr ""
 
-msgid "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ _pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+msgid ":issue:`2890` _pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
 msgstr ""
 
-msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ _pgr_withPointsKSP(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)"
+msgid ":issue:`2895` _pgr_withPointsKSP(text,text,anyarray,anyarray,integer,character,boolean,boolean,boolean,boolean)"
 msgstr ""
 
-msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ _pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+msgid ":issue:`2895` _pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ _pgr_withPointsKSP(text,text,text,integer,character,boolean,boolean,boolean)"
+msgid ":issue:`2895` _pgr_withPointsKSP(text,text,text,integer,character,boolean,boolean,boolean)"
 msgstr ""
 
-msgid "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ _pgr_withPointsVia(text,bigint[],double precision[],boolean)"
+msgid ":issue:`2741` _pgr_withPointsVia(text,bigint[],double precision[],boolean)"
 msgstr ""
 
-msgid "`#2741 <https://github.com/pgRouting/pgrouting/issues/2741>`__ _pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+msgid ":issue:`2741` _pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _trsp(text,text,anyarray,anyarray,boolean)"
+msgid ":issue:`2683` _trsp(text,text,anyarray,anyarray,boolean)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _v4trsp(text,text,anyarray,anyarray,boolean)"
+msgid ":issue:`2683` _v4trsp(text,text,anyarray,anyarray,boolean)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _v4trsp(text,text,text,boolean)"
+msgid ":issue:`2683` _v4trsp(text,text,text,boolean)"
 msgstr ""
 
 msgid "Summary of functions and signatures no longer on pgrouting"
 msgstr ""
 
-msgid "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ pgr_alphashape(geometry,double precision)"
+msgid ":issue:`2748` pgr_alphashape(geometry,double precision)"
 msgstr ""
 
-msgid "`#2752 <https://github.com/pgRouting/pgrouting/issues/2752>`__ pgr_analyzegraph(text,double precision,text,text,text,text,text)"
+msgid ":issue:`2752` pgr_analyzegraph(text,double precision,text,text,text,text,text)"
 msgstr ""
 
-msgid "`#2755 <https://github.com/pgRouting/pgrouting/issues/2755>`__ pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)"
+msgid ":issue:`2755` pgr_analyzeoneway(text,text[],text[],text[],text[],boolean,text,text,text)"
 msgstr ""
 
-msgid "`#2798 <https://github.com/pgRouting/pgrouting/issues/2798>`__ pgr_contraction(text,bigint[],integer,bigint[],boolean)"
+msgid ":issue:`2798` pgr_contraction(text,bigint[],integer,bigint[],boolean)"
 msgstr ""
 
-msgid "`#2751 <https://github.com/pgRouting/pgrouting/issues/2751>`__ pgr_createtopology(text,double precision,text,text,text,text,text,boolean)"
+msgid ":issue:`2751` pgr_createtopology(text,double precision,text,text,text,text,text,boolean)"
 msgstr ""
 
-msgid "`#2827 <https://github.com/pgRouting/pgrouting/issues/2827>`__ pgr_createverticestable(text,text,text,text,text)"
+msgid ":issue:`2827` pgr_createverticestable(text,text,text,text,text)"
 msgstr ""
 
-msgid "`#2888 <https://github.com/pgRouting/pgrouting/issues/2888>`__ pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)"
+msgid ":issue:`2888` pgr_findcloseedges(text,geometry,double precision,integer,boolean,boolean)"
 msgstr ""
 
-msgid "`#2888 <https://github.com/pgRouting/pgrouting/issues/2888>`__ pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)"
+msgid ":issue:`2888` pgr_findcloseedges(text,geometry[],double precision,integer,boolean,boolean)"
 msgstr ""
 
-msgid "`#2899 <https://github.com/pgRouting/pgrouting/issues/2899>`__ pgr_maxCardinalityMatch(text,boolean)"
+msgid ":issue:`2899` pgr_maxCardinalityMatch(text,boolean)"
 msgstr ""
 
-msgid "`#2886 <https://github.com/pgRouting/pgrouting/issues/2886>`__ pgr_nodenetwork(text,double precision,text,text,text,text,boolean)"
+msgid ":issue:`2886` pgr_nodenetwork(text,double precision,text,text,text,text,boolean)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
+msgid ":issue:`2683` pgr_trsp(text,integer,double precision,integer,double precision,boolean,boolean,text)"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ pgr_trsp(text,integer,integer,boolean,boolean,text)"
+msgid ":issue:`2683` pgr_trsp(text,integer,integer,boolean,boolean,text)"
 msgstr ""
 
-msgid "`#2681 <https://github.com/pgRouting/pgrouting/issues/2681>`__ pgr_trspViaedges(text,integer[],double precision[],boolean,boolean,text)"
+msgid ":issue:`2681` pgr_trspViaedges(text,integer[],double precision[],boolean,boolean,text)"
 msgstr ""
 
-msgid "`#2682 <https://github.com/pgRouting/pgrouting/issues/2682>`__ pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
+msgid ":issue:`2682` pgr_trspViaVertices(text,anyarray,boolean,boolean,text)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_trspVia_withPoints(text,text,text,anyarray,boolean,boolean,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_trsp_withPoints(text,text,text,anyarray,anyarray,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withPoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_trsp_withPoints(text,text,text,anyarray,bigint,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withPoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_trsp_withPoints(text,text,text,bigint,anyarray,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withPoints(text,text,text,bigint,bigint,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_trsp_withPoints(text,text,text,bigint,bigint,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_trsp_withPoints(text,text,text,text,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgid ":issue:`2901` pgr_tspEuclidean(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
-msgid "`#2901 <https://github.com/pgRouting/pgrouting/issues/2901>`__ pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
+msgid ":issue:`2901` pgr_tsp(text,bigint,bigint,double precision,integer,integer,integer,double precision,double precision,double precision,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPointsCostMatrix(text,text,anyarray,boolean,character)"
+msgid ":issue:`2919` pgr_withPointsCostMatrix(text,text,anyarray,boolean,character)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPointsCost(text,text,anyarray,anyarray,boolean,character)"
+msgid ":issue:`2919` pgr_withPointsCost(text,text,anyarray,anyarray,boolean,character)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPointsCost(text,text,anyarray,bigint,boolean,character)"
+msgid ":issue:`2919` pgr_withPointsCost(text,text,anyarray,bigint,boolean,character)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPointsCost(text,text,bigint,anyarray,boolean,character)"
+msgid ":issue:`2919` pgr_withPointsCost(text,text,bigint,anyarray,boolean,character)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPointsCost(text,text,bigint,bigint,boolean,character)"
+msgid ":issue:`2919` pgr_withPointsCost(text,text,bigint,bigint,boolean,character)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPointsCost(text,text,text,boolean,character)"
+msgid ":issue:`2919` pgr_withPointsCost(text,text,text,boolean,character)"
 msgstr ""
 
-msgid "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
+msgid ":issue:`2890` pgr_withPointsDD(text,text,anyarray,double precision,boolean,character,boolean,boolean)"
 msgstr ""
 
-msgid "`#2890 <https://github.com/pgRouting/pgrouting/issues/2890>`__ pgr_withPointsDD(text,text,bigint,double precision,boolean,character,boolean)"
+msgid ":issue:`2890` pgr_withPointsDD(text,text,bigint,double precision,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2895 <https://github.com/pgRouting/pgrouting/issues/2895>`__ pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
+msgid ":issue:`2895` pgr_withPointsKSP(text,text,bigint,bigint,integer,boolean,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPoints(text,text,anyarray,anyarray,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_withPoints(text,text,anyarray,anyarray,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPoints(text,text,anyarray,bigint,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_withPoints(text,text,anyarray,bigint,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPoints(text,text,bigint,anyarray,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_withPoints(text,text,bigint,anyarray,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPoints(text,text,bigint,bigint,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_withPoints(text,text,bigint,bigint,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPoints(text,text,text,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_withPoints(text,text,text,boolean,character,boolean)"
 msgstr ""
 
-msgid "`#2919 <https://github.com/pgRouting/pgrouting/issues/2919>`__ pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
+msgid ":issue:`2919` pgr_withPointsVia(text,text,anyarray,boolean,boolean,boolean,character,boolean)"
 msgstr ""
 
 msgid "Removal of unused C/C++ code"
@@ -14254,16 +14488,16 @@ msgstr ""
 msgid "Internal C/C++ functions in legacy"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _trsp"
+msgid ":issue:`2683` _trsp"
 msgstr ""
 
-msgid "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__ _v4trsp"
+msgid ":issue:`2683` _v4trsp"
 msgstr ""
 
-msgid "`#2748 <https://github.com/pgRouting/pgrouting/issues/2748>`__ _pgr_alphaShape"
+msgid ":issue:`2748` _pgr_alphaShape"
 msgstr ""
 
-msgid "`#2913 <https://github.com/pgRouting/pgrouting/issues/2913>`__ _pgr_dagShortestPath"
+msgid ":issue:`2913` _pgr_dagShortestPath"
 msgstr ""
 
 msgid "pgRouting 3"
@@ -14278,7 +14512,7 @@ msgstr ""
 msgid "pgRouting 3.8.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.8.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.8.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.8.0`"
 msgstr ""
 
 msgid "Promotion to official function of pgRouting."
@@ -14287,22 +14521,22 @@ msgstr ""
 msgid "Metric"
 msgstr ""
 
-msgid "`#2760 <https://github.com/pgRouting/pgrouting/issues/2760>`__: Promoted to official pgr_degree in version 3.8"
+msgid ":issue:`2760`: Promoted to official pgr_degree in version 3.8"
 msgstr ""
 
 msgid "Utilities"
 msgstr ""
 
-msgid "`#2772 <https://github.com/pgRouting/pgrouting/issues/2772>`__: Promoted to official pgr_extractVertices in version 3.8"
+msgid ":issue:`2772`: Promoted to official pgr_extractVertices in version 3.8"
 msgstr ""
 
-msgid "`#2774 <https://github.com/pgRouting/pgrouting/issues/2774>`__: Promoted to official pgr_findCloseEdges in version 3.8"
+msgid ":issue:`2774`: Promoted to official pgr_findCloseEdges in version 3.8"
 msgstr ""
 
-msgid "`#2873 <https://github.com/pgRouting/pgrouting/issues/2873>`__: Promoted to official pgr_separateCrossing in version 3.8"
+msgid ":issue:`2873`: Promoted to official pgr_separateCrossing in version 3.8"
 msgstr ""
 
-msgid "`#2874 <https://github.com/pgRouting/pgrouting/issues/2874>`__: Promoted to official pgr_separateTouching in version 3.8"
+msgid ":pr:`2874`: Promoted to official pgr_separateTouching in version 3.8"
 msgstr ""
 
 msgid "Proposed functions"
@@ -14311,61 +14545,61 @@ msgstr ""
 msgid "Contraction"
 msgstr ""
 
-msgid "`#2790 <https://github.com/pgRouting/pgrouting/issues/2790>`__: pgr_contractionDeadEnd new contraction function"
+msgid ":issue:`2790`: pgr_contractionDeadEnd new contraction function"
 msgstr ""
 
-msgid "`#2791 <https://github.com/pgRouting/pgrouting/issues/2791>`__: pgr_contractionLinear new contraction function"
+msgid ":issue:`2791`: pgr_contractionLinear new contraction function"
 msgstr ""
 
-msgid "`#2536 <https://github.com/pgRouting/pgrouting/issues/2536>`__: Support for contraction hierarchies (pgr_contractionHierarchies)"
+msgid ":issue:`2536`: Support for contraction hierarchies (pgr_contractionHierarchies)"
 msgstr ""
 
-msgid "`#2848 <https://github.com/pgRouting/pgrouting/issues/2848>`__: Create pgr_separateCrossing new utility function"
+msgid ":issue:`2848`: Create pgr_separateCrossing new utility function"
 msgstr ""
 
-msgid "`#2849 <https://github.com/pgRouting/pgrouting/issues/2849>`__: Create of pgr_separateTouching new utility function"
+msgid ":issue:`2849`: Create of pgr_separateTouching new utility function"
 msgstr ""
 
 msgid "Official functions changes"
 msgstr ""
 
-msgid "`#2786 <https://github.com/pgRouting/pgrouting/issues/2786>`__: pgr_contraction(edges) new signature"
+msgid ":issue:`2786`: pgr_contraction(edges) new signature"
 msgstr ""
 
 msgid "C/C++ code enhancements"
 msgstr ""
 
-msgid "`#2802 <https://github.com/pgRouting/pgrouting/issues/2802>`__: Code reorganization on pgr_contraction"
+msgid ":issue:`2802`: Code reorganization on pgr_contraction"
 msgstr ""
 
 msgid "Other enhancements:"
 msgstr ""
 
-msgid "`#2869 <https://github.com/pgRouting/pgrouting/issues/2869>`__:"
+msgid ":issue:`2869`:"
 msgstr ""
 
 msgid "SQL code enhancements"
 msgstr ""
 
-msgid "`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__: Rewrite pgr_nodeNetwork"
+msgid ":issue:`2850`: Rewrite pgr_nodeNetwork"
 msgstr ""
 
 msgid "Deprecation of SQL functions"
 msgstr ""
 
-msgid "`#2749 <https://github.com/pgRouting/pgrouting/issues/2749>`__: Deprecate pgr_AlphaShape in 3.8"
+msgid ":issue:`2749`: Deprecate pgr_AlphaShape in 3.8"
 msgstr ""
 
-msgid "`#2750 <https://github.com/pgRouting/pgrouting/issues/2750>`__: Deprecate pgr_CreateTopology in 3.8"
+msgid ":issue:`2750`: Deprecate pgr_CreateTopology in 3.8"
 msgstr ""
 
-msgid "`#2753 <https://github.com/pgRouting/pgrouting/issues/2753>`__: Deprecate pgr_analyzeGraph in 3.8"
+msgid ":issue:`2753`: Deprecate pgr_analyzeGraph in 3.8"
 msgstr ""
 
-msgid "`#2754 <https://github.com/pgRouting/pgrouting/issues/2754>`__: Deprecate pgr_analyzeOneWay in 3.8"
+msgid ":issue:`2754`: Deprecate pgr_analyzeOneWay in 3.8"
 msgstr ""
 
-msgid "`#2826 <https://github.com/pgRouting/pgrouting/issues/2826>`__: Deprecate pgr_createVerticesTable in 3.8"
+msgid ":issue:`2826`: Deprecate pgr_createVerticesTable in 3.8"
 msgstr ""
 
 msgid "In the deprecated functions:"
@@ -14383,22 +14617,22 @@ msgstr ""
 msgid "pgRouting 3.7.3 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.3%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.7.3`"
 msgstr ""
 
-msgid "`#2731 <https://github.com/pgRouting/pgrouting/issues/2731>`__: Build Failure on Ubuntu 22"
+msgid ":issue:`2731`: Build Failure on Ubuntu 22"
 msgstr ""
 
 msgid "pgRouting 3.7.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.7.2`"
 msgstr ""
 
 msgid "Build"
 msgstr ""
 
-msgid "`#2713 <https://github.com/pgRouting/pgrouting/issues/2713>`__: cmake missing some policies and min version"
+msgid ":issue:`2713`: cmake missing some policies and min version"
 msgstr ""
 
 msgid "Using OLD policies: CMP0148, CMP0144, CMP0167"
@@ -14407,22 +14641,22 @@ msgstr ""
 msgid "Minimum cmake version 3.12"
 msgstr ""
 
-msgid "`#2707 <https://github.com/pgRouting/pgrouting/issues/2707>`__: Build failure in pgRouting 3.7.1 on Alpine"
+msgid ":issue:`2707`: Build failure in pgRouting 3.7.1 on Alpine"
 msgstr ""
 
-msgid "`#2706 <https://github.com/pgRouting/pgrouting/issues/2706>`__: winnie crashing on pgr_betweennessCentrality"
+msgid ":issue:`2706`: winnie crashing on pgr_betweennessCentrality"
 msgstr ""
 
 msgid "pgRouting 3.7.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.7.1`"
 msgstr ""
 
-msgid "`#2680 <https://github.com/pgRouting/pgrouting/issues/2680>`__: fails to compile under mingw64 gcc 13.2"
+msgid ":issue:`2680`: fails to compile under mingw64 gcc 13.2"
 msgstr ""
 
-msgid "`#2689 <https://github.com/pgRouting/pgrouting/issues/2689>`__: When point is a vertex, the withPoints family do not return results."
+msgid ":issue:`2689`: When point is a vertex, the withPoints family do not return results."
 msgstr ""
 
 msgid "C/C++ code enhancemet"
@@ -14434,13 +14668,13 @@ msgstr ""
 msgid "pgRouting 3.7.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.7.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.7.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.7.0`"
 msgstr ""
 
 msgid "Support"
 msgstr ""
 
-msgid "`#2656 <https://github.com/pgRouting/pgrouting/issues/2656>`__: Stop support of PostgreSQL12 on pgrouting v3.7"
+msgid ":issue:`2656`: Stop support of PostgreSQL12 on pgrouting v3.7"
 msgstr ""
 
 msgid "Stopping support of PostgreSQL 12"
@@ -14452,7 +14686,7 @@ msgstr ""
 msgid "pgr_betweennessCentrality"
 msgstr ""
 
-msgid "`#2605 <https://github.com/pgRouting/pgrouting/issues/2605>`__: Standardize spanning tree functions output"
+msgid ":issue:`2605`: Standardize spanning tree functions output"
 msgstr ""
 
 msgid "Functions:"
@@ -14461,7 +14695,7 @@ msgstr ""
 msgid "Experimental promoted to proposed."
 msgstr ""
 
-msgid "`#2635 <https://github.com/pgRouting/pgrouting/issues/2635>`__: pgr_LineGraph ignores directed flag and use negative values for identifiers."
+msgid ":issue:`2635`: pgr_LineGraph ignores directed flag and use negative values for identifiers."
 msgstr ""
 
 msgid "``pgr_lineGraph``"
@@ -14470,13 +14704,13 @@ msgstr ""
 msgid "Code enhancement"
 msgstr ""
 
-msgid "`#2599 <https://github.com/pgRouting/pgrouting/issues/2599>`__: Driving distance cleanup"
+msgid ":pr:`2599`: Driving distance cleanup"
 msgstr ""
 
-msgid "`#2607 <https://github.com/pgRouting/pgrouting/issues/2607>`__: Read postgresql data on C++"
+msgid ":pr:`2607`: Read postgresql data on C++"
 msgstr ""
 
-msgid "`#2614 <https://github.com/pgRouting/pgrouting/issues/2614>`__: Clang tidy does not work"
+msgid ":issue:`2614`: Clang tidy does not work"
 msgstr ""
 
 msgid "pgRouting 3.6"
@@ -14485,7 +14719,7 @@ msgstr ""
 msgid "pgRouting 3.6.3 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.3%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.6.3`"
 msgstr ""
 
 msgid "Explicit minimum requirements:"
@@ -14536,7 +14770,7 @@ msgstr ""
 msgid "pgRouting 3.6.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.6.2`"
 msgstr ""
 
 msgid "Upgrade fix"
@@ -14560,70 +14794,70 @@ msgstr ""
 msgid "pgRouting 3.6.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.6.1`"
 msgstr ""
 
-msgid "`#2588 <https://github.com/pgRouting/pgrouting/issues/2588>`__: pgrouting 3.6.0 fails to build on OSX"
+msgid ":issue:`2588`: pgrouting 3.6.0 fails to build on OSX"
 msgstr ""
 
 msgid "pgRouting 3.6.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.6.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.6.0`"
 msgstr ""
 
-msgid "`#2516 <https://github.com/pgRouting/pgrouting/issues/2516>`__: Standardize output pgr_aStar"
+msgid ":pr:`2516`: Standardize output pgr_aStar"
 msgstr ""
 
 msgid "Standardize output columns to |short-generic-result|"
 msgstr ""
 
-msgid "`#2523 <https://github.com/pgRouting/pgrouting/issues/2523>`__: Standardize output pgr_bdAstar"
+msgid ":pr:`2523`: Standardize output pgr_bdAstar"
 msgstr ""
 
-msgid "`#2547 <https://github.com/pgRouting/pgrouting/issues/2547>`__: Standardize output and modifying signature pgr_KSP"
+msgid ":pr:`2547`: Standardize output and modifying signature pgr_KSP"
 msgstr ""
 
-msgid "`#2548 <https://github.com/pgRouting/pgrouting/issues/2548>`__: Standardize output pgr_drivingDistance"
+msgid ":pr:`2548`: Standardize output pgr_drivingDistance"
 msgstr ""
 
 msgid "Proposed functions changes"
 msgstr ""
 
-msgid "`#2544 <https://github.com/pgRouting/pgrouting/issues/2544>`__: Standardize output and modifying signature pgr_withPointsDD"
+msgid ":pr:`2544`: Standardize output and modifying signature pgr_withPointsDD"
 msgstr ""
 
-msgid "`#2546 <https://github.com/pgRouting/pgrouting/issues/2546>`__: Standardize output and modifying signature pgr_withPointsKSP"
+msgid ":pr:`2546`: Standardize output and modifying signature pgr_withPointsKSP"
 msgstr ""
 
-msgid "`#2504 <https://github.com/pgRouting/pgrouting/issues/2504>`__: To C++ pg data get, fetch and check."
+msgid ":pr:`2504`: To C++ pg data get, fetch and check."
 msgstr ""
 
 msgid "Stopping support for compilation with MSVC."
 msgstr ""
 
-msgid "`#2505 <https://github.com/pgRouting/pgrouting/issues/2505>`__: Using namespace."
+msgid ":pr:`2505`: Using namespace."
 msgstr ""
 
-msgid "`#2512 <https://github.com/pgRouting/pgrouting/issues/2512>`__: [Dijkstra] Removing duplicate code on Dijkstra."
+msgid ":pr:`2512`: [Dijkstra] Removing duplicate code on Dijkstra."
 msgstr ""
 
-msgid "`#2517 <https://github.com/pgRouting/pgrouting/issues/2517>`__: Astar code simplification."
+msgid ":pr:`2517`: Astar code simplification."
 msgstr ""
 
-msgid "`#2521 <https://github.com/pgRouting/pgrouting/issues/2521>`__: Dijkstra code simplification."
+msgid ":pr:`2521`: Dijkstra code simplification."
 msgstr ""
 
-msgid "`#2522 <https://github.com/pgRouting/pgrouting/issues/2522>`__: bdAstar code simplification."
+msgid ":pr:`2522`: bdAstar code simplification."
 msgstr ""
 
-msgid "`#2490 <https://github.com/pgRouting/pgrouting/issues/2490>`__: Automatic page history links."
+msgid ":pr:`2490`: Automatic page history links."
 msgstr ""
 
 msgid "..rubric:: Standardize SQL"
 msgstr ""
 
-msgid "`#2555 <https://github.com/pgRouting/pgrouting/issues/2555>`__: Standardize deprecated messages"
+msgid ":pr:`2555`: Standardize deprecated messages"
 msgstr ""
 
 msgid "On new internal function: do not use named parameters and default parameters."
@@ -14635,7 +14869,7 @@ msgstr ""
 msgid "pgRouting 3.5.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.5.1`"
 msgstr ""
 
 msgid "Documentation fixes"
@@ -14659,16 +14893,16 @@ msgstr ""
 msgid "Issue fixes"
 msgstr ""
 
-msgid "`#2565 <https://github.com/pgRouting/pgrouting/issues/2565>`__: pgr_lengauerTarjanDominatorTree triggers an assertion"
+msgid ":issue:`2565`: pgr_lengauerTarjanDominatorTree triggers an assertion"
 msgstr ""
 
 msgid "SQL enhancements"
 msgstr ""
 
-msgid "`#2561 <https://github.com/pgRouting/pgrouting/issues/2561>`__: Not use wildcards on SQL"
+msgid ":pr:`2561`: Not use wildcards on SQL"
 msgstr ""
 
-msgid "`#2559 <https://github.com/pgRouting/pgrouting/issues/2559>`__: pgtap test using sampledata"
+msgid ":pr:`2559`: pgtap test using sampledata"
 msgstr ""
 
 msgid "Build fixes"
@@ -14686,7 +14920,7 @@ msgstr ""
 msgid "pgRouting 3.5.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.5.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.5.0`"
 msgstr ""
 
 msgid "Dijkstra"
@@ -14698,34 +14932,34 @@ msgstr ""
 msgid "pgRouting 3.4.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.4.2`"
 msgstr ""
 
-msgid "`#2394 <https://github.com/pgRouting/pgrouting/issues/2394>`__: pgr_bdAstar accumulates heuristic cost in visited node cost."
+msgid ":issue:`2394`: pgr_bdAstar accumulates heuristic cost in visited node cost."
 msgstr ""
 
-msgid "`#2427 <https://github.com/pgRouting/pgrouting/issues/2427>`__: pgr_createVerticesTable & pgr_createTopology, variable should be of type Record."
+msgid ":issue:`2427`: pgr_createVerticesTable & pgr_createTopology, variable should be of type Record."
 msgstr ""
 
 msgid "pgRouting 3.4.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.4.1`"
 msgstr ""
 
-msgid "`#2401 <https://github.com/pgRouting/pgrouting/issues/2401>`__: pgRouting 3.4.0 do not build docs when sphinx is too low or missing"
+msgid ":issue:`2401`: pgRouting 3.4.0 do not build docs when sphinx is too low or missing"
 msgstr ""
 
-msgid "`#2398 <https://github.com/pgRouting/pgrouting/issues/2398>`__: v3.4.0 does not upgrade from 3.3.3"
+msgid ":issue:`2398`: v3.4.0 does not upgrade from 3.3.3"
 msgstr ""
 
 msgid "pgRouting 3.4.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.4.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.4.0`"
 msgstr ""
 
-msgid "`#1891 <https://github.com/pgRouting/pgrouting/issues/1891>`__: pgr_ksp doesn't give all correct shortest path"
+msgid ":issue:`1891`: pgr_ksp doesn't give all correct shortest path"
 msgstr ""
 
 msgid "New proposed functions."
@@ -14779,9 +15013,6 @@ msgstr ""
 msgid "Unclassified"
 msgstr ""
 
-msgid "pgr_hawickCircuits"
-msgstr ""
-
 msgid "Flow functions"
 msgstr ""
 
@@ -14806,22 +15037,22 @@ msgstr ""
 msgid "pgRouting 3.3.5 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.5%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.3.5`"
 msgstr ""
 
 msgid "pgRouting 3.3.4 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.4%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.3.4`"
 msgstr ""
 
-msgid "`#2400 <https://github.com/pgRouting/pgrouting/issues/2400>`__: pgRouting 3.3.3 does not build in focal"
+msgid ":issue:`2400`: pgRouting 3.3.3 does not build in focal"
 msgstr ""
 
 msgid "pgRouting 3.3.3 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.3%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.3.3`"
 msgstr ""
 
 msgid "Ignoring optional boolean parameter, as the algorithm works only for undirected graphs."
@@ -14830,7 +15061,7 @@ msgstr ""
 msgid "pgRouting 3.3.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.3.2`"
 msgstr ""
 
 msgid "Revised documentation"
@@ -14863,46 +15094,46 @@ msgstr ""
 msgid "Restructure of the pgRouting concepts page."
 msgstr ""
 
-msgid "`#2276 <https://github.com/pgRouting/pgrouting/issues/2276>`__: edgeDisjointPaths issues with start_vid and combinations"
+msgid ":issue:`2276`: edgeDisjointPaths issues with start_vid and combinations"
 msgstr ""
 
-msgid "`#2312 <https://github.com/pgRouting/pgrouting/issues/2312>`__: pgr_extractVertices error when target is not BIGINT"
+msgid ":issue:`2312`: pgr_extractVertices error when target is not BIGINT"
 msgstr ""
 
-msgid "`#2357 <https://github.com/pgRouting/pgrouting/issues/2357>`__: Apply clang-tidy performance-*"
+msgid ":issue:`2357`: Apply clang-tidy performance-*"
 msgstr ""
 
 msgid "pgRouting 3.3.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.3.1`"
 msgstr ""
 
-msgid "`#2216 <https://github.com/pgRouting/pgrouting/issues/2216>`__: Warnings when using clang"
+msgid ":issue:`2216`: Warnings when using clang"
 msgstr ""
 
-msgid "`#2266 <https://github.com/pgRouting/pgrouting/issues/2266>`__: Error processing restrictions"
+msgid ":issue:`2266`: Error processing restrictions"
 msgstr ""
 
 msgid "pgRouting 3.3.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.3.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.3.0`"
 msgstr ""
 
-msgid "`#2057 <https://github.com/pgRouting/pgrouting/issues/2057>`__: trspViaEdges columns in different order"
+msgid ":issue:`2057`: trspViaEdges columns in different order"
 msgstr ""
 
-msgid "`#2087 <https://github.com/pgRouting/pgrouting/issues/2087>`__: pgr_extractVertices to proposed"
+msgid ":issue:`2087`: pgr_extractVertices to proposed"
 msgstr ""
 
-msgid "`#2201 <https://github.com/pgRouting/pgrouting/issues/2201>`__: pgr_depthFirstSearch to proposed"
+msgid ":issue:`2201`: pgr_depthFirstSearch to proposed"
 msgstr ""
 
-msgid "`#2202 <https://github.com/pgRouting/pgrouting/issues/2202>`__: pgr_sequentialVertexColoring to proposed"
+msgid ":issue:`2202`: pgr_sequentialVertexColoring to proposed"
 msgstr ""
 
-msgid "`#2203 <https://github.com/pgRouting/pgrouting/issues/2203>`__: pgr_dijkstraNear and pgr_dijkstraNearCost to proposed"
+msgid ":issue:`2203`: pgr_dijkstraNear and pgr_dijkstraNearCost to proposed"
 msgstr ""
 
 msgid "Coloring"
@@ -14953,22 +15184,22 @@ msgstr ""
 msgid "pgRouting 3.2.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.2.2`"
 msgstr ""
 
-msgid "`#2093 <https://github.com/pgRouting/pgrouting/issues/2093>`__: Compilation on Visual Studio"
+msgid ":issue:`2093`: Compilation on Visual Studio"
 msgstr ""
 
-msgid "`#2189 <https://github.com/pgRouting/pgrouting/issues/2189>`__: Build error on RHEL 7"
+msgid ":issue:`2189`: Build error on RHEL 7"
 msgstr ""
 
 msgid "pgRouting 3.2.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.2.1`"
 msgstr ""
 
-msgid "`#1883 <https://github.com/pgRouting/pgrouting/issues/1883>`__: pgr_TSPEuclidean crashes connection on Windows"
+msgid ":issue:`1883`: pgr_TSPEuclidean crashes connection on Windows"
 msgstr ""
 
 msgid "The solution is to use Boost::graph::metric_tsp_approx"
@@ -14983,10 +15214,10 @@ msgstr ""
 msgid "pgRouting 3.2.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.2.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.2.0`"
 msgstr ""
 
-msgid "`#1850 <https://github.com/pgRouting/pgrouting/issues/1850>`__: Change Boost min version to 1.56"
+msgid ":issue:`1850`: Change Boost min version to 1.56"
 msgstr ""
 
 msgid "Removing support for Boost v1.53, v1.54 & v1.55"
@@ -15019,7 +15250,7 @@ msgstr ""
 msgid "pgRouting 3.1.4 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.4%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.1.4`"
 msgstr ""
 
 msgid "Issues fixes"
@@ -15028,64 +15259,64 @@ msgstr ""
 msgid "pgRouting 3.1.3 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.3%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.1.3`"
 msgstr ""
 
-msgid "`#1825 <https://github.com/pgRouting/pgrouting/issues/1825>`__: Boost versions are not honored"
+msgid ":issue:`1825`: Boost versions are not honored"
 msgstr ""
 
-msgid "`#1849 <https://github.com/pgRouting/pgrouting/issues/1849>`__: Boost 1.75.0 geometry \"point_xy.hpp\" build error on macOS environment"
+msgid ":issue:`1849`: Boost 1.75.0 geometry \"point_xy.hpp\" build error on macOS environment"
 msgstr ""
 
-msgid "`#1861 <https://github.com/pgRouting/pgrouting/issues/1861>`__: vrp functions crash server"
+msgid ":issue:`1861`: vrp functions crash server"
 msgstr ""
 
 msgid "pgRouting 3.1.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.1.2`"
 msgstr ""
 
-msgid "`#1304 <https://github.com/pgRouting/pgrouting/issues/1304>`__: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function"
+msgid ":issue:`1304`: FreeBSD 12 64-bit crashes on pgr_vrOneDepot tests Experimental Function"
 msgstr ""
 
-msgid "`#1356 <https://github.com/pgRouting/pgrouting/issues/1356>`__: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed"
+msgid ":issue:`1356`: tools/testers/pg_prove_tests.sh fails when PostgreSQL port is not passed"
 msgstr ""
 
-msgid "`#1725 <https://github.com/pgRouting/pgrouting/issues/1725>`__: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd"
+msgid ":issue:`1725`: Server crash on pgr_pickDeliver and pgr_vrpOneDepot on openbsd"
 msgstr ""
 
-msgid "`#1760 <https://github.com/pgRouting/pgrouting/issues/1760>`__: TSP server crash on ubuntu 20.04 #1760"
+msgid ":issue:`1760`: TSP server crash on ubuntu 20.04 #1760"
 msgstr ""
 
-msgid "`#1770 <https://github.com/pgRouting/pgrouting/issues/1770>`__: Remove warnings when using clang compiler"
+msgid ":issue:`1770`: Remove warnings when using clang compiler"
 msgstr ""
 
 msgid "pgRouting 3.1.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.1.1`"
 msgstr ""
 
-msgid "`#1733 <https://github.com/pgRouting/pgrouting/issues/1733>`__: pgr_bdAstar fails when source or target vertex does not exist in the graph"
+msgid ":issue:`1733`: pgr_bdAstar fails when source or target vertex does not exist in the graph"
 msgstr ""
 
-msgid "`#1647 <https://github.com/pgRouting/pgrouting/issues/1647>`__: Linear Contraction contracts self loops"
+msgid ":issue:`1647`: Linear Contraction contracts self loops"
 msgstr ""
 
-msgid "`#1640 <https://github.com/pgRouting/pgrouting/issues/1640>`__: pgr_withPoints fails when points_sql is empty"
+msgid ":issue:`1640`: pgr_withPoints fails when points_sql is empty"
 msgstr ""
 
-msgid "`#1616 <https://github.com/pgRouting/pgrouting/issues/1616>`__: Path evaluation on C++ not updated before the results go back to C"
+msgid ":issue:`1616`: Path evaluation on C++ not updated before the results go back to C"
 msgstr ""
 
-msgid "`#1300 <https://github.com/pgRouting/pgrouting/issues/1300>`__: pgr_chinesePostman crash on test data"
+msgid ":issue:`1300`: pgr_chinesePostman crash on test data"
 msgstr ""
 
 msgid "pgRouting 3.1.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.1.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.1.0`"
 msgstr ""
 
 msgid "pgr_dijkstra(combinations)"
@@ -15106,13 +15337,13 @@ msgstr ""
 msgid "pgRouting 3.0.6 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.6 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.6%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.0.6`"
 msgstr ""
 
 msgid "pgRouting 3.0.5 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.5%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.0.5`"
 msgstr ""
 
 msgid "Backport issue fixes"
@@ -15121,58 +15352,58 @@ msgstr ""
 msgid "pgRouting 3.0.4 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.4%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.0.4`"
 msgstr ""
 
 msgid "pgRouting 3.0.3 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.3%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.0.3`"
 msgstr ""
 
 msgid "pgRouting 3.0.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.0.2`"
 msgstr ""
 
-msgid "`#1378 <https://github.com/pgRouting/pgrouting/issues/1378>`__: Visual Studio build failing"
+msgid ":issue:`1378`: Visual Studio build failing"
 msgstr ""
 
 msgid "pgRouting 3.0.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.0.1`"
 msgstr ""
 
-msgid "`#232 <https://github.com/pgRouting/pgrouting/issues/232>`__: Honor client cancel requests in C /C++ code"
+msgid ":issue:`232`: Honor client cancel requests in C /C++ code"
 msgstr ""
 
 msgid "pgRouting 3.0.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 3.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%203.0.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`3.0.0`"
 msgstr ""
 
 msgid "Fixed Issues"
 msgstr ""
 
-msgid "`#1153 <https://github.com/pgRouting/pgrouting/issues/1153>`__: Renamed pgr_eucledianTSP to pgr_TSPeuclidean"
+msgid ":issue:`1153`: Renamed pgr_eucledianTSP to pgr_TSPeuclidean"
 msgstr ""
 
-msgid "`#1188 <https://github.com/pgRouting/pgrouting/issues/1188>`__: Removed CGAL dependency"
+msgid ":pr:`1188`: Removed CGAL dependency"
 msgstr ""
 
-msgid "`#1002 <https://github.com/pgRouting/pgrouting/issues/1002>`__: Fixed contraction issues:"
+msgid ":issue:`1002`: Fixed contraction issues:"
 msgstr ""
 
-msgid "`#1004 <https://github.com/pgRouting/pgrouting/issues/1004>`__: Contracts when forbidden vertices do not belong to graph"
+msgid ":issue:`1004`: Contracts when forbidden vertices do not belong to graph"
 msgstr ""
 
-msgid "`#1005 <https://github.com/pgRouting/pgrouting/issues/1005>`__: Intermideate results eliminated"
+msgid ":issue:`1005`: Intermideate results eliminated"
 msgstr ""
 
-msgid "`#1006 <https://github.com/pgRouting/pgrouting/issues/1006>`__: No loss of information"
+msgid ":issue:`1006`: No loss of information"
 msgstr ""
 
 msgid "New Functions"
@@ -15424,37 +15655,37 @@ msgstr ""
 msgid "pgRouting 2.6.3 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.3%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.6.3`"
 msgstr ""
 
-msgid "`#1219 <https://github.com/pgRouting/pgrouting/issues/1219>`__: Implicit cast for via_path integer to text"
+msgid ":pr:`1219`: Implicit cast for via_path integer to text"
 msgstr ""
 
-msgid "`#1193 <https://github.com/pgRouting/pgrouting/issues/1193>`__: Fixed pgr_pointsAsPolygon breaking when comparing strings in WHERE clause"
+msgid ":pr:`1193`: Fixed pgr_pointsAsPolygon breaking when comparing strings in WHERE clause"
 msgstr ""
 
-msgid "`#1185 <https://github.com/pgRouting/pgrouting/issues/1185>`__: Improve FindPostgreSQL.cmake"
+msgid ":pr:`1185`: Improve FindPostgreSQL.cmake"
 msgstr ""
 
 msgid "pgRouting 2.6.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.6.2`"
 msgstr ""
 
-msgid "`#1152 <https://github.com/pgRouting/pgrouting/issues/1152>`__: Fixes driving distance when vertex is not part of the graph"
+msgid ":issue:`1152`: Fixes driving distance when vertex is not part of the graph"
 msgstr ""
 
-msgid "`#1098 <https://github.com/pgRouting/pgrouting/issues/1098>`__: Fixes windows test"
+msgid ":issue:`1098`: Fixes windows test"
 msgstr ""
 
-msgid "`#1165 <https://github.com/pgRouting/pgrouting/issues/1165>`__: Fixes build for python3 and perl5"
+msgid ":issue:`1165`: Fixes build for python3 and perl5"
 msgstr ""
 
 msgid "pgRouting 2.6.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.6.1`"
 msgstr ""
 
 msgid "Fixes server crash on several functions."
@@ -15532,7 +15763,7 @@ msgstr ""
 msgid "pgRouting 2.6.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.6.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.6.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.6.0`"
 msgstr ""
 
 msgid "pgr_lineGraphFull"
@@ -15577,7 +15808,7 @@ msgstr ""
 msgid "pgRouting 2.5.5 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.5 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.5%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.5.5`"
 msgstr ""
 
 msgid "Fixes driving distance when vertex is not part of the graph"
@@ -15592,13 +15823,13 @@ msgstr ""
 msgid "pgRouting 2.5.4 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.4%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.5.4`"
 msgstr ""
 
 msgid "pgRouting 2.5.3 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.3%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.5.3`"
 msgstr ""
 
 msgid "Fix for postgresql 11: Removed a compilation error when compiling with postgreSQL"
@@ -15607,7 +15838,7 @@ msgstr ""
 msgid "pgRouting 2.5.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.5.2`"
 msgstr ""
 
 msgid "Fix for postgresql 10.1: Removed a compiler condition"
@@ -15616,7 +15847,7 @@ msgstr ""
 msgid "pgRouting 2.5.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.5.1`"
 msgstr ""
 
 msgid "Fixed prerequisite minimum version of: cmake"
@@ -15625,7 +15856,7 @@ msgstr ""
 msgid "pgRouting 2.5.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.5.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.5.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.5.0`"
 msgstr ""
 
 msgid "enhancement:"
@@ -15688,7 +15919,7 @@ msgstr ""
 msgid "pgRouting 2.4.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.4.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.4.2`"
 msgstr ""
 
 msgid "Improvement"
@@ -15706,7 +15937,7 @@ msgstr ""
 msgid "pgRouting 2.4.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.4.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.4.1`"
 msgstr ""
 
 msgid "Fixed compiling error on macOS"
@@ -15718,7 +15949,7 @@ msgstr ""
 msgid "pgRouting 2.4.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.4.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.4.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.4.0`"
 msgstr ""
 
 msgid "Deprecated signatures."
@@ -15745,7 +15976,7 @@ msgstr ""
 msgid "pgRouting 2.3.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.3.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.3.2`"
 msgstr ""
 
 msgid "Fixed pgr_gsoc_vrppdtw crash when all orders fit on one truck."
@@ -15763,7 +15994,7 @@ msgstr ""
 msgid "pgRouting 2.3.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.3.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.3.1`"
 msgstr ""
 
 msgid "Leaks on proposed max_flow functions"
@@ -15778,7 +16009,7 @@ msgstr ""
 msgid "pgRouting 2.3.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.3.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.3.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.3.0`"
 msgstr ""
 
 msgid "pgr_eucledianTSP"
@@ -15850,7 +16081,7 @@ msgstr ""
 msgid "pgRouting 2.2.4 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.4 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.4%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.2.4`"
 msgstr ""
 
 msgid "Bogus uses of extern \"C\""
@@ -15865,7 +16096,7 @@ msgstr ""
 msgid "pgRouting 2.2.3 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.3 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.3%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.2.3`"
 msgstr ""
 
 msgid "Fixed compatibility issues with PostgreSQL 9.6."
@@ -15874,7 +16105,7 @@ msgstr ""
 msgid "pgRouting 2.2.2 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.2 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.2%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.2.2`"
 msgstr ""
 
 msgid "Fixed regression error on pgr_drivingDistance"
@@ -15883,7 +16114,7 @@ msgstr ""
 msgid "pgRouting 2.2.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.2.1`"
 msgstr ""
 
 msgid "Server crash fix on pgr_alphaShape"
@@ -15895,7 +16126,7 @@ msgstr ""
 msgid "pgRouting 2.2.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.2.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.2.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.2.0`"
 msgstr ""
 
 msgid "Improvements"
@@ -15985,7 +16216,7 @@ msgstr ""
 msgid "pgRouting 2.1.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.1.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.1.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.1.0`"
 msgstr ""
 
 msgid "Refactored"
@@ -16096,7 +16327,7 @@ msgstr ""
 msgid "pgRouting 2.0.1 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.0.1 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.1%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.0.1`"
 msgstr ""
 
 msgid "Minor bug fixes."
@@ -16108,7 +16339,7 @@ msgstr ""
 msgid "pgRouting 2.0.0 Release Notes"
 msgstr ""
 
-msgid "To see all issues & pull requests closed by this release see the `Github milestone for 2.0.0 <https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%202.0.0%22>`__"
+msgid "To see all issues & pull requests closed by this release see the :milestone:`2.0.0`"
 msgstr ""
 
 msgid "With the release of pgRouting 2.0.0 the library has abandoned backwards compatibility to `pgRouting 1.0`_ releases. The main Goals for this release are:"
@@ -16525,10 +16756,10 @@ msgstr ""
 msgid "There are two mailing lists for pgRouting hosted on OSGeo discourse server:"
 msgstr ""
 
-msgid "User mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-users/"
+msgid "User mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-users/18"
 msgstr ""
 
-msgid "Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/"
+msgid "Developer mailing list: https://discourse.osgeo.org/c/pgrouting/pgrouting-dev/17"
 msgstr ""
 
 msgid "Subscribe: https://discourse.osgeo.org/g/pgrouting-dev"
@@ -16558,10 +16789,13 @@ msgstr ""
 msgid "**Website**"
 msgstr ""
 
-msgid "Germany, Japan"
+msgid "Erosion"
 msgstr ""
 
-msgid "https://georepublic.info"
+msgid "Mexico"
+msgstr ""
+
+msgid "https://www.erosion.dev"
 msgstr ""
 
 msgid "United States"

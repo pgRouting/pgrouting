@@ -225,8 +225,7 @@ See Also
   * :doc:`pgr_boykovKolmogorov`
   * :doc:`pgr_pushRelabel`
 
-* `Boost: Edmonds Karp max flow
-  <https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html>`__
+* :bgl:`Boost: Edmonds Karp max flow <algorithms/network_flow/edmonds_karp_max_flow.html>`
 * https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm
 
 .. rubric:: Indices and tables

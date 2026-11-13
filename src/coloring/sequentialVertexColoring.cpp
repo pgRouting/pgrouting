@@ -82,9 +82,6 @@ namespace functions {
  * @param graph      the graph containing the edges
  *
  * @returns results, when results are found
- *
- * @see [boost::sequential_vertex_coloring]
- * (https://www.boost.org/libs/graph/doc/sequential_vertex_coloring.html)
  */
 std::vector<II_t_rt> sequentialVertexColoring(const pgrouting::UndirectedGraph &graph) {
     using vertices_size_type = pgrouting::UndirectedGraph::vertices_size_type;
