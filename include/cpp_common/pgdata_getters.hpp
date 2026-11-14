@@ -100,8 +100,18 @@ std::vector<IID_t_rt> get_matrixRows(const std::string&);
 /** @brief Reads the pick-Deliver orders */
 std::vector<Orders_t> get_orders(const std::string&, bool);
 
-/** @brief Read rows of points */
-std::vector<Point_on_edge_t> get_points(const std::string&);
+/**
+ * @brief Read rows of points
+ *
+ * For queries of the type:
+ * ~~~~{.c}
+ * SELECT pid, edge_id, fraction, side FROM points;
+ * ~~~~
+ *
+ * @param[in] sql The points query
+ * @returns vector of `Point_on_edge_t`
+ */
+std::vector<Point_on_edge_t> get_points(const std::string& sql);
 
 /** @brief Read rows of matrix */
 std::vector<Restriction_t> get_restrictions(const std::string&);
