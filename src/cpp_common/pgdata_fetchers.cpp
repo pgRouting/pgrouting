@@ -459,7 +459,7 @@ Vehicle_t fetch_vehicle(
         getBigInt(tuple, tupdesc, info[14]) :
         0;
     vehicle.end_node_id = with_id ?
-        (column_found(info[12].colNumber) ?
+        (column_found(info[15].colNumber) ?
          getBigInt(tuple, tupdesc, info[15]) :
          vehicle.start_node_id) :
         0;
