@@ -36,22 +36,37 @@ SET end_node_id  = start_node_id,
  end_close = start_close,
  end_service = start_service;
 
-SELECT is(
+CREATE OR REPLACE FUNCTION end_node_is_respected()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_lib_version('4.1.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_pickDeliver ignores end_node_id when end_service is omitted before v4.1.0');
+    RETURN;
+  END IF;
+
+  RETURN QUERY SELECT is(
     (
-        SELECT array_agg(DISTINCT stop_id)
-        FROM pgr_pickDeliver(
-            $$SELECT * FROM orders$$,
-            $$SELECT id, capacity, start_node_id, start_open, start_close,
-                     (SELECT p_node_id FROM orders ORDER BY id LIMIT 1) AS end_node_id,
-                     end_open, end_close
-              FROM vehicles$$,
-            $$SELECT * FROM matrix$$
-        )
-        WHERE stop_type = 6
+      SELECT array_agg(DISTINCT stop_id)
+      FROM pgr_pickDeliver(
+        $$SELECT * FROM orders$$,
+        $$SELECT id, capacity, start_node_id, start_open, start_close,
+                 (SELECT p_node_id FROM orders ORDER BY id LIMIT 1) AS end_node_id,
+                 end_open, end_close
+          FROM vehicles$$,
+        $$SELECT * FROM matrix$$
+      )
+      WHERE stop_type = 6
     ),
     ARRAY[(SELECT p_node_id FROM orders ORDER BY id LIMIT 1)]::BIGINT[],
     'end_node_id is respected when end_service is omitted'
-);
+  );
+
+END;
+$BODY$ LANGUAGE plpgsql;
+
+SELECT end_node_is_respected();
 
 CREATE OR REPLACE FUNCTION style_jobs()
 RETURNS SETOF TEXT AS
