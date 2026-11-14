@@ -121,8 +121,7 @@ See Also
 
 * :doc:`components-family`
 * :doc:`sampledata`
-* `Boost: Biconnected components & articulation points
-  <https://www.boost.org/libs/graph/doc/biconnected_components.html>`__
+* :bgl:`Boost: Biconnected components & articulation points <algorithms/connected_components/biconnected_components.html>`
 * wikipedia: `Biconnected component
   <https://en.wikipedia.org/wiki/Biconnected_component>`__
 

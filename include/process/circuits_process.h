@@ -1,12 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: circuits_rt.h
+File: circuits_process.h
 
-Copyright (c) 2015-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2022 Nitish Chauhan
-mail: nitishchauhan002@gmail.com
+Design of one process & driver file by
+Copyright (c) 2026 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -25,31 +25,40 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
-/*! @file */
 
-#ifndef INCLUDE_C_TYPES_CIRCUITS_RT_H_
-#define INCLUDE_C_TYPES_CIRCUITS_RT_H_
+#ifndef INCLUDE_PROCESS_CIRCUITS_PROCESS_H_
+#define INCLUDE_PROCESS_CIRCUITS_PROCESS_H_
 #pragma once
 
-/* for int64_t */
 #ifdef __cplusplus
-#   include <cstdint>
+#include <cstddef>
+#include <cstdint>
+using Path_rt = struct Path_rt;
+using ArrayType = struct ArrayType;
 #else
-#   include <stdint.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+typedef struct Path_rt Path_rt;
+typedef struct ArrayType ArrayType;
 #endif
 
-/**************************************************************************
- * return type for circuit
- * ***********************************************************************/
-struct circuits_rt {
-    int circuit_id;
-    int circuit_path_seq;
-    int64_t start_vid;
-    int64_t end_vid;
-    int64_t node;
-    int64_t edge;
-    double cost;
-    double agg_cost;
-};
+#include "c_common/enums.h"
 
-#endif  // INCLUDE_C_TYPES_CIRCUITS_RT_H_
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void pgr_process_circuits(
+        const char*,
+        ArrayType*,
+        int64_t, int64_t, bool, bool,
+
+        enum Which,
+        Path_rt**, size_t*);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif  // INCLUDE_PROCESS_CIRCUITS_PROCESS_H_

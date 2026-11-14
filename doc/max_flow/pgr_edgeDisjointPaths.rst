@@ -234,8 +234,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`flow-family`
-* `Boost: Boykov Kolmogorov max flow
-  <https://www.boost.org/libs/graph/doc/boykov_kolmogorov_max_flow.html>`__
+* :bgl:`Boost: Boykov Kolmogorov max flow <algorithms/network_flow/boykov_kolmogorov_max_flow.html>`
 
 .. rubric:: Indices and tables
 

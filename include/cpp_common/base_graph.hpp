@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <limits>
 #include <string>
 #include <cstdint>
+#include <utility>
 
 #include <boost/graph/iteration_macros.hpp>
 #include <boost/config.hpp>
@@ -331,11 +332,65 @@ class Pgr_base_graph {
          }
      }
 
+     /** @brief Inserts the vertices first, then the edges
+       The vertices are inserted so they get the lowest vertex indexes.
+       @param edges
+       @param vids vertices to insert before the edges
+     */
+     template <typename T>
+     void insert_edges(const std::vector<T> &edges, const std::set<int64_t> &vids) {
+         insert_vertices(vids);
+         insert_edges(edges);
+     }
+
+
+     template <typename T> void insert_edges_no_parallel(const std::vector<T> &edges) {
+         for (const auto &edge : edges) {
+             graph_add_edge_no_parallel(edge);
+         }
+     }
+
+     /** @brief Inserts the vertices first, then the non parallel edges
+       The vertices are inserted so they get the lowest vertex indexes.
+       @param edges
+       @param vids vertices to insert before the edges
+     */
+     template <typename T>
+     void insert_edges_no_parallel(const std::vector<T> &edges, const std::set<int64_t> &vids) {
+         insert_vertices(vids);
+         insert_edges_no_parallel(edges);
+     }
 
      template <typename T> void insert_min_edges_no_parallel(const std::vector<T> &edges) {
          for (const auto &edge : edges) {
              graph_add_min_edge_no_parallel(edge);
          }
+     }
+
+     /** @brief Inserts the vertices first, then the min non parallel edges
+       The vertices are inserted so they get the lowest vertex indexes.
+       @param edges
+       @param vids vertices to insert before the edges
+     */
+     template <typename T>
+     void insert_min_edges_no_parallel(const std::vector<T> &edges, const std::set<int64_t> &vids) {
+         insert_vertices(vids);
+         insert_min_edges_no_parallel(edges);
+     }
+
+     /** @brief Inserts the vertices first, then the min edges plus one parallel
+       The vertices are inserted so they get the lowest vertex indexes.
+       @param edges
+       @param vids vertices to insert before the edges
+     */
+     template <typename T>
+     void insert_min_edges_one_parallel(const std::vector<T> &edges, const std::set<int64_t> &vids) {
+         std::map<std::pair<int64_t, int64_t>, std::pair<int64_t, double>> parallel_book;
+         insert_vertices(vids);
+         for (const auto &edge : edges) {
+             graph_add_min_edge_no_parallel(edge, &parallel_book);
+         }
+         add_parallel(parallel_book);
      }
 
      template <typename T> void insert_no_edge_cycle(const std::vector<T> &edges) {
@@ -723,6 +778,16 @@ class Pgr_base_graph {
          }
 
  private:
+     /* @brief Inserts vertices so they get the lowest vertex indexes
+      * @param[in] vids vertices to insert
+      */
+     void insert_vertices(const std::set<int64_t> &vids) {
+         for (const auto &vid : vids) {
+             if (has_vertex(vid)) continue;
+             get_V(T_V(vid));
+         }
+     }
+
      void restore_edge(const T_E &edge) {
          E e;
 
@@ -863,9 +928,102 @@ class Pgr_base_graph {
          }
      }
 
-     template <typename T> void graph_add_min_edge_no_parallel(const T &edge) {
+     /** no parallel,
+      * but if an edge exists and has a different id it is replaced
+      **/
+
+     template <typename T> void graph_add_edge_no_parallel(const T &edge) {
+         if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
+
          bool inserted = false;
          E e;
+
+         /*
+          * true: for source
+          * false: for target
+          */
+         auto vm_s = get_V(T_V(edge, true));
+         auto vm_t = get_V(T_V(edge, false));
+
+         pgassert(vertices_map.find(edge.source) != vertices_map.end());
+         pgassert(vertices_map.find(edge.target) != vertices_map.end());
+
+         E e1, e2;
+         bool has_going = false;
+         bool has_coming = false;
+         boost::tie(e1, has_going) = boost::edge(vm_s, vm_t, graph);
+         boost::tie(e2, has_coming) = boost::edge(vm_t, vm_s, graph);
+
+         /* first edge on the pair: it defines both directions */
+         if (!has_going && !has_coming) {
+             if (edge.cost >= 0) {
+                 boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
+                 graph[e].cost = edge.cost;
+                 graph[e].id = edge.id;
+             }
+             if (edge.reverse_cost >= 0) {
+                 boost::tie(e, inserted) = boost::add_edge(vm_t, vm_s, graph);
+                 graph[e].cost = edge.reverse_cost;
+                 graph[e].id = edge.id;
+             }
+             return;
+         }
+
+         const double kImprovementInfinite = (std::numeric_limits<double>::max)();
+
+         /*
+          * can the new edge take a direction without creating a u-turn?
+          * (its id must differ from the id already used in the other direction)
+          */
+         bool can_go = (edge.cost >= 0) && (!has_coming || graph[e2].id != edge.id);
+         bool can_come = (edge.reverse_cost >= 0) && (!has_going || graph[e1].id != edge.id);
+
+         /* improvement of taking each direction */
+         double dg = !can_go? -kImprovementInfinite
+                     : (has_going? graph[e1].cost - edge.cost : kImprovementInfinite);
+         double dc = !can_come? -kImprovementInfinite
+                     : (has_coming? graph[e2].cost - edge.reverse_cost : kImprovementInfinite);
+
+         /*
+          * a change is mandatory when both directions use the same edge:
+          * that is exactly the u-turn we want to avoid
+          */
+         bool u_turn = has_going && has_coming && (graph[e1].id == graph[e2].id);
+
+         /* otherwise change only when a direction improves */
+         if (!u_turn && dg <= 0 && dc <= 0) return;
+
+         /* change only the best direction */
+         if (can_go && (!can_come || dg >= dc)) {
+             if (has_going) {
+                 graph[e1].cost = edge.cost;
+                 graph[e1].id = edge.id;
+             } else {
+                 boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
+                 graph[e].cost = edge.cost;
+                 graph[e].id = edge.id;
+             }
+         } else if (can_come) {
+             if (has_coming) {
+                 graph[e2].cost = edge.reverse_cost;
+                 graph[e2].id = edge.id;
+             } else {
+                 boost::tie(e, inserted) = boost::add_edge(vm_t, vm_s, graph);
+                 graph[e].cost = edge.reverse_cost;
+                 graph[e].id = edge.id;
+             }
+         }
+     }
+
+
+     template <typename T>
+     void graph_add_min_edge_no_parallel(
+             const T &edge,
+             std::map<std::pair<int64_t, int64_t>, std::pair<int64_t, double>>
+                 *parallel_book = nullptr) {
+         E e;
+         bool inserted = false;
+
          if ((edge.cost < 0) && (edge.reverse_cost < 0)) return;
 
          /*
@@ -883,8 +1041,11 @@ class Pgr_base_graph {
              boost::tie(e1, found) = boost::edge(vm_s, vm_t, graph);
              if (found) {
                  if (edge.cost < graph[e1].cost) {
+                     utility_bookkeep_parallel(parallel_book, graph[e1].id, edge.source, edge.target, graph[e1].cost);
                      graph[e1].cost = edge.cost;
                      graph[e1].id = edge.id;
+                 } else {
+                     utility_bookkeep_parallel(parallel_book, edge.id, edge.source, edge.target, edge.cost);
                  }
              } else {
                  boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
@@ -900,18 +1061,159 @@ class Pgr_base_graph {
              boost::tie(e1, found) = boost::edge(vm_t, vm_s, graph);
              if (found) {
                  if (edge.reverse_cost < graph[e1].cost) {
+                     utility_bookkeep_parallel(parallel_book, graph[e1].id, edge.target, edge.source, graph[e1].cost);
                      graph[e1].cost = edge.reverse_cost;
                      graph[e1].id = edge.id;
+                 } else {
+                     utility_bookkeep_parallel(parallel_book, edge.id, edge.target, edge.source, edge.reverse_cost);
                  }
              } else {
-                 boost::tie(e, inserted) =
-                     boost::add_edge(vm_t, vm_s, graph);
-
+                 boost::tie(e, inserted) = boost::add_edge(vm_t, vm_s, graph);
                  graph[e].cost = edge.reverse_cost;
                  graph[e].id = edge.id;
              }
          }
      }
+
+  /**
+      * @brief Bookkeep a skipped edge as a parallel candidate.
+      *
+      * The edge is a parallel edge to: en (source, target, min(en.cost, cost))
+      *
+      * Cases in the bookeeping: (X is not found)
+      * f s->t         f s->t        X            X
+      * b t->s            X       b t->s          X
+      *
+      * case 1)
+      * can not happen
+      *
+      * Case 2)
+      * The (target, source) edge exists on the book
+      * So a parallel edge (target->source) has been inserted
+      * if (cost < b.cost) then remove b, and insert the edge into book
+      *
+      * Case 3)
+      * The (target, source) edge exists on the book
+      * So a parallel edge (target->source) has been inserted
+      * if (cost < b.cost) then remove b, and insert the edge into book
+      *
+      * Case 4)
+      * Its the first parallel edge of (source,target)
+      * insert to the map
+      *
+      */
+     void utility_bookkeep_parallel(
+             std::map<std::pair<int64_t, int64_t>, std::pair<int64_t, double>> *parallel_book,
+             int64_t id, int64_t source, int64_t target, double cost) {
+         if (parallel_book == nullptr) return;
+
+         auto &book = *parallel_book;
+         auto keyf = std::make_pair(source, target);
+         auto keyb = std::make_pair(target, source);
+         auto itf = book.find(keyf);
+         auto itb = book.find(keyb);
+
+         /*
+          * Case 1
+          * Both directions are bookkept (can happen when different edges pick
+          * opposite directions for the same vertex pair).  Invariant: at most
+          * one direction is kept, so keep the cheaper one.
+          */
+         if (itf != book.end() && itb != book.end()) {
+             if (itf->second.second <= itb->second.second) {
+                 book.erase(itb);
+             } else {
+                 book.erase(itf);
+             }
+             itf = book.find(keyf);
+             itb = book.find(keyb);
+         }
+
+         if (itf != book.end() && itb == book.end() && cost < itf->second.second) {
+             /*
+              * Case 2
+              */
+             book[keyf] = std::make_pair(id, cost);
+         } else if (itf == book.end() && itb != book.end() && cost < itb->second.second) {
+             /*
+              * Case 3
+              */
+             book.erase(itb);
+             book[keyf] = std::make_pair(id, cost);
+         } else {
+             /*
+              * Case 4
+              */
+             book[keyf] = std::make_pair(id, cost);
+         }
+     }
+
+
+
+
+     /**
+      * @brief Add at most ONE parallel edge on top of the min edges.
+      *
+      * Must be called AFTER all edges have been inserted with
+      * graph_add_min_edge_no_parallel() (which bookkeeps the skipped
+      * parallel edges in parallel_book).
+      *
+      * Adds a single parallel edge (the cheapest bookkept candidate) in the
+      * direction where it provides a different-edge u-turn, but only while a
+      * self-return loop (same edge id in both directions) is in place.
+      */
+     void add_parallel(
+             std::map<std::pair<int64_t, int64_t>, std::pair<int64_t, double>> &parallel_book) {
+         /*
+          * No parallel edges
+          */
+         if (parallel_book.empty()) return;
+
+         for (const auto &[dir, info] : parallel_book) {
+             int64_t source = dir.first;
+             int64_t target = dir.second;
+             int64_t eid = info.first;
+             double  cost = info.second;
+
+             auto it_s = vertices_map.find(source);
+             auto it_t = vertices_map.find(target);
+
+             V vm_s = it_s->second;
+             V vm_t = it_t->second;
+
+             E e1, e2;
+             bool found1, found2;
+             boost::tie(e1, found1) = boost::edge(vm_s, vm_t, graph);
+             boost::tie(e2, found2) = boost::edge(vm_t, vm_s, graph);
+
+             /*
+              * just because its a parallel edge of e1
+              */
+             pgassert(found1);
+
+             /*
+              * the edges on the graph do not make a U turn at all
+              */
+             if (!found2) continue;
+
+             /*
+              * There is a one edge cycle
+              */
+             pgassert(found1 && found2);
+
+             /*
+              * the edges on the graph do not make a U turn on the same edge
+              */
+             if (graph[e1].id != graph[e2].id) continue;
+
+             E e;
+             bool inserted;
+             boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
+             graph[e].cost = cost;
+             graph[e].id = eid;
+         }
+     }
+
 
      /**
        Add edges with negative cost(either cost or reverse_cost or both)

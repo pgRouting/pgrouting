@@ -40,7 +40,7 @@ its edges crossing.
 The main characteristics are:
 
 * Works for undirected graphs.
-* If the graph is not connected it will treat each component as an idividual
+* If the graph is not connected it will treat each component as an individual
   graph.
 
   * Run :doc:`pgr_makeConnected` to connect all components.
@@ -183,8 +183,7 @@ Adding the edges to the graph
 See Also
 -------------------------------------------------------------------------------
 
-* `Boost: make_biconnected_planar
-  <https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/planar/make_biconnected_planar.html>`__
+* :bgl:`Boost: make_biconnected_planar <algorithms/planar/make_biconnected_planar.html>`
 * :doc:`sampledata`
 
 .. rubric:: Indices and tables

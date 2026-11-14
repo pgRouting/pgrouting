@@ -263,7 +263,7 @@ See Also
 -------------------------------------------------------------------------------
 
 * :doc:`sampledata`
-* `Boost: Bellman Ford <https://www.boost.org/libs/graph/doc/bellman_ford_shortest.html>`__
+* :bgl:`Boost: Bellman Ford <algorithms/shortest_paths/bellman_ford_shortest.html>`
 * https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm
 
 .. rubric:: Indices and tables
