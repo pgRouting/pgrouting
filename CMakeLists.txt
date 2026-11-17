@@ -13,10 +13,6 @@ if(POLICY CMP0144)
     cmake_policy(SET CMP0144 OLD)
 endif()
 
-if(POLICY CMP0167)
-    cmake_policy(SET CMP0167 OLD)
-endif()
-
 if(POLICY CMP0148)
     cmake_policy(SET CMP0148 OLD)
 endif()
@@ -99,14 +95,19 @@ endif()
 # Boost
 #---------------------------------------------
 
-find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
+find_package(Boost ${BOOST_MINIMUM_VERSION} MODULE REQUIRED)
+
+if (Boost_FOUND OR Boost_INCLUDE_DIR)
+    include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+endif (Boost_FOUND OR Boost_INCLUDE_DIR)
+
 if (NOT Boost_VERSION_MACRO)
     set(Boost_VERSION_MACRO ${Boost_VERSION})
 endif()
 set(BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
+message(STATUS "Found Boost: ${BOOST_VERSION}")
 add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
 
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 #---------------------------------------------
 # Clang tidy
