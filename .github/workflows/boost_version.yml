@@ -90,11 +90,7 @@ jobs:
           sudo -u postgres psql -p "${PG_PORT}" -c "CREATE DATABASE \"${PG_USER}\";"
 
       - name: Add PostgreSQL APT repository
-        run: |
-          sudo apt-get install curl ca-certificates gnupg
-          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
-          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
-            $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+        run: .github/scripts/setup_pg_repo.sh --testing
 
       - name: Install dependencies
         run: |
@@ -125,6 +121,14 @@ jobs:
           cd build
           make -j 4
           sudo make install
+
+      - name: Recreate runner role after reinstall
+        run: |
+          sudo service postgresql start
+          PG_USER=$(whoami)
+          sudo -u postgres psql -p 5432 -c "DROP ROLE IF EXISTS \"${PG_USER}\";" || true
+          sudo -u postgres psql -p 5432 -c "CREATE ROLE \"${PG_USER}\" WITH LOGIN SUPERUSER;" || true
+          sudo -u postgres psql -p 5432 -c "CREATE DATABASE \"${PG_USER}\";" 2>/dev/null || true
 
       - name: Test
         run: |

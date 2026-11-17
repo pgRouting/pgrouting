@@ -57,7 +57,7 @@ jobs:
         fail-fast: false
         matrix:
           release: [Debug, Release]
-          os: [ubuntu-latest, ubuntu-22.04]
+          os: [ubuntu-latest, ubuntu-24.04, ubuntu-22.04]
 
     steps:
       - uses: actions/checkout@v7
@@ -70,21 +70,8 @@ jobs:
           echo "PGIS=3" >> $GITHUB_ENV
           echo "PGPORT=5432" >> $GITHUB_ENV
 
-      - name: 'Raise Priority for apt.postgresql.org'
-        run: |
-          cat << EOF >> ./pgdg.pref
-          Package: *
-          Pin: release o=apt.postgresql.org
-          Pin-Priority: 600
-          EOF
-          sudo mv ./pgdg.pref /etc/apt/preferences.d/
-          sudo apt update
-
       - name: Add PostgreSQL APT repository
-        run: |
-          sudo apt-get -y purge postgresql-*
-          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg-testing main ${PGVER}" > /etc/apt/sources.list.d/pgdg.list'
-          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
+        run: .github/scripts/setup_pg_repo.sh --testing
 
       - name: Install dependencies
         run: |

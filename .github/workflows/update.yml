@@ -70,16 +70,7 @@ jobs:
           sudo -u postgres psql -p "${PG_PORT}" -c "CREATE DATABASE \"${PG_USER}\";"
 
       - name: Add PostgreSQL APT repository
-        run: |
-          sudo apt-get install curl ca-certificates gnupg
-          curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/apt.postgresql.org.gpg >/dev/null
-          sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ \
-            $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-
-      - name: Install python
-        uses: actions/setup-python@v7
-        with:
-          python-version: '3.x'
+        run: .github/scripts/setup_pg_repo.sh
 
       - name: Install dependencies
         run: |
@@ -95,6 +86,14 @@ jobs:
           wget -q https://sourceforge.net/projects/boost/files/boost/1.${{ matrix.boost_minor }}.0/boost_1_${{ matrix.boost_minor }}_0.tar.bz2
           sudo tar --bzip2 -xf boost_1_${{ matrix.boost_minor }}_0.tar.bz2
           sudo mv boost_1_${{ matrix.boost_minor }}_0/boost /usr/include/
+
+      - name: Recreate runner role after reinstall
+        run: |
+          sudo service postgresql start
+          PG_USER=$(whoami)
+          sudo -u postgres psql -p 5432 -c "DROP ROLE IF EXISTS \"${PG_USER}\";" || true
+          sudo -u postgres psql -p 5432 -c "CREATE ROLE \"${PG_USER}\" WITH LOGIN SUPERUSER;" || true
+          sudo -u postgres psql -p 5432 -c "CREATE DATABASE \"${PG_USER}\";" 2>/dev/null || true
 
       - name: get old version
         uses: actions/checkout@v7
