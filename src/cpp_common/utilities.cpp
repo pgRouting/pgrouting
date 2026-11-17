@@ -139,7 +139,12 @@ get_name(Which which) {
             return "pgr_hawickUniqueCircuits";
         case OLDHAWICKCIRCUITS:
             return "pgr_hawickCircuits(deprecated)";
+        case PICKDELIVEREUCLIDEAN:
+            return "pgr_pickDeliverEuclidean";
+        case PICKDELIVER:
+            return "pgr_pickDeliver";
         case OLDKSP:
+            return "pgr_KSP (deprecated)";
         case KSP:
             return "pgr_KSP";
         case OLDKSPWITHPOINTS:

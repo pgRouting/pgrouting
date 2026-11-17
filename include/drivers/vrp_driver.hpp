@@ -1,12 +1,12 @@
 /*PGR-GNU*****************************************************************
-File: pickDeliver_driver.h
+File: vrp_driver.hpp
 
-Copyright (c) 2007-2026 pgRouting developers
+Copyright (c) 2026-2026 pgRouting developers
 Mail: project@pgrouting.org
 
-Function's developer:
-Copyright (c) 2015 Celia Virginia Vergara Castillo
-Mail:
+Design of one process & driver file by
+Copyright (c) 2025 Celia Virginia Vergara Castillo
+Mail: vicky at erosion.dev
 
 ------
 
@@ -26,39 +26,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
  ********************************************************************PGR-GNU*/
 
-/*! @file pickDeliver_driver.h */
+#ifndef INCLUDE_DRIVERS_VRP_DRIVER_HPP_
+#define INCLUDE_DRIVERS_VRP_DRIVER_HPP_
 
-#ifndef INCLUDE_DRIVERS_PICKDELIVER_PICKDELIVER_DRIVER_H_
-#define INCLUDE_DRIVERS_PICKDELIVER_PICKDELIVER_DRIVER_H_
-#pragma once
+#include <cstddef>
+#include <cstdint>
+#include <string>
+#include <sstream>
 
-/* for size-t */
-#ifdef __cplusplus
-#   include <cstddef>
+#include "c_common/enums.h"
+
 using Schedule_rt = struct Schedule_rt;
-#else
-#   include <stddef.h>
-typedef struct Schedule_rt Schedule_rt;
-#endif
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+namespace pgrouting {
+namespace drivers {
 
-void pgr_do_pickDeliver(
-        const char*,
-        const char*,
-        const char*,
+void do_vrp(
+        const std::string&, const std::string&, const std::string&,
 
         double, int, int,
 
-        Schedule_rt**, size_t*,
+        Which,
+        Schedule_rt*&, size_t&,
+        std::ostringstream&, std::ostringstream&, std::ostringstream&);
 
-        char**, char**, char**);
+}  // namespace drivers
+}  // namespace pgrouting
 
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif  // INCLUDE_DRIVERS_PICKDELIVER_PICKDELIVER_DRIVER_H_
+#endif  // INCLUDE_DRIVERS_VRP_DRIVER_HPP_
