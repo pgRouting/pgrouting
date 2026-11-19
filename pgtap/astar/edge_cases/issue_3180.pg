@@ -1,0 +1,124 @@
+/* :file: This file is part of the pgRouting project.
+:copyright: Copyright (c) 2026-2026 pgRouting developers
+:license: Creative Commons Attribution-Share Alike 3.0 https://creativecommons.org/licenses/by-sa/3.0 */
+
+
+/*
+ * Issue #3180: undirected graph where cost and reverse_cost differ
+ *
+ * On an undirected graph an edge whose cost and reverse_cost are both non
+ * negative and different is kept as two internal edges that share the same
+ * id. pgr_aStar, pgr_aStarCost and pgr_aStarCostMatrix returned a row for
+ * each of them, so every node and edge came back twice and agg_cost added
+ * both weights. The pgr_dijkstra family uses each edge once and is the
+ * reference here.
+ *
+ * The chain below costs 7 one way and 2 the other, so the cheapest route
+ * from 1 to 6 uses each edge once at cost 2: 6 rows and agg_cost 10.
+ * The nodes sit on a line one unit apart, so the heuristic never overestimates.
+ */
+
+BEGIN;
+
+SET extra_float_digits=-3;
+
+SELECT CASE WHEN min_version('4.1.0') THEN plan(13) ELSE plan(1) END;
+
+/* builds: SELECT <cols> FROM <fn>('SELECT <incols> FROM <tbl>', <verts>, <flag><extra>) */
+CREATE OR REPLACE FUNCTION issue_3180_q(
+    fn TEXT, cols TEXT, incols TEXT, tbl TEXT, verts TEXT, flag TEXT, extra TEXT)
+RETURNS TEXT AS
+$BODY$
+  SELECT 'SELECT ' || cols || ' FROM ' || fn || '(''SELECT ' || incols
+      || ' FROM ' || tbl || ''', ' || verts || ', ' || flag || extra || ')';
+$BODY$
+LANGUAGE sql IMMUTABLE;
+
+/* the same four checks for one function: the bug, then the two controls */
+CREATE OR REPLACE FUNCTION issue_3180_variant(
+    fn TEXT, ref TEXT, cols TEXT, verts TEXT, h0 TEXT, h5 TEXT)
+RETURNS SETOF TEXT AS
+$BODY$
+DECLARE
+  inc TEXT := 'id, source, target, cost, reverse_cost, x1, y1, x2, y2';
+  rinc TEXT := 'id, source, target, cost, reverse_cost';
+BEGIN
+  RETURN QUERY SELECT set_eq(
+      issue_3180_q(fn, cols, inc, 'edges_3180', verts, 'false', h0),
+      issue_3180_q(ref, cols, rinc, 'edges_3180', verts, 'false', ''),
+      fn || ': undirected must match ' || ref || ' (agg_cost 10)');
+
+  IF h5 IS NOT NULL THEN
+    RETURN QUERY SELECT set_eq(
+        issue_3180_q(fn, cols, inc, 'edges_3180', verts, 'false', h5),
+        issue_3180_q(ref, cols, rinc, 'edges_3180', verts, 'false', ''),
+        fn || ': undirected with heuristic 5 must match ' || ref || ' (agg_cost 10)');
+  END IF;
+
+  RETURN QUERY SELECT set_eq(
+      issue_3180_q(fn, cols, inc, 'edges_3180', verts, 'true', ''),
+      issue_3180_q(ref, cols, rinc, 'edges_3180', verts, 'true', ''),
+      fn || ': control, directed matches ' || ref || ' (agg_cost 35)');
+
+  RETURN QUERY SELECT set_eq(
+      issue_3180_q(fn, cols, inc, 'edges_3180_sym', verts, 'false', ''),
+      issue_3180_q(ref, cols, rinc, 'edges_3180_sym', verts, 'false', ''),
+      fn || ': control, cost = reverse_cost matches ' || ref || ' (agg_cost 35)');
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION issue_3180_tests()
+RETURNS SETOF TEXT AS
+$BODY$
+BEGIN
+
+  IF NOT min_version('4.1.0') THEN
+    RETURN QUERY SELECT skip(1, 'pgr_aStar: Fix implemented on 4.1.0');
+    RETURN;
+  END IF;
+
+  CREATE TEMP TABLE edges_3180 AS
+  SELECT * FROM (VALUES
+    (1::BIGINT, 1::BIGINT, 2::BIGINT, 7::FLOAT, 2::FLOAT, 0::FLOAT, 0::FLOAT, 1::FLOAT, 0::FLOAT),
+    (2::BIGINT, 2::BIGINT, 3::BIGINT, 7::FLOAT, 2::FLOAT, 1::FLOAT, 0::FLOAT, 2::FLOAT, 0::FLOAT),
+    (3::BIGINT, 3::BIGINT, 4::BIGINT, 7::FLOAT, 2::FLOAT, 2::FLOAT, 0::FLOAT, 3::FLOAT, 0::FLOAT),
+    (4::BIGINT, 4::BIGINT, 5::BIGINT, 7::FLOAT, 2::FLOAT, 3::FLOAT, 0::FLOAT, 4::FLOAT, 0::FLOAT),
+    (5::BIGINT, 5::BIGINT, 6::BIGINT, 7::FLOAT, 2::FLOAT, 4::FLOAT, 0::FLOAT, 5::FLOAT, 0::FLOAT)
+  ) AS t(id, source, target, cost, reverse_cost, x1, y1, x2, y2);
+
+  /* the same chain with one weight for both directions */
+  CREATE TEMP TABLE edges_3180_sym AS
+  SELECT id, source, target, cost, cost AS reverse_cost, x1, y1, x2, y2 FROM edges_3180;
+
+  RETURN QUERY SELECT * FROM issue_3180_variant('pgr_aStar', 'pgr_dijkstra',
+      'seq, node, edge, cost, agg_cost', '1::BIGINT, 6::BIGINT',
+      ', 0, 1::FLOAT, 1::FLOAT', ', 5, 1::FLOAT, 1::FLOAT');
+
+  RETURN QUERY SELECT * FROM issue_3180_variant('pgr_aStarCost', 'pgr_dijkstraCost',
+      'start_vid, end_vid, agg_cost', '1::BIGINT, 6::BIGINT',
+      ', 0, 1::FLOAT, 1::FLOAT', ', 5, 1::FLOAT, 1::FLOAT');
+
+  RETURN QUERY SELECT * FROM issue_3180_variant('pgr_aStarCostMatrix', 'pgr_dijkstraCostMatrix',
+      'start_vid, end_vid, agg_cost', 'ARRAY[1, 6]::BIGINT[]',
+      ', 0, 1::FLOAT, 1::FLOAT', ', 5, 1::FLOAT, 1::FLOAT');
+
+  /* one row per step: an edge id must not appear twice */
+  RETURN QUERY SELECT is(
+      (SELECT count(*) - count(DISTINCT edge) FROM pgr_aStar(
+        'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges_3180',
+        1::BIGINT, 6::BIGINT, false, 0, 1::FLOAT, 1::FLOAT) WHERE edge <> -1),
+      0::BIGINT,
+      'pgr_aStar: no edge id appears twice on the undirected route');
+
+  DROP TABLE edges_3180;
+  DROP TABLE edges_3180_sym;
+
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT issue_3180_tests();
+
+SELECT * FROM finish();
+ROLLBACK;

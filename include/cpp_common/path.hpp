@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #include <algorithm>
 #include <map>
 #include <cstdint>
+#include <limits>
 
 #include "cpp_common/undefPostgresDefine.hpp"
 
@@ -193,12 +194,35 @@ class Path {
                     /* TODO(v4) add correct predecessor node */
                     path.push_back({m_end_id, -1, 0, 0, 0});
                 } else {
+                    /*
+                     * An undirected edge whose cost and reverse_cost are
+                     * both non negative and different is stored as two
+                     * internal edges that share the same id, so more than
+                     * one out-edge here can match p.edge. See base_graph.hpp
+                     * graph_add_edge and doc/src/pgRouting-concepts.rst
+                     *
+                     * Keep one row for this step: the edge that costs what
+                     * this step costs, otherwise the cheapest of the
+                     * matching edges. Same rule as
+                     * Pgr_base_graph::get_edge_id
+                     */
+                    bool found = false;
+                    double chosen = (std::numeric_limits<double>::max)();
                     for ( ; ei != ei_end; ++ei) {
-                        if (graph[*ei].id == p.edge) {
-                            auto cost = graph[*ei].cost;
-                            /* TODO(v4) add correct predecessor node */
-                            push_back({p.node, p.edge, cost, 0, 0});
+                        if (graph[*ei].id != p.edge) continue;
+                        if (graph[*ei].cost == p.cost) {
+                            chosen = graph[*ei].cost;
+                            found = true;
+                            break;
                         }
+                        if (graph[*ei].cost < chosen) {
+                            chosen = graph[*ei].cost;
+                            found = true;
+                        }
+                    }
+                    if (found) {
+                        /* TODO(v4) add correct predecessor node */
+                        push_back({p.node, p.edge, chosen, 0, 0});
                     }
                 }
                 //                last_node = p.node;
