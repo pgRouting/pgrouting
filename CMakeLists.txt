@@ -13,10 +13,6 @@ if(POLICY CMP0144)
     cmake_policy(SET CMP0144 OLD)
 endif()
 
-if(POLICY CMP0167)
-    cmake_policy(SET CMP0167 OLD)
-endif()
-
 if(POLICY CMP0148)
     cmake_policy(SET CMP0148 OLD)
 endif()
@@ -33,7 +29,7 @@ include(pgr/BuildType)
 #---------------------------------------------
 #---------------------------------------------
 
-project(PGROUTING VERSION 4.0.2
+project(PGROUTING VERSION 4.0.3
     LANGUAGES C CXX )
 set(PROJECT_VERSION_DEV "")
 string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_LOWER)
@@ -51,6 +47,7 @@ string(TIMESTAMP COMPILATION_DATE "%Y/%m/%d" UTC)
 
 set(MINORS 4.0 3.8 3.7 3.6 3.5 3.4 3.3 3.2 3.1 3.0 2.6)
 set(OLD_SIGNATURES
+    4.0.2
     4.0.1
     4.0.0
     3.8.0
@@ -98,14 +95,19 @@ endif()
 # Boost
 #---------------------------------------------
 
-find_package(Boost ${BOOST_MINIMUM_VERSION} REQUIRED)
+find_package(Boost ${BOOST_MINIMUM_VERSION} MODULE REQUIRED)
+
+if (Boost_FOUND OR Boost_INCLUDE_DIR)
+    include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+endif (Boost_FOUND OR Boost_INCLUDE_DIR)
+
 if (NOT Boost_VERSION_MACRO)
     set(Boost_VERSION_MACRO ${Boost_VERSION})
 endif()
 set(BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}")
+message(STATUS "Found Boost: ${BOOST_VERSION}")
 add_definitions(-DBOOST_ALLOW_DEPRECATED_HEADERS)
 
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 #---------------------------------------------
 # Clang tidy

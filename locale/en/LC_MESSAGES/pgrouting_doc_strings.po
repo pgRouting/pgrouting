@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 19:57+0000\n"
+"POT-Creation-Date: 2026-11-19 04:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3525,6 +3525,15 @@ msgstr ""
 msgid ":doc:`release_notes`"
 msgstr ""
 
+msgid "pgRouting 4.0.3 Release Notes"
+msgstr ""
+
+msgid "4.0.3 Bug fixes"
+msgstr ""
+
+msgid ":issue:`3176`: Boost broken links"
+msgstr ""
+
 msgid "pgRouting 4.0.2 Release Notes"
 msgstr ""
 
@@ -7036,7 +7045,7 @@ msgstr ""
 msgid "Upgrading the database"
 msgstr ""
 
-msgid "To upgrade pgRouting in the database to version 4.0.2 use the following command:"
+msgid "To upgrade pgRouting in the database to version 4.0.3 use the following command:"
 msgstr ""
 
 msgid "More information can be found in https://www.postgresql.org/docs/current/sql-createextension.html"

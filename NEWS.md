@@ -7,8 +7,15 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 
 
 
+### pgRouting 4.0.3 Release Notes
 
-### pgRouting 4.0.2 Release Notes
+4.0.3 Bug fixes
+
+* [#3176](https://github.com/pgRouting/pgrouting/issues/3176): Boost broken links
+
+</details>
+
+<details> <summary>pgRouting 4.0.2 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the
 [#4.0.2](https://github.com/pgRouting/pgrouting/issues?utf8=%E2%9C%93&q=milestone%3A%22Release%204.0.2%22)
