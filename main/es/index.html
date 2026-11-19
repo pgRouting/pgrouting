@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=33914f1f"></script>
+    <script src="_static/documentation_options.js?v=575e9f5b"></script>
     <script src="_static/doctools.js?v=fd6eb6e6"></script>
     <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
@@ -105,9 +105,13 @@
 <li><a class="reference internal" href="#functions-by-categories">Funciones por categorías</a></li>
 <li><a class="reference internal" href="#available-functions-but-not-official-pgrouting-functions">Funciones disponibles pero no oficiales de pgRouting</a></li>
 <li><a class="reference internal" href="#release-notes"><span class="xref std std-doc">release_notes</span></a><ul>
+<li><a class="reference internal" href="#pgrouting-4-0-3-release-notes">pgRouting 4.0.3 Release Notes</a><ul>
+<li><a class="reference internal" href="#bug-fixes">4.0.3 Bug fixes</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#pgrouting-4-0-2-release-notes">pgRouting 4.0.2 Release Notes</a><ul>
 <li><a class="reference internal" href="#summary-of-changes-by-function">4.0.2 Summary of changes by function</a></li>
-<li><a class="reference internal" href="#bug-fixes">4.0.2 Bug Fixes</a></li>
+<li><a class="reference internal" href="#id1">4.0.2 Bug Fixes</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#pgrouting-4-0-1-release-notes">pgRouting 4.0.1 Release Notes</a><ul>
@@ -117,7 +121,7 @@
 <li><a class="reference internal" href="#pgrouting-4-0-0-release-notes">pgRouting 4.0.0 Release Notes</a><ul>
 <li><a class="reference internal" href="#build">Construir</a></li>
 <li><a class="reference internal" href="#documentation-build">Construcción de la documentación</a></li>
-<li><a class="reference internal" href="#id1">Summary of changes by function</a></li>
+<li><a class="reference internal" href="#id2">Summary of changes by function</a></li>
 <li><a class="reference internal" href="#functions-promoted-to-official">Funciones promovidas a oficial</a></li>
 <li><a class="reference internal" href="#signatures-promoted-to-official">Firmas promovidas a oficial</a></li>
 <li><a class="reference internal" href="#new-experimental-functions">Nuevas funciones experimentales.</a></li>
@@ -183,7 +187,7 @@
 <section id="table-of-contents">
 <h1>Tabla de Contenido<a class="headerlink" href="#table-of-contents" title="Link to this heading">¶</a></h1>
 <p>pgRouting extiende la base de datos geospacial de <a class="reference external" href="https://postgis.net">PostGIS</a>/<a class="reference external" href="https://www.postgresql.org">PostgreSQL</a> para proporcionar enrutamiento geoespacial y otras funciones de análisis de red.</p>
-<p>Este es el manual para la version v4.0.2 de pgRouting.</p>
+<p>Este es el manual para la version v4.0.3 de pgRouting.</p>
 <img alt="Licencia de Creative Commons Attribution-Share Alike 3.0" class="align-left" src="_images/ccbysa.png" />
 <p>El Manual de pgRouting está bajo licencia <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 License</a>. Siéntase libre de usar este material de la manera que desee, pero le pedimos que atribuya el crédito correspondiente al proyecto pgRouting y, siempre que sea posible, visite <a class="reference external" href="https://pgrouting.org">https://pgrouting.org</a>. Para otras licencias utilizadas en pgRouting, consulte la página <a class="reference internal" href="pgRouting-introduction.html#license"><span class="std std-ref">Licencias</span></a> .</p>
 <section id="general">
@@ -426,6 +430,15 @@
 </section>
 <section id="release-notes">
 <h2><a class="reference internal" href="release_notes.html"><span class="doc">Notas de versión</span></a><a class="headerlink" href="#release-notes" title="Link to this heading">¶</a></h2>
+<section id="pgrouting-4-0-3-release-notes">
+<h3>pgRouting 4.0.3 Release Notes<a class="headerlink" href="#pgrouting-4-0-3-release-notes" title="Link to this heading">¶</a></h3>
+<section id="bug-fixes">
+<h4>4.0.3 Bug fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3176">Issue #3176</a>: Boost broken links</p></li>
+</ul>
+</section>
+</section>
 <section id="pgrouting-4-0-2-release-notes">
 <h3>pgRouting 4.0.2 Release Notes<a class="headerlink" href="#pgrouting-4-0-2-release-notes" title="Link to this heading">¶</a></h3>
 <p>To see all issues &amp; pull requests closed by this release see the
@@ -465,8 +478,8 @@
 </li>
 </ul>
 </section>
-<section id="bug-fixes">
-<h4>4.0.2 Bug Fixes<a class="headerlink" href="#bug-fixes" title="Link to this heading">¶</a></h4>
+<section id="id1">
+<h4>4.0.2 Bug Fixes<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3110">Issue #3110</a>: pgr_dijkstraVia throws std::bad_alloc when a node does not exist</p></li>
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/3091">Issue #3091</a>: Catchment functions when negative distance do not have a
@@ -508,22 +521,22 @@ standardization</p></li>
 <nav class="contents local" id="contents">
 <p class="topic-title">Contenido</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#build" id="id2">Construir</a></p></li>
-<li><p><a class="reference internal" href="#documentation-build" id="id3">Construcción de la documentación</a></p></li>
-<li><p><a class="reference internal" href="#id1" id="id4">Summary of changes by function</a></p></li>
-<li><p><a class="reference internal" href="#functions-promoted-to-official" id="id5">Funciones promovidas a oficial</a></p></li>
-<li><p><a class="reference internal" href="#signatures-promoted-to-official" id="id6">Firmas promovidas a oficial</a></p></li>
-<li><p><a class="reference internal" href="#new-experimental-functions" id="id7">Nuevas funciones experimentales.</a></p></li>
-<li><p><a class="reference internal" href="#sql-signatures-and-output-standardization" id="id8">SQL signatures and output standardization</a></p></li>
-<li><p><a class="reference internal" href="#removal-of-sql-deprecated-signatures" id="id9">Eliminación de funciones SQL obsoletas</a></p></li>
-<li><p><a class="reference internal" href="#removal-of-sql-deprecated-functions" id="id10">Eliminación de funciones obsoletas</a></p></li>
-<li><p><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions" id="id11">Eliminación de funciones internas SQL obsoletas</a></p></li>
-<li><p><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" id="id12">Resumen de funciones y firmas que ya no están en pgrouting</a></p></li>
-<li><p><a class="reference internal" href="#code-enhancements" id="id13">Mejoras del código</a></p></li>
+<li><p><a class="reference internal" href="#build" id="id3">Construir</a></p></li>
+<li><p><a class="reference internal" href="#documentation-build" id="id4">Construcción de la documentación</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id5">Summary of changes by function</a></p></li>
+<li><p><a class="reference internal" href="#functions-promoted-to-official" id="id6">Funciones promovidas a oficial</a></p></li>
+<li><p><a class="reference internal" href="#signatures-promoted-to-official" id="id7">Firmas promovidas a oficial</a></p></li>
+<li><p><a class="reference internal" href="#new-experimental-functions" id="id8">Nuevas funciones experimentales.</a></p></li>
+<li><p><a class="reference internal" href="#sql-signatures-and-output-standardization" id="id9">SQL signatures and output standardization</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-signatures" id="id10">Eliminación de funciones SQL obsoletas</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-functions" id="id11">Eliminación de funciones obsoletas</a></p></li>
+<li><p><a class="reference internal" href="#removal-of-sql-deprecated-internal-functions" id="id12">Eliminación de funciones internas SQL obsoletas</a></p></li>
+<li><p><a class="reference internal" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" id="id13">Resumen de funciones y firmas que ya no están en pgrouting</a></p></li>
+<li><p><a class="reference internal" href="#code-enhancements" id="id14">Mejoras del código</a></p></li>
 </ul>
 </nav>
 <section id="build">
-<h4><a class="toc-backref" href="#id2" role="doc-backlink">Construir</a><a class="headerlink" href="#build" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id3" role="doc-backlink">Construir</a><a class="headerlink" href="#build" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>C++ standard is std17</p>
 <ul>
@@ -545,7 +558,7 @@ standardization</p></li>
 </ul>
 </section>
 <section id="documentation-build">
-<h4><a class="toc-backref" href="#id3" role="doc-backlink">Construcción de la documentación</a><a class="headerlink" href="#documentation-build" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id4" role="doc-backlink">Construcción de la documentación</a><a class="headerlink" href="#documentation-build" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>La documentación doxygen se construye por defecto</p></li>
 <li><p>La documentación HTML se crea por defecto</p></li>
@@ -577,8 +590,8 @@ standardization</p></li>
 <li><p>To not build Doxygen documentation: <cite>-DBUILD_DOXY=OFF</cite></p></li>
 </ul>
 </section>
-<section id="id1">
-<h4><a class="toc-backref" href="#id4" role="doc-backlink">Summary of changes by function</a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h4>
+<section id="id2">
+<h4><a class="toc-backref" href="#id5" role="doc-backlink">Summary of changes by function</a><a class="headerlink" href="#id2" title="Link to this heading">¶</a></h4>
 <ul>
 <li><p>pgr_aStar</p>
 <ul class="simple">
@@ -964,7 +977,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="functions-promoted-to-official">
-<h4><a class="toc-backref" href="#id5" role="doc-backlink">Funciones promovidas a oficial</a><a class="headerlink" href="#functions-promoted-to-official" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Funciones promovidas a oficial</a><a class="headerlink" href="#functions-promoted-to-official" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">Issue #2701</a>: pgr_trsp</p></li>
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2701">Issue #2701</a>: pgr_trsp</p></li>
@@ -983,7 +996,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="signatures-promoted-to-official">
-<h4><a class="toc-backref" href="#id6" role="doc-backlink">Firmas promovidas a oficial</a><a class="headerlink" href="#signatures-promoted-to-official" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Firmas promovidas a oficial</a><a class="headerlink" href="#signatures-promoted-to-official" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">Issue #2718</a>: pgr_aStar(Combinations)</p></li>
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2718">Issue #2718</a>: pgr_aStarCost(Combinations)</p></li>
@@ -1001,7 +1014,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="new-experimental-functions">
-<h4><a class="toc-backref" href="#id7" role="doc-backlink">Nuevas funciones experimentales.</a><a class="headerlink" href="#new-experimental-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id8" role="doc-backlink">Nuevas funciones experimentales.</a><a class="headerlink" href="#new-experimental-functions" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Métricas</p>
 <ul>
@@ -1017,7 +1030,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="sql-signatures-and-output-standardization">
-<h4><a class="toc-backref" href="#id8" role="doc-backlink">SQL signatures and output standardization</a><a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">SQL signatures and output standardization</a><a class="headerlink" href="#sql-signatures-and-output-standardization" title="Link to this heading">¶</a></h4>
 <dl class="simple">
 <dt><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2904">Issue #2904</a>: Standardize output columns of functions with different output</dt><dd><p>columnas dentro de las sobrecargas</p>
 </dd>
@@ -1065,7 +1078,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-signatures">
-<h4><a class="toc-backref" href="#id9" role="doc-backlink">Eliminación de funciones SQL obsoletas</a><a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Eliminación de funciones SQL obsoletas</a><a class="headerlink" href="#removal-of-sql-deprecated-signatures" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2798">Issue #2798</a>: pgr_contraction</p>
 <ul>
@@ -1161,7 +1174,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-functions">
-<h4><a class="toc-backref" href="#id10" role="doc-backlink">Eliminación de funciones obsoletas</a><a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id11" role="doc-backlink">Eliminación de funciones obsoletas</a><a class="headerlink" href="#removal-of-sql-deprecated-functions" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2681">Issue #2681</a>: pgr_trspViaedges</p></li>
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2682">Issue #2682</a>: pgr_trspViaVertices</p></li>
@@ -1174,7 +1187,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="removal-of-sql-deprecated-internal-functions">
-<h4><a class="toc-backref" href="#id11" role="doc-backlink">Eliminación de funciones internas SQL obsoletas</a><a class="headerlink" href="#removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id12" role="doc-backlink">Eliminación de funciones internas SQL obsoletas</a><a class="headerlink" href="#removal-of-sql-deprecated-internal-functions" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">Issue #2748</a> _pgr_alphaShape(text,double precision)</p></li>
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2861">Issue #2861</a> _pgr_checkVertTab(text,text[],integer,text)</p></li>
@@ -1234,7 +1247,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="summary-of-functions-and-signatures-no-longer-on-pgrouting">
-<h4><a class="toc-backref" href="#id12" role="doc-backlink">Resumen de funciones y firmas que ya no están en pgrouting</a><a class="headerlink" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id13" role="doc-backlink">Resumen de funciones y firmas que ya no están en pgrouting</a><a class="headerlink" href="#summary-of-functions-and-signatures-no-longer-on-pgrouting" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2748">Issue #2748</a> pgr_alphashape(geometry,double precision)</p></li>
 <li><p><a class="extlink-issue reference external" href="https://github.com/pgRouting/pgrouting/issues/2752">Issue #2752</a> pgr_analyzegraph(text,double precision,text,text,text,text,text)</p></li>
@@ -1276,7 +1289,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
 </ul>
 </section>
 <section id="code-enhancements">
-<h4><a class="toc-backref" href="#id13" role="doc-backlink">Mejoras del código</a><a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h4>
+<h4><a class="toc-backref" href="#id14" role="doc-backlink">Mejoras del código</a><a class="headerlink" href="#code-enhancements" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>Eliminación de código C/C++ no utilizado</p></li>
 <li><p>Refactor the Script to build the update PostgreSQL file.</p></li>
@@ -1346,7 +1359,7 @@ integer,double precision,double precision,double precision,boolean)</p></li>
     </p>
     <p>
         &copy; Copyright 2026 pgRouting developers.<br/>
-      Actualizado por última vez en nov 09, 2026.<br/>
+      Actualizado por última vez en nov 19, 2026.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
