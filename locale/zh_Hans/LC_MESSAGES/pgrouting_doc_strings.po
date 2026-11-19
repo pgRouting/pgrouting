@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 14:13+0000\n"
+"POT-Creation-Date: 2026-11-08 20:40+0000\n"
 "PO-Revision-Date: 2025-09-22 16:28+0000\n"
 "Last-Translator: Celia Virginia Vergara Castillo <vicky@erosion.dev>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/zh_Hans/>\n"
@@ -3869,6 +3869,10 @@ msgstr "`#2850 <https://github.com/pgRouting/pgrouting/issues/2850>`__:重写 pg
 
 msgid ":issue:`3176`: Boost broken links"
 msgstr ""
+
+#, fuzzy
+msgid ":issue:`3188`: pickdeliver: Create and use process/driver pair"
+msgstr "`#2683 <https://github.com/pgRouting/pgrouting/issues/2683>`__: pgr_trsp"
 
 #, fuzzy
 msgid "4.1.0 Bug Fixes"
