@@ -88,6 +88,7 @@ To see all issues & pull requests closed by this release see the
 * [#3163](https://github.com/pgRouting/pgrouting/issues/3163): KSP & KSP WithPoints Use ShortestPath driver files
 * [#3170](https://github.com/pgRouting/pgrouting/issues/3170): pgr_hawickCircuits: wrong Boost function referenced
 * [#3176](https://github.com/pgRouting/pgrouting/issues/3176): Boost broken links
+* [#3188](https://github.com/pgRouting/pgrouting/issues/3188): pickdeliver: Create and use process/driver pair
 
 4.1.0 Bug Fixes
 
