@@ -172,12 +172,10 @@ To see all issues & pull requests closed by this release see the
 
 4.0.0 Build
 
-* C++ standard is std17
+* C++ standard: C++17.
 
-  * Using this standard, all supported toolchains across our CI matrix will work.
-  * The code is not yet modified to use std17:
-
-    * If needed: ``-DCMAKE_CXX_STANDARD=14`` to lower the standard.
+  * All supported CI toolchains are covered.
+  * To temporarily lower the standard use: ``-DCMAKE_CXX_STANDARD=14``.
 
 * The user's documentation is built by default.
 * The doxygen documentation is built by default.
