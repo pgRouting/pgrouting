@@ -160,15 +160,17 @@ namespace detail {
  */
 size_t
 count_rows(const std::vector<std::vector<double>> &matrix) {
-    int64_t count = 0;
-    for (size_t i = 0; i < matrix.size(); i++) {
-        count += std::count_if(
-                matrix[i].begin(), matrix[i].end(),
-                [](double value) {
-                return value != (std::numeric_limits<double>::max)();
-                });
+    size_t count = 0;
+
+    for (size_t i = 0; i < matrix.size(); ++i) {
+        for (size_t j = 0; j < matrix[i].size(); ++j) {
+            if (i != j &&
+                matrix[i][j] != (std::numeric_limits<double>::max)()) {
+                ++count;
+            }
+        }
     }
-    return static_cast<size_t>(count) - matrix.size();
+    return count;
 }
 
 }  // namespace detail
