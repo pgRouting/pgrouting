@@ -256,6 +256,7 @@ do_shortestPath(
                     digraph.insert_edges(edges, circuit_starts);
                     break;
 
+                case BDDIJKSTRA:
                 case KSP:
                 case OLDKSP:
                     digraph.insert_min_edges_no_parallel(edges);
@@ -304,7 +305,9 @@ do_shortestPath(
                     return;
             }
         } else {
-            if (which == KSP || which == OLDKSP) {
+            if (which == BDDIJKSTRA) {
+                undigraph.insert_edges_min(edges);
+            } else if (which == KSP || which == OLDKSP) {
                 undigraph.insert_min_edges_no_parallel(edges);
             } else {
                 undigraph.insert_edges(edges);

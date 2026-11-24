@@ -127,7 +127,7 @@ void do_astar(
 
         std::deque<Path> paths;
         if (directed) {
-            digraph.insert_edges(edges);
+            digraph.insert_min_edges_no_parallel(edges);
             switch (which) {
                 case BDASTAR:
                     paths = bdastar(digraph, combinations, heuristic, factor, epsilon, only_cost);
@@ -140,7 +140,7 @@ void do_astar(
                     return;
             }
         } else {
-            undigraph.insert_edges(edges);
+            undigraph.insert_edges_min(edges);
             switch (which) {
                 case BDASTAR:
                     paths = bdastar(undigraph, combinations, heuristic, factor, epsilon, only_cost);
