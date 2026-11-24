@@ -148,6 +148,16 @@ pgRouting 4.0
    :local:
    :depth: 1
 
+pgRouting 4.0.3 Release Notes
+-------------------------------------------------------------------------------
+
+4.0.3 Bug fixes
+...............................................................................
+
+* :issue:`3176`: Boost broken links
+* :issue:`3180`: Undirected graph with cost != reverse_cost: aStar, bdAstar and
+  bdDijkstra functions return every node and edge twice
+
 pgRouting 4.0.2 Release Notes
 -------------------------------------------------------------------------------
 
