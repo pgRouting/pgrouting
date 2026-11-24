@@ -17,7 +17,7 @@ be found in `Installation wiki
 
 To use pgRouting, PostGIS needs to be installed, please read the information
 about installation in this `Install Guide
-<https://www.postgis.us/presentations/postgis_install_guide_22.html>`__
+<https://postgis.net/documentation/getting_started/>`__
 
 .. _install-short:
 
