@@ -331,15 +331,59 @@ class Pgr_base_graph {
          }
      }
 
+     /**
+      * @brief Inserts edges storing a single undirected edge between 2 vertices
+      *
+      * cost is the minof(cost and reverse_cost).
+      * Avoids parallel edges.
+      */
+     template <typename T>
+     void insert_edges_min(const std::vector<T> &edges) {
+         pgassert(is_undirected());
+         for (const auto &edge : edges) {
+             if ((edge.cost < 0) && (edge.reverse_cost < 0)) continue;
+
+             auto vm_s = get_V(T_V(edge, true));
+             auto vm_t = get_V(T_V(edge, false));
+
+             pgassert(vertices_map.find(edge.source) != vertices_map.end());
+             pgassert(vertices_map.find(edge.target) != vertices_map.end());
+
+             double c = edge.cost;
+             double rc = edge.reverse_cost;
+             double best = -1.0;
+             if (c >= 0 && (rc < 0 || c <= rc)) best = c;
+             else if (rc >= 0) best = rc;
+
+             if (best < 0) continue;
+
+             E e1;
+             bool found = false;
+             boost::tie(e1, found) = boost::edge(vm_s, vm_t, graph);
+             if (found) {
+                 if (best < graph[e1].cost) {
+                     graph[e1].cost = best;
+                     graph[e1].id = edge.id;
+                 }
+             } else {
+                 bool inserted = false;
+                 E e;
+                 boost::tie(e, inserted) = boost::add_edge(vm_s, vm_t, graph);
+                 graph[e].cost = best;
+                 graph[e].id = edge.id;
+             }
+         }
+     }
+
 
      template <typename T> void insert_min_edges_no_parallel(const std::vector<T> &edges) {
-         for (const auto edge : edges) {
+         for (const auto &edge : edges) {
              graph_add_min_edge_no_parallel(edge);
          }
      }
 
      template <typename T> void insert_negative_edges(const std::vector<T> &edges, bool normal = true) {
-         for (const auto edge : edges) {
+         for (const auto &edge : edges) {
              graph_add_neg_edge(edge, normal);
          }
      }
