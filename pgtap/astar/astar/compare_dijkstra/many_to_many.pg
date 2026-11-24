@@ -4,72 +4,39 @@
 
 BEGIN;
 
-SELECT plan(4);
+SELECT CASE WHEN min_lib_version('4.0.3') THEN plan(16) ELSE plan(4) END;
 
 UPDATE edges SET cost = sign(cost) + 0.001 * id * id, reverse_cost = sign(reverse_cost) + 0.001 * id * id;
 
-CREATE or REPLACE FUNCTION astarCompareDijkstra(lim INTEGER default 17)
+CREATE or REPLACE FUNCTION CompareDijkstra()
 RETURNS SETOF TEXT AS
 $BODY$
-DECLARE
-inner_sql TEXT;
-dijkstra_sql TEXT;
-astar_sql TEXT;
-vids TEXT;
-data TEXT;
+
 BEGIN
-    data := ' path_seq, start_vid, end_vid, round(cost::numeric,8) AS cost, round(agg_cost::numeric,8) AS agg_cost ';
-    vids := ' ARRAY[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18] ';
 
+  IF min_lib_version('4.0.3') THEN
 
-        -----------------------
-        -- with reverse cost
-        -----------------------
-        -- DIRECTED
-        inner_sql := 'SELECT id, source, target, cost, reverse_cost, x1, y1, x2, y2 FROM edges';
-        dijkstra_sql := 'SELECT ' || data || ' FROM pgr_dijkstra($$' || inner_sql || '$$, ' || vids
-            || ',' || vids || ',  true)';
+    RETURN QUERY
+    SELECT * from compare_dijkstra_many_to_many('pgr_astar', ', x1,y1,x2,y2 ', 'edges', ',0');
+    RETURN QUERY
+    SELECT * from compare_dijkstra_many_to_many('pgr_astar', ', x1,y1,x2,y2 ', 'edges_asym', ',0');
+    RETURN QUERY
+    SELECT * from compare_dijkstra_many_to_many('pgr_astar', ', x1,y1,x2,y2 ', 'edges_asym_w_dup_ids', ',0');
+    RETURN QUERY
+    SELECT * from compare_dijkstra_many_to_many('pgr_astar', ', x1,y1,x2,y2 ', 'edges_asym_w_parallels', ',0');
 
-        astar_sql := 'SELECT ' || data || ' FROM pgr_astar($$' || inner_sql || '$$,  ' || vids
-            || ',' || vids || ',  true, heuristic := 0)';
-        RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
+  ELSE
 
-        -- UNDIRECTED
-        dijkstra_sql := 'SELECT ' || data || ' FROM pgr_dijkstra($$' || inner_sql || '$$,  ' || vids
-            || ',' || vids || ',  false)';
+    RETURN QUERY
+    SELECT * from compare_dijkstra_many_to_many('pgr_astar', ', x1,y1,x2,y2 ', 'edges', ',0');
 
-        astar_sql := 'SELECT ' || data || ' FROM pgr_astar($$' || inner_sql || '$$,  ' || vids
-            || ', ' || vids || ', false, heuristic := 0)';
-        RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
+  END IF;
 
-        -----------------------
-        -- NO reverse cost
-        -----------------------
-        -- DIRECTED
-        inner_sql := 'SELECT id, source, target, cost, x1, y1, x2, y2 FROM edges';
-        dijkstra_sql := 'SELECT ' || data || ' FROM pgr_dijkstra($$' || inner_sql || '$$,  ' || vids
-            || ',' || vids || ',  true)';
-
-        astar_sql := 'SELECT ' || data || ' FROM pgr_astar($$' || inner_sql || '$$,  ' || vids
-            || ',' || vids || ',  true, heuristic := 0)';
-        RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
-
-        -- UNDIRECTED
-        dijkstra_sql := 'SELECT ' || data || ' FROM pgr_dijkstra($$' || inner_sql || '$$,  ' || vids
-            || ',' || vids || ',  false)';
-
-        astar_sql := 'SELECT ' || data || ' FROM pgr_astar($$' || inner_sql || '$$,  ' || vids
-            || ', ' || vids || ', false, heuristic := 0)';
-        RETURN query SELECT set_eq(astar_sql, dijkstra_sql, astar_sql);
-
-    RETURN;
 END
 $BODY$
 language plpgsql;
 
-SELECT * from astarCompareDijkstra();
-
+SELECT * from CompareDijkstra();
 
 SELECT * FROM finish();
 ROLLBACK;
-
