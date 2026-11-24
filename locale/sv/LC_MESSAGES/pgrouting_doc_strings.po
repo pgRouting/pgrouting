@@ -5944,8 +5944,8 @@ msgstr "Installation"
 msgid "Instructions for downloading and installing binaries for different operating systems, additional notes and corrections not included in this documentation can be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__"
 msgstr "Instruktioner för nedladdning och installation av binärfiler för olika operativsystem, ytterligare anmärkningar och korrigeringar som inte ingår i denna dokumentation finns i `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__"
 
-msgid "To use pgRouting, PostGIS needs to be installed, please read the information about installation in this `Install Guide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
-msgstr "För att använda pgRouting måste PostGIS vara installerat, läs informationen om installation i denna installationsguide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
+msgid "To use pgRouting, PostGIS needs to be installed, please read the information about installation in this `Install Guide <https://postgis.net/documentation/getting_started/>`__"
+msgstr "För att använda pgRouting måste PostGIS vara installerat, läs informationen om installation i denna installationsguide <https://postgis.net/documentation/getting_started/>`__"
 
 msgid "Short Version"
 msgstr "Kort version"
