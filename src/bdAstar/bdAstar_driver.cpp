@@ -103,11 +103,11 @@ void pgr_do_bdAstar(
         std::deque<Path> paths;
         if (directed) {
             pgrouting::xyDirectedGraph graph;
-            graph.insert_edges(edges);
+            graph.insert_min_edges_no_parallel(edges);
             paths = pgrouting::algorithms::bdastar(graph, combinations, heuristic, factor, epsilon, only_cost);
         } else {
             pgrouting::xyUndirectedGraph graph;
-            graph.insert_edges(edges);
+            graph.insert_edges_min(edges);
             paths = pgrouting::algorithms::bdastar(graph, combinations, heuristic, factor, epsilon, only_cost);
         }
 
