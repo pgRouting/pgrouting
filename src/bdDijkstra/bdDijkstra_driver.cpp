@@ -137,11 +137,11 @@ pgr_do_bdDijkstra(
 
         if (directed) {
             pgrouting::DirectedGraph graph;
-            graph.insert_edges(edges);
+            graph.insert_min_edges_no_parallel(edges);
             paths = pgr_bdDijkstra(graph, combinations, only_cost);
         } else {
             pgrouting::UndirectedGraph graph;
-            graph.insert_edges(edges);
+            graph.insert_edges_min(edges);
             paths = pgr_bdDijkstra(graph, combinations, only_cost);
         }
 

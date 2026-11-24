@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - '.github/workflows/ubuntu.yml'
+      - '.github/workflows/update.yml'
       - 'src/**'
       - 'include/**'
       - 'sql/**'
@@ -23,7 +23,7 @@ on:
 
   pull_request:
     paths:
-      - '.github/workflows/check-queries.yml'
+      - '.github/workflows/update.yml'
       - 'src/**'
       - 'include/**'
       - 'sql/**'

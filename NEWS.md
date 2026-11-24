@@ -12,6 +12,8 @@ To read all history of releases go to the latest [release notes](https://docs.pg
 4.0.3 Bug fixes
 
 * [#3176](https://github.com/pgRouting/pgrouting/issues/3176): Boost broken links
+* [#3180](https://github.com/pgRouting/pgrouting/issues/3180): Undirected graph with cost != reverse_cost: aStar, bdAstar and
+  bdDijkstra functions return every node and edge twice
 
 </details>
 

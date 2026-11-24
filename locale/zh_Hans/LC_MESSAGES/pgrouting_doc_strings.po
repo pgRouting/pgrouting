@@ -7260,8 +7260,8 @@ msgid "Instructions for downloading and installing binaries for different operat
 msgstr "有关下载和安装适用于不同操作系统的二进制文件的说明、本文档中未包含的其他注释和更正，可以在 `安装维基 <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__ 中找到"
 
 #, fuzzy
-msgid "To use pgRouting, PostGIS needs to be installed, please read the information about installation in this `Install Guide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
-msgstr "使用pgRouting需要安装PostGIS，请阅读本 `安装指南 <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__ 中有关安装的信息"
+msgid "To use pgRouting, PostGIS needs to be installed, please read the information about installation in this `Install Guide <https://postgis.net/documentation/getting_started/>`__"
+msgstr "使用pgRouting需要安装PostGIS，请阅读本 `安装指南 <https://postgis.net/documentation/getting_started/>`__ 中有关安装的信息"
 
 msgid "Short Version"
 msgstr "简洁版本"
