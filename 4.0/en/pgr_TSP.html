@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_TSP &#8212; pgRouting Manual (4.0)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=4c40d038"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/documentation_options.js?v=288f007c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -190,7 +190,7 @@ precision,double precision,double precision,boolean)</p></li>
 </ul>
 <p class="rubric">Version 3.2.1</p>
 <ul class="simple">
-<li><p>Metric Algorithm from <a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost library</a></p></li>
+<li><p>Metric Algorithm from <a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost library</a></p></li>
 <li><p>Simulated Annealing Algorithm no longer supported</p>
 <ul>
 <li><p>The Simulated Annealing Algorithm related parameters are ignored:
@@ -322,7 +322,7 @@ on any component and will include data only from that component.</p></li>
 </li>
 <li><p>One cycle attempt to remove crossing edges is done to the TSP results.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
 </section>
 </section>
 <section id="signatures">
@@ -349,7 +349,7 @@ not connected.</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges',
 <span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
 <span class="linenos"> 5</span>    directed =&gt; false) $$);
 <span class="linenos"> 6</span> seq | node | cost | agg_cost
@@ -513,7 +513,7 @@ vertex</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_dijkstraCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges',
 <span class="linenos"> 4</span>    (SELECT array_agg(id) FROM vertices WHERE id NOT IN (2, 4, 13, 14)),
 <span class="linenos"> 5</span>    directed =&gt; false) $$,
 <span class="linenos"> 6</span>  start_id =&gt; 1);
@@ -560,9 +560,9 @@ because:</p>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>SELECT * FROM pgr_TSP(
 <span class="linenos"> 2</span>  $$SELECT * FROM pgr_withPointsCostMatrix(
-<span class="linenos"> 3</span>    &#39;SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id&#39;,
-<span class="linenos"> 4</span>    &#39;SELECT pid, edge_id, fraction from pointsOfInterest&#39;,
-<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], &#39;r&#39;,
+<span class="linenos"> 3</span>    'SELECT id, source, target, cost, reverse_cost FROM edges ORDER BY id',
+<span class="linenos"> 4</span>    'SELECT pid, edge_id, fraction from pointsOfInterest',
+<span class="linenos"> 5</span>    array[-1, 10, 7, 11, -6], 'r',
 <span class="linenos"> 6</span>    directed =&gt; true) $$,
 <span class="linenos"> 7</span>  start_id =&gt; 7,
 <span class="linenos"> 8</span>  end_id =&gt; 11);
@@ -644,7 +644,7 @@ value used is taken from <span class="math notranslate nohighlight">\(10 \righta
 <ul class="simple">
 <li><p><a class="reference internal" href="TSP-family.html"><span class="doc">Traveling Sales Person - Family of functions</span></a></p></li>
 <li><p><a class="reference internal" href="sampledata.html"><span class="doc">Sample Data</span></a></p></li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/utility/metric_tsp_approx.html">Boost: metric TSP approx</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Traveling_salesman_problem">Wikipedia: Traveling Salesman Problem</a></p></li>
 </ul>
 <p class="rubric">Indices and tables</p>
@@ -667,9 +667,9 @@ value used is taken from <span class="math notranslate nohighlight">\(10 \righta
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      Last updated on Sep 05, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Last updated on Nov 25, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

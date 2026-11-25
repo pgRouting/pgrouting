@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_contractionHierarchies - Experimental &#8212; pgRouting Manual (4.0)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=4c40d038"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/documentation_options.js?v=288f007c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -229,7 +229,7 @@ contracted graph, only the changes. They are here of two types:</p>
 <li><p>added shortcut edges, with negative identifiers;</p></li>
 <li><p>contracted nodes with an order.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="Boost Graph inside" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost Graph Inside</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="Boost Graph inside" height="18" src="_images/boost-inside.jpeg" /></a> Boost Graph Inside</p>
 </section>
 <section id="signatures">
 <h2>Signatures<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -511,14 +511,15 @@ operation on an undirected graph.</p>
 </pre></div>
 </div>
 <p>The original graph:</p>
-<a class="reference internal image-reference" href="_images/sample_graph.png"><img alt="_images/sample_graph.png" src="_images/sample_graph.png" style="width: 241.0px; height: 217.5px;" /></a>
+<a class="reference internal image-reference" href="_images/sample_graph.png"><img alt="_images/sample_graph.png" height="218" src="_images/sample_graph.png" width="241" />
+</a>
 <dl class="field-list simple">
 <dt class="field-odd">Example<span class="colon">:</span></dt>
 <dd class="field-odd"><p>building contraction hierarchies on the whole graph</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
  <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span> <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">metric</span> <span class="o">|</span> <span class="n">vertex_order</span>
 <span class="o">------+----+---------------------+--------+--------+------+--------+--------------</span>
@@ -559,7 +560,8 @@ in a future version), which speeds up the search.</p>
 </dd>
 </dl>
 <p>We obtain the contracted graph above:</p>
-<a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" src="_images/sample_graph_with_shortcuts.png" style="width: 241.0px; height: 217.5px;" /></a>
+<a class="reference internal image-reference" href="_images/sample_graph_with_shortcuts.png"><img alt="_images/sample_graph_with_shortcuts.png" height="218" src="_images/sample_graph_with_shortcuts.png" width="241" />
+</a>
 <p>We can see without surprise that the vertices belonging to the shortcuts have a
 tendency to have a high priority level in the resulting vertices order.</p>
 </section>
@@ -571,7 +573,7 @@ tendency to have a high priority level in the resulting vertices order.</p>
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
   <span class="n">forbidden</span> <span class="o">=&gt;</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">6</span><span class="p">]);</span>
  <span class="nb">type</span> <span class="o">|</span> <span class="nb">id</span>  <span class="o">|</span> <span class="n">contracted_vertices</span> <span class="o">|</span> <span class="n">source</span> <span class="o">|</span> <span class="n">target</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">metric</span> <span class="o">|</span> <span class="n">vertex_order</span>
@@ -625,7 +627,7 @@ vertex. This metric is giving what is called the <em>contraction hierarchy</em>.
 <section id="initialize-the-queue-with-a-first-vertices-order">
 <h3>Initialize the queue with a first vertices order<a class="headerlink" href="#initialize-the-queue-with-a-first-vertices-order" title="Link to this heading">¶</a></h3>
 <p>For each vertex <code class="docutils literal notranslate"><span class="pre">v</span></code> of the graph, a contraction of <code class="docutils literal notranslate"><span class="pre">v</span></code> is built:</p>
-<div class="graphviz"><img src="_images/graphviz-9fd9ee1aab9a22f28f605a75718cd929ec0e6c97.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-0f5a834e273029f3b3f5483ea9147ac4fca9e7b8.png" alt="graph G {
     p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
 
@@ -664,7 +666,7 @@ vertex. This metric is giving what is called the <em>contraction hierarchy</em>.
 </tbody>
 </table>
 <p>Adjacent edges are removed.</p>
-<div class="graphviz"><img src="_images/graphviz-298ea1ea03dc93c82430c5562f4a507c0ae4bcc1.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-5141a13c76a88605bcca254fd57645d54d33539a.png" alt="graph G {
     p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
 
@@ -681,7 +683,7 @@ vertex. This metric is giving what is called the <em>contraction hierarchy</em>.
 <p>Shortcuts are built from predecessors of <code class="docutils literal notranslate"><span class="pre">v</span></code> to successors of <code class="docutils literal notranslate"><span class="pre">v</span></code> if and only if the path through <code class="docutils literal notranslate"><span class="pre">v</span></code>
 corresponds to the only shortest path between the predecessor and the successor of <code class="docutils literal notranslate"><span class="pre">v</span></code> in the graph.
 The <em>edge difference</em> metric here takes the value of -2.</p>
-<div class="graphviz"><img src="_images/graphviz-779d4ae5a962482f9d4175387305d21e406cb3c6.png" alt="graph G {
+<div class="graphviz"><img src="_images/graphviz-3e2092dfbdc3e5f4f3b11b67f7623d0c4a660c82.png" alt="graph G {
     p, r, u, w [shape=circle;style=filled;width=.4;color=deepskyblue];
     v [style=filled; color=green];
 
@@ -723,7 +725,7 @@ which takes into account the order of the nodes in the hierarchy.</p>
 <h3>Build the contraction<a class="headerlink" href="#build-the-contraction" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">INTO</span> <span class="n">contraction_results</span>
 <span class="n">FROM</span> <span class="n">pgr_contractionHierarchies</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost FROM edges'</span><span class="p">,</span>
   <span class="n">directed</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">);</span>
 <span class="n">SELECT</span> <span class="mi">21</span>
 </pre></div>
@@ -748,14 +750,14 @@ which takes into account the order of the nodes in the hierarchy.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">edges</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">is_new</span><span class="p">)</span>
   <span class="n">SELECT</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">contracted_vertices</span><span class="p">,</span> <span class="n">true</span>
   <span class="n">FROM</span> <span class="n">contraction_results</span>
-  <span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;e&#39;</span><span class="p">;</span>
+  <span class="n">WHERE</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">'e'</span><span class="p">;</span>
 <span class="n">INSERT</span> <span class="mi">0</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPDATE</span> <span class="n">vertices</span>
   <span class="n">SET</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">vertex_order</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">vertex_order</span>
   <span class="n">FROM</span> <span class="n">contraction_results</span> <span class="n">c</span>
-  <span class="n">WHERE</span> <span class="n">c</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span> <span class="n">AND</span> <span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+  <span class="n">WHERE</span> <span class="n">c</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">'v'</span> <span class="n">AND</span> <span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">vertices</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
 <span class="n">UPDATE</span> <span class="mi">17</span>
 </pre></div>
 </div>
@@ -765,7 +767,7 @@ which takes into account the order of the nodes in the hierarchy.</p>
 <p>Then you can use any Dijkstra-like algorithm, waiting for the adapted one which
 will take into account the built vertices hierarchy. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_bdDijkstra</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, cost, reverse_cost FROM edges&#39;</span><span class="p">,</span>
+  <span class="s1">'SELECT id, source, target, cost, reverse_cost FROM edges'</span><span class="p">,</span>
   <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span>
 <span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">path_seq</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">node</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">cost</span> <span class="o">|</span> <span class="n">agg_cost</span>
@@ -807,9 +809,9 @@ will take into account the built vertices hierarchy. For example:</p>
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      Last updated on Sep 05, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Last updated on Nov 25, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

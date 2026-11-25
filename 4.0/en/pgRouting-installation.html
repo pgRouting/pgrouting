@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Installation &#8212; pgRouting Manual (4.0)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=4c40d038"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/documentation_options.js?v=288f007c"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
     <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -164,12 +164,12 @@
 systems, additional notes and corrections not included in this documentation can
 be found in <a class="reference external" href="https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting">Installation wiki</a></p>
 <p>To use pgRouting, PostGIS needs to be installed, please read the information
-about installation in this <a class="reference external" href="https://www.postgis.us/presentations/postgis_install_guide_22.html">Install Guide</a></p>
+about installation in this <a class="reference external" href="https://postgis.net/documentation/getting_started/">Install Guide</a></p>
 <section id="short-version">
 <span id="install-short"></span><h2>Short Version<a class="headerlink" href="#short-version" title="Link to this heading">¶</a></h2>
 <p>Extracting the tar ball</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tar<span class="w"> </span>xvfz<span class="w"> </span>pgrouting-4.0.2.tar.gz
-<span class="nb">cd</span><span class="w"> </span>pgrouting-4.0.2
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tar<span class="w"> </span>xvfz<span class="w"> </span>pgrouting-4.0.3.tar.gz
+<span class="nb">cd</span><span class="w"> </span>pgrouting-4.0.3
 </pre></div>
 </div>
 <p>To compile assuming you have all the dependencies in your search path:</p>
@@ -183,7 +183,7 @@ sudo<span class="w"> </span>make<span class="w"> </span>install
 <p>Once pgRouting is installed, it needs to be enabled in each individual
 database you want to use it in.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>createdb<span class="w"> </span>routing
-psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;CREATE EXTENSION pgRouting CASCADE&#39;</span>
+psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </span><span class="s1">'CREATE EXTENSION pgRouting CASCADE'</span>
 </pre></div>
 </div>
 </section>
@@ -192,8 +192,8 @@ psql<span class="w"> </span>routing<span class="w"> </span>-c<span class="w"> </
 <p>The pgRouting latest release can be found in
 <a class="reference external" href="https://github.com/pgRouting/pgrouting/releases/latest">https://github.com/pgRouting/pgrouting/releases/latest</a></p>
 <p>To download this release:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-O<span class="w"> </span>pgrouting-4.0.2.tar.gz<span class="w"> </span><span class="se">\</span>
-<span class="w">   </span>https://github.com/pgRouting/pgrouting/archive/v4.0.2.tar.gz
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-O<span class="w"> </span>pgrouting-4.0.3.tar.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">   </span>https://github.com/pgRouting/pgrouting/archive/v4.0.3.tar.gz
 </pre></div>
 </div>
 <p>Go to <a class="reference internal" href="#install-short"><span class="std std-ref">Short Version</span></a> for more instructions on extracting tar ball and
@@ -202,7 +202,7 @@ compiling pgRouting.</p>
 <p>To download the repository</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>git://github.com/pgRouting/pgrouting.git
 <span class="nb">cd</span><span class="w"> </span>pgrouting
-git<span class="w"> </span>checkout<span class="w"> </span>v4.0.2
+git<span class="w"> </span>checkout<span class="w"> </span>v4.0.3
 </pre></div>
 </div>
 <p>Go to <a class="reference internal" href="#install-short"><span class="std std-ref">Short Version</span></a> for more instructions on compiling pgRouting
@@ -225,9 +225,9 @@ pgRouting in the database.</p>
 </pre></div>
 </div>
 <p class="rubric">Upgrading the database</p>
-<p>To upgrade pgRouting in the database to version 4.0.2 use the
+<p>To upgrade pgRouting in the database to version 4.0.3 use the
 following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">&quot;4.0.2&quot;</span><span class="p">;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">EXTENSION</span> <span class="n">pgrouting</span> <span class="n">UPDATE</span> <span class="n">TO</span> <span class="s2">"4.0.3"</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>More information can be found in
@@ -239,8 +239,9 @@ following command:</p>
 <p>To be able to compile pgRouting, make sure that the following dependencies are
 met:</p>
 <ul class="simple">
-<li><p>C and C++0x compilers</p>
+<li><p>C++ standard</p>
 <ul>
+<li><p>C++17</p></li>
 <li><p>Compiling with Boost 1.56 up to Boost 1.74 requires C++ Compiler with
 C++03 or C++11 standard support</p></li>
 <li><p>Compiling with Boost 1.75 requires C++ Compiler with C++14 standard
@@ -368,9 +369,9 @@ be built</p></td>
 <p>Using <code class="docutils literal notranslate"><span class="pre">make</span></code> to build the code and the documentation</p>
 <p>The following instructions start from <code class="docutils literal notranslate"><span class="pre">path/to/pgrouting/build</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make          # default build
-$ make doc      # build only the user&#39;s documentation
-$ make doxy     # build only the developer&#39;s documentation
-$ make all      # build both the code and the user&#39;s documentation
+$ make doc      # build only the user's documentation
+$ make doxy     # build only the developer's documentation
+$ make all      # build both the code and the user's documentation
 </pre></div>
 </div>
 <p>We have tested on several platforms, For installing or reinstalling all the
@@ -391,7 +392,7 @@ steps are needed.</p>
 <p>The following instructions start from <code class="docutils literal notranslate"><span class="pre">path/to/pgrouting</span></code></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tools/testers/doc_queries_generator.pl
 createdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class="w"> </span>___pgr___test___
-sh<span class="w"> </span>./tools/testers/pg_prove_tests.sh<span class="w"> </span>&lt;user&gt;
+bash<span class="w"> </span>./tools/testers/pg_prove_tests.sh<span class="w"> </span>&lt;user&gt;
 dropdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class="w"> </span>___pgr___test___
 </pre></div>
 </div>
@@ -418,9 +419,9 @@ dropdb<span class="w"> </span>-U<span class="w"> </span>&lt;user&gt;<span class=
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      Last updated on Sep 05, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Last updated on Nov 25, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

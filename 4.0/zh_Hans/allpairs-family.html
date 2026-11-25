@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>All Pairs - 函数族 &#8212; pgRouting Manual (4.0)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=0e79a2cd"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/documentation_options.js?v=1e3c9a03"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="搜索" href="search.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_floydWarshall" href="pgr_floydWarshall.html" />
     <link rel="prev" title="函数族" href="routingFunctions.html" />
 <meta charset='utf-8'>
@@ -342,8 +342,8 @@
 wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="reference external" href="https://www.overpass-api.de/api/xapi?*[bbox=][&#64;meta">https://www.overpass-api.de/api/xapi?*[bbox=][&#64;meta</a>]&quot;</pre>
 <p>数据处理是使用 osm2pgrouting-alpha 完成的</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="n">portland</span>
-<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;create extension postgis&quot;</span> <span class="n">portland</span>
-<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;create extension pgrouting&quot;</span> <span class="n">portland</span>
+<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"create extension postgis"</span> <span class="n">portland</span>
+<span class="n">psql</span> <span class="o">-</span><span class="n">c</span> <span class="s2">"create extension pgrouting"</span> <span class="n">portland</span>
 <span class="n">osm2pgrouting</span> <span class="o">-</span><span class="n">f</span> <span class="n">sampledata</span><span class="o">.</span><span class="n">osm</span> <span class="o">-</span><span class="n">d</span> <span class="n">portland</span> <span class="o">-</span><span class="n">s</span> <span class="mi">0</span>
 </pre></div>
 </div>
@@ -357,12 +357,12 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
 </dl>
 <p>该测试没有使用边界框，通过的图形密度极低。 对于每个 &lt;SIZE&gt; 执行 30 次测试以获得平均值， 测试的查询是：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_floydWarshall</span><span class="p">(</span>
-   <span class="s1">&#39;SELECT gid as id, source, target, cost, reverse_cost</span>
-    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span> <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">&#39;);</span>
+   <span class="s1">'SELECT gid as id, source, target, cost, reverse_cost</span>
+    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span> <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">');</span>
 
 <span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">pgr_johnson</span><span class="p">(</span>
-   <span class="s1">&#39;SELECT gid as id, source, target, cost, reverse_cost</span>
-    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span> <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">&#39;);</span>
+   <span class="s1">'SELECT gid as id, source, target, cost, reverse_cost</span>
+    <span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="nb">id</span> <span class="o">&lt;=</span> <span class="o">&lt;</span><span class="n">SIZE</span><span class="o">&gt;</span><span class="s1">');</span>
 </pre></div>
 </div>
 <p>该测试的结果如下：</p>
@@ -552,7 +552,7 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
 <span class="n">bbox</span> <span class="n">AS</span> <span class="p">(</span>
   <span class="n">SELECT</span> <span class="n">ST_Envelope</span><span class="p">(</span><span class="n">ST_Extent</span><span class="p">(</span><span class="n">geom</span><span class="p">))</span> <span class="k">as</span> <span class="n">box</span> <span class="n">FROM</span> <span class="n">buffer</span><span class="p">)</span>
 <span class="n">SELECT</span> <span class="n">gid</span> <span class="k">as</span> <span class="nb">id</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">reverse_cost</span>
-<span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="n">the_geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">box</span> <span class="kn">from</span> <span class="nn">bbox</span><span class="p">);</span>
+<span class="n">FROM</span> <span class="n">ways</span> <span class="n">where</span> <span class="n">the_geom</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">box</span> <span class="kn">from</span><span class="w"> </span><span class="nn">bbox</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>测试的查询</p>
@@ -719,12 +719,12 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
 <ul class="simple">
 <li><p><a class="reference internal" href="pgr_johnson.html"><span class="doc">pgr_johnson</span></a></p></li>
 <li><p><a class="reference internal" href="pgr_floydWarshall.html"><span class="doc">pgr_floydWarshall</span></a></p></li>
-<li><p>Boost <a class="reference external" href="https://www.boost.org/libs/graph/doc/floyd_warshall_shortest.html">弗洛伊德算法</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/shortest_paths/floyd_warshall_shortest.html">Boost: Floyd-Warshall</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -742,9 +742,9 @@ wget --progress=dot:mega -O &quot;sampledata.osm&quot;      &quot;<a class="refe
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      最后更新于 9月 05, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Last updated on 11月 25, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>

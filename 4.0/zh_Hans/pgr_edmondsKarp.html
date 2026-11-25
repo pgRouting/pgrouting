@@ -8,18 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>pgr_edmondsKarp &#8212; pgRouting Manual (4.0)</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/bootstrap-sphinx.css?v=5a695559" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=4a28828c" />
-    <script src="_static/documentation_options.js?v=0e79a2cd"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/documentation_options.js?v=1e3c9a03"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="_static/page_history.js?v=ee02e9fc"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="icon" href="_static/favicon.ico"/>
-    <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="搜索" href="search.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="pgr_pushRelabel" href="pgr_pushRelabel.html" />
     <link rel="prev" title="pgr_boykovKolmogorov" href="pgr_boykovKolmogorov.html" />
 <meta charset='utf-8'>
@@ -227,7 +227,7 @@
 <ul class="simple">
 <li><p>运行时间： <span class="math notranslate nohighlight">\(O( V * E ^ 2)\)</span></p></li>
 </ul>
-<p><a class="reference external" href="https://www.boost.org/libs/graph"><img alt="内部使用 Boost Graph" src="_images/boost-inside.jpeg" style="height: 18px;" /></a> Boost 图内部</p>
+<p><a class="reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/"><img alt="内部使用 Boost Graph" height="18" src="_images/boost-inside.jpeg" /></a> Boost 图内部</p>
 </section>
 <section id="signatures">
 <h2>签名<a class="headerlink" href="#signatures" title="Link to this heading">¶</a></h2>
@@ -264,8 +264,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edmondsKarp</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
@@ -296,8 +296,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edmondsKarp</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="mi">11</span><span class="p">,</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
@@ -333,8 +333,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edmondsKarp</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span> <span class="mi">12</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
@@ -366,8 +366,8 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edmondsKarp</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
   <span class="n">ARRAY</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span> <span class="n">ARRAY</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
@@ -417,9 +417,9 @@
 </div>
 <p>查询：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edmondsKarp</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
-  <span class="s1">&#39;SELECT * FROM combinations WHERE target NOT IN (5, 6)&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
+  <span class="s1">'SELECT * FROM combinations WHERE target NOT IN (5, 6)'</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>   <span class="mi">80</span> <span class="o">|</span>                <span class="mi">20</span>
@@ -612,9 +612,9 @@
 </dd>
 </dl>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pgr_edmondsKarp</span><span class="p">(</span>
-  <span class="s1">&#39;SELECT id, source, target, capacity, reverse_capacity</span>
-  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">&#39;,</span>
-  <span class="s1">&#39;SELECT * FROM (VALUES (5, 10), (6, 15), (6, 14)) AS t(source, target)&#39;</span><span class="p">);</span>
+  <span class="s1">'SELECT id, source, target, capacity, reverse_capacity</span>
+  <span class="n">FROM</span> <span class="n">edges</span><span class="s1">',</span>
+  <span class="s1">'SELECT * FROM (VALUES (5, 10), (6, 15), (6, 14)) AS t(source, target)'</span><span class="p">);</span>
  <span class="n">seq</span> <span class="o">|</span> <span class="n">edge</span> <span class="o">|</span> <span class="n">start_vid</span> <span class="o">|</span> <span class="n">end_vid</span> <span class="o">|</span> <span class="n">flow</span> <span class="o">|</span> <span class="n">residual_capacity</span>
 <span class="o">-----+------+-----------+---------+------+-------------------</span>
    <span class="mi">1</span> <span class="o">|</span>    <span class="mi">4</span> <span class="o">|</span>         <span class="mi">6</span> <span class="o">|</span>       <span class="mi">7</span> <span class="o">|</span>   <span class="mi">80</span> <span class="o">|</span>                <span class="mi">20</span>
@@ -635,13 +635,13 @@
 <li><p><a class="reference internal" href="pgr_pushRelabel.html"><span class="doc">pgr_pushRelabel</span></a></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://www.boost.org/libs/graph/doc/edmonds_karp_max_flow.html">Boost: Edmonds Karp max flow</a></p></li>
+<li><p><a class="extlink-bgl reference external" href="https://www.boost.org/doc/libs/latest/libs/graph/doc/html/graph/algorithms/network_flow/edmonds_karp_max_flow.html">Boost: Edmonds Karp max flow</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm">https://en.wikipedia.org/wiki/Edmonds%E2%80%93Karp_algorithm</a></p></li>
 </ul>
 <p class="rubric">索引和表格</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -658,9 +658,9 @@
       
     </p>
     <p>
-        &copy; Copyright %Y pgRouting developers.<br/>
-      最后更新于 9月 05, 2026.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 7.2.6.<br/>
+        &copy; Copyright 2026 pgRouting developers.<br/>
+      Last updated on 11月 25, 2026.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.2.0.<br/>
     </p>
   </div>
 </footer>
