@@ -19,20 +19,7 @@
 # Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>, 2026.
 # DeepL <noreply-mt-deepl@weblate.org>, 2026.
 msgid ""
-msgstr ""
-"Project-Id-Version: pgRouting v4.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 20:40+0000\n"
-"PO-Revision-Date: 2026-11-10 02:39+0000\n"
-"Last-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\n"
-"Language-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\n"
-"Language: ja\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.10.1\n"
-"Generated-By: Babel 2.10.3\n"
+msgstr "Project-Id-Version: pgRouting v4.1\nReport-Msgid-Bugs-To: \nPOT-Creation-Date: 2026-11-08 20:40+0000\nPO-Revision-Date: 2026-11-26 02:39+0000\nLast-Translator: Teramoto Ikuhiro <teramoto.ikuhiro576@naro.go.jp>\nLanguage-Team: Japanese <https://weblate.osgeo.org/projects/pgrouting/pgrouting-develop/ja/>\nLanguage: ja\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=1; plural=0;\nX-Generator: Weblate 2026.10.1\nGenerated-By: Babel 2.10.3\n"
 
 msgid "BFS - Category"
 msgstr "BFS - カテゴリ"
@@ -265,7 +252,7 @@ msgid "``agg_cost``"
 msgstr "``agg_cost``"
 
 msgid "Aggregate cost from ``start_vid`` to ``node``."
-msgstr "``start_vid``から``node``までのコスト集約値。"
+msgstr "``start_vid``から``node``までの総コスト。"
 
 msgid "See Also"
 msgstr "参照"
@@ -1038,7 +1025,7 @@ msgid "Identifier of the ending vertex."
 msgstr "終了ノードの識別子。"
 
 msgid "Aggregate cost from ``start_vid`` to ``end_vid``."
-msgstr "``start_vid`` から ``end_vid`` へのコストの集約。"
+msgstr "``start_vid`` から ``end_vid`` への総コスト。"
 
 msgid "Sequential value starting from **1**."
 msgstr "**1** 始まりの順序値。"
@@ -1527,7 +1514,7 @@ msgid ":doc:`pgr_aStar` - A* algorithm for the shortest path."
 msgstr ":doc:`pgr_aStar` - 最短経路を求める A* アルゴリズム。"
 
 msgid ":doc:`pgr_aStarCost` - Get the aggregate cost of the shortest paths."
-msgstr ":doc:`pgr_aStarCost` - 最短経路のコストの合計を得ます。"
+msgstr ":doc:`pgr_aStarCost` - 最短経路の総コストを得ます。"
 
 msgid ":doc:`pgr_aStarCostMatrix` - Get the cost matrix of the shortest paths."
 msgstr ":doc:`pgr_aStarCostMatrix` - 最短経路のコスト行列を得ます。"
@@ -2483,13 +2470,13 @@ msgid "When the starting vertex and ending vertex are the same."
 msgstr "始点と終点が同じ時。"
 
 msgid "The **aggregate cost** of the non included values :math:`(v, v)` is :math:`0`"
-msgstr ""
+msgstr "含まれない値 :math:`(v, v)` の**総コスト**は :math:`0` です"
 
 msgid "When the starting vertex and ending vertex are the different and there is no path:"
 msgstr ""
 
 msgid "The **aggregate cost** the non included values :math:`(u, v)` is :math:`\\infty`"
-msgstr ""
+msgstr "含まれない値 :math:`(u, v)` の**総コスト**は :math:`infty` です"
 
 msgid "For optimization purposes, any duplicated value in the starting vertices or on the ending vertices are ignored."
 msgstr ""
@@ -2789,7 +2776,7 @@ msgid "Depending on the function and its parameters, the results can be symmetri
 msgstr ""
 
 msgid "The **aggregate cost** of :math:`(u, v)` is the same as for :math:`(v, u)`."
-msgstr ""
+msgstr ":math:`(u, v)` の**総コスト**は :math:`(v, u)`.と同じです。"
 
 msgid "Any duplicated value in the start or end vertex identifiers are ignored."
 msgstr ""
@@ -2858,13 +2845,13 @@ msgid "When the starting vertex and ending vertex are the same, there is no path
 msgstr ""
 
 msgid "The aggregate cost in the non included values `(v, v)` is `0`."
-msgstr ""
+msgstr "含まれない値 `(v, v)`における総コストは `0` です。"
 
 msgid "When the starting vertex and ending vertex are the different and there is no path."
 msgstr ""
 
 msgid "The aggregate cost in the non included values `(u, v)` is :math:`\\infty`."
-msgstr ""
+msgstr "含まれない値 `(u, v)`における総コストは :math:`\\infty` です。"
 
 msgid "Let be the case the values returned are stored in a table:"
 msgstr ""
@@ -2873,7 +2860,7 @@ msgid "The unique index would be the pair: ``(start_vid, end_vid)``."
 msgstr ""
 
 msgid "The aggregate cost of `(u, v)` is the same as for `(v, u)`."
-msgstr ""
+msgstr "`(u, v)` の総コストは `(v, u)` と同じです。"
 
 msgid "Any duplicated value in the **start vids** are ignored."
 msgstr ""
@@ -3513,7 +3500,7 @@ msgid "**agg_cost**"
 msgstr ""
 
 msgid "The aggregate cost."
-msgstr ""
+msgstr "総コスト。"
 
 msgid "Advanced Documentation"
 msgstr ""
@@ -8113,7 +8100,7 @@ msgid "Identifier of the edge used to go from ``node`` to the next node in the p
 msgstr ""
 
 msgid "Aggregate cost from ``start_v`` to ``node``."
-msgstr ""
+msgstr "``start_v`` から ``node`` までの総コスト。"
 
 msgid "``pgr_chinesePostmanCost`` - Experimental"
 msgstr ""
@@ -9706,7 +9693,7 @@ msgid "It does not produce the shortest path from a root vertex to a target vert
 msgstr ""
 
 msgid "The aggregate cost of traversal is not guaranteed to be minimal."
-msgstr ""
+msgstr "走査の結果得られる総コストが最小になることは保証されません。"
 
 msgid "The returned values are ordered in ascending order of `start_vid`."
 msgstr ""
@@ -10023,10 +10010,10 @@ msgid "Results are sorted in increasing order of:"
 msgstr ""
 
 msgid "aggregate cost"
-msgstr ""
+msgstr "総コスト"
 
 msgid "Within the same value of aggregate costs:"
-msgstr ""
+msgstr "総コストが同値の場合:"
 
 msgid "results are sorted by (source, target)"
 msgstr ""
@@ -10318,16 +10305,16 @@ msgid "The main query"
 msgstr ""
 
 msgid "Aggregate cost of the third path."
-msgstr ""
+msgstr "三つ目のパスの総コスト。"
 
 msgid "Route's aggregate cost of the route at the end of the third path."
-msgstr ""
+msgstr "三つ目のパスの終端における順路の総コスト。"
 
 msgid "Nodes visited in the route."
 msgstr ""
 
 msgid "The aggregate costs of the route when the visited vertices are reached."
-msgstr ""
+msgstr "訪問する各頂点に達した時の順路の総コスト。"
 
 msgid "Status of \"passes in front\" or \"visits\" of the nodes."
 msgstr ""
@@ -11416,7 +11403,7 @@ msgid "``pgr_kruskalDD`` — Catchament nodes using Kruskal's algorithm."
 msgstr ""
 
 msgid "Using Kruskal's algorithm, extracts the nodes that have aggregate costs less than or equal to a **distance** from a **root** vertex (or vertices) within the calculated minimum spanning tree."
-msgstr ""
+msgstr "クラスカル法を使って、算出した最小全域木内の**ルート**頂点 (複数可) からの**距離**以下に総コストが収まるノードを抽出します。"
 
 msgid "Returned tree nodes from a root vertex are on Depth First Search order."
 msgstr ""
@@ -12616,7 +12603,7 @@ msgid "``pgr_primDD`` — Catchament nodes using Prim's algorithm."
 msgstr ""
 
 msgid "Using Prim's algorithm, extracts the nodes that have aggregate costs less than or equal to a distance from a root vertex (or vertices) within the calculated minimum spanning tree."
-msgstr ""
+msgstr "プリム法を使って、算出した最小全域木内の**ルート**頂点 (複数可) からの**距離**以下に総コストが収まるノードを抽出します。"
 
 msgid "pgr_primDD(`Edges SQL`_, **root vid**, **distance**)"
 msgstr ""
@@ -13594,7 +13581,7 @@ msgid "All the examples are about traveling from point :math:`1` and vertex :mat
 msgstr ""
 
 msgid "``pgr_withPointsCost`` - Calculates the shortest path and returns only the aggregate cost of the shortest path found, for the combination of points given."
-msgstr ""
+msgstr "``pgr_withPointsCost`` - 与えられたポイントの組合せに対して、最短パスを計算して、そのパスの総コストだけを返します。"
 
 msgid "**Driving side** parameter is unnamed and compulsory."
 msgstr ""
@@ -13621,7 +13608,7 @@ msgid "pgr_withPointsCost(Combinations)"
 msgstr ""
 
 msgid "Modify the graph to include points defined by points_sql. Using Dijkstra algorithm, return only the aggregate cost of the shortest path found."
-msgstr ""
+msgstr "points_sql で定義されたポイントを含むグラフを変更します。ダイクストラ法を使い、発見された最短パスの総コストだけを返します。"
 
 msgid "Returns the sum of the costs of the shortest path for pair combination of vertices in the modified graph."
 msgstr ""
