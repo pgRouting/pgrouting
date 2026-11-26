@@ -35,7 +35,7 @@ jobs:
       - centos-7 gcc-4.8.5
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: get postgres version
         run: |
