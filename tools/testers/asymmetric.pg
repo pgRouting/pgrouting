@@ -184,7 +184,6 @@ $BODY$
 DECLARE
 inner_w_rev_sql TEXT;
 inner_no_rev_sql TEXT;
-return_cols TEXT;
 vids TEXT;
 dijkstra_sql TEXT;
 fn_sql TEXT;
