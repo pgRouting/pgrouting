@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pgRouting v4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 20:40+0000\n"
+"POT-Creation-Date: 2026-11-24 16:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6153,7 +6153,7 @@ msgstr ""
 msgid "Instructions for downloading and installing binaries for different operating systems, additional notes and corrections not included in this documentation can be found in `Installation wiki <https://github.com/pgRouting/pgrouting/wiki/Notes-on-Download%2C-Installation-and-building-pgRouting>`__"
 msgstr ""
 
-msgid "To use pgRouting, PostGIS needs to be installed, please read the information about installation in this `Install Guide <https://www.postgis.us/presentations/postgis_install_guide_22.html>`__"
+msgid "To use pgRouting, PostGIS needs to be installed, please read the information about installation in this `Install Guide <https://postgis.net/documentation/getting_started/>`__"
 msgstr ""
 
 msgid "Short Version"
@@ -13638,6 +13638,15 @@ msgid "pgRouting 4.1"
 msgstr ""
 
 msgid "pgRouting 4.0"
+msgstr ""
+
+msgid "pgRouting 4.0.3 Release Notes"
+msgstr ""
+
+msgid "4.0.3 Bug fixes"
+msgstr ""
+
+msgid ":issue:`3180`: Undirected graph with cost != reverse_cost: aStar, bdAstar and bdDijkstra functions return every node and edge twice"
 msgstr ""
 
 msgid "pgRouting 4.0.2 Release Notes"

@@ -33,4 +33,5 @@ psql -p "$1" -U "$3"  -d "$2" -X -q --set client_min_messages=WARNING --set ON_E
     -f "${DIR}/via_compare.pg" \
     -f "${DIR}/compare_dijkstra.pg" \
     -f "${DIR}/contraction_tapfuncs.pg" \
+    -f "${DIR}/asymmetric.pg" \
     -f "${DIR}/spanningtree.pg"

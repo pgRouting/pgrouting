@@ -102,6 +102,16 @@ To see all issues & pull requests closed by this release see the
 ## pgRouting 4.0
 
 
+<details> <summary>pgRouting 4.0.3 Release Notes</summary>
+
+4.0.3 Bug fixes
+
+* [#3176](https://github.com/pgRouting/pgrouting/issues/3176): Boost broken links
+* [#3180](https://github.com/pgRouting/pgrouting/issues/3180): Undirected graph with cost != reverse_cost: aStar, bdAstar and
+  bdDijkstra functions return every node and edge twice
+
+</details>
+
 <details> <summary>pgRouting 4.0.2 Release Notes</summary>
 
 To see all issues & pull requests closed by this release see the
