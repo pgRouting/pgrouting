@@ -15,9 +15,12 @@ SELECT * FROM edges_asym
 UNION ALL
 SELECT * FROM edges_asym;
 
+UPDATE edges1 SET cost = cost * 4, reverse_cost = reverse_cost * 3, id = id * 100;
 CREATE TABLE edges_asym_w_parallels AS
-SELECT * FROM edges1;
-UPDATE edges_asym_w_parallels SET cost = cost * 4, reverse_cost = reverse_cost * 3, id = id * 100;
+SELECT * FROM edges1
+UNION ALL
+SELECT * FROM edges_asym;
+
 
 DROP TABLE edges1;
 

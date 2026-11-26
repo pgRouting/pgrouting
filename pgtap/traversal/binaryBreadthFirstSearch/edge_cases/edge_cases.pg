@@ -68,7 +68,7 @@ FROM pgr_binaryBreadthFirstSearch(
 
 SELECT
   throws_like('errorTestManyWeights',
-    'Graph Condition Failed: Graph should have at%most two distinct non-negative edge costs!%',
+    'Graph Condition Failed: Graph should have at%most two distinct non-negative edge costs%',
       '17: Graph has more than 2 distinct weights');
 
 SELECT * INTO edges_invalid_2 FROM edges;
@@ -86,7 +86,7 @@ FROM pgr_binaryBreadthFirstSearch(
 
 SELECT
   throws_like('errorTestNoZeroWeight',
-    'Graph Condition Failed: Graph should have at%most two distinct non-negative edge costs!%',
+    'Graph Condition Failed: Graph should have at%most two distinct non-negative edge costs%',
     '17: If graph has 2 distinct weights, one must be zero');
 
 

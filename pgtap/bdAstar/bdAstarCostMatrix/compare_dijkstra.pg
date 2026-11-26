@@ -17,7 +17,7 @@ BEGIN
   IF min_lib_version('4.0.3') THEN
 
     RETURN QUERY
-    SELECT * from compare_dijkstraCostMatrix('pgr_astarCostMatrix', ', x1,y1,x2,y2 ', 'edges', ',0');
+    SELECT * from compare_dijkstraCostMatrix('pgr_bdastarCostMatrix', ', x1,y1,x2,y2 ', 'edges', ',0');
 
   ELSE
 

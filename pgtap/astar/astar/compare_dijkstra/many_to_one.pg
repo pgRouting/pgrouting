@@ -25,12 +25,12 @@ BEGIN
     RETURN QUERY
     SELECT * from compare_dijkstra_many_to_one('pgr_astar', ', x1,y1,x2,y2 ', 'edges_asym_w_dup_ids', ',0');
     RETURN QUERY
-    SELECT * from compare_dijkstra_one_to_many('pgr_astar', ', x1,y1,x2,y2 ', 'edges_asym_w_parallels', ',0');
+    SELECT * from compare_dijkstra_many_to_one('pgr_astar', ', x1,y1,x2,y2 ', 'edges_asym_w_parallels', ',0');
 
   ELSIF min_version('3.6.0') THEN
 
     RETURN QUERY
-    SELECT * from compare_dijkstra_many_to_one('pgr_astar', ', x1,y1,x2,y2 ', 'edges', ',0', result_columns);
+    SELECT * from compare_dijkstra_many_to_one('pgr_astar', ', x1,y1,x2,y2 ', 'edges', ',0');
 
   ELSE
 
