@@ -267,7 +267,7 @@ void graph_to_tuple(
         }
         (*return_tuples)[sequence] = {
             id,
-            const_cast<char*>("v"),
+            "v",
             -1, -1, -1.00,
             contracted_vertices,
             count,
@@ -290,7 +290,7 @@ void graph_to_tuple(
         }
         (*return_tuples)[sequence] = {
             --eid,
-            const_cast<char*>("e"),
+            "e",
             edge.source, edge.target, edge.cost,
             contracted_vertices, count, -1, -1};
         ++sequence;

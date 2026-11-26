@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  * ***********************************************************************/
 struct contracted_rt {
     int64_t id;
-    char* type;
+    const char* type;
     int64_t source;
     int64_t target;
     double cost;
