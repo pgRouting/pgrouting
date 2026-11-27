@@ -191,7 +191,7 @@ class Pgr_bidirectional {
 
 
 
-    bool found(const V &node) {
+    virtual bool found(const V &node) {
         /*
          * Update common node
          */
@@ -205,6 +205,31 @@ class Pgr_bidirectional {
             }
         }
         return false;
+    }
+
+    /*
+     * Records node as the meeting point when the route that goes through
+     * it is cheaper than the best one found so far. A cost equal to INF
+     * means that side has not reached the node, so it is ignored.
+     */
+    void record_meeting(const V &node) {
+        /*
+         * When the start and the end are the same node there is no route
+         * to record. Both searches begin at that node and would otherwise
+         * meet at one of its neighbours and report a pointless round trip.
+         * The old code returned no path for this case and that must not
+         * change.
+         */
+        if (v_source == v_target) return;
+
+        if (forward_cost[node] >= INF) return;
+        if (backward_cost[node] >= INF) return;
+
+        auto total = forward_cost[node] + backward_cost[node];
+        if (total < best_cost) {
+            best_cost = total;
+            v_min_node = node;
+        }
     }
 
     virtual
