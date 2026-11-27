@@ -98,7 +98,7 @@ void get_postgres_result(
         }
         (*return_tuples)[sequence] = {
             id,
-            const_cast<char*>("v"),
+            "v",
             -1, -1, -1.00,
             contracted_vertices,
             count};
@@ -121,7 +121,7 @@ void get_postgres_result(
         }
         (*return_tuples)[sequence] = {
             --eid,
-            const_cast<char*>("e"),
+            "e",
             edge.source, edge.target, edge.cost,
             contracted_vertices, count};
         ++sequence;
